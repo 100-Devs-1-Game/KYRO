@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bwr73i28ligrq"
-path="res://.godot/imported/Ticketing.ttf-1f6cb4fdee042568fe9fe103c9d99f1d.fontdata"
+path="res://.godot/imported/Ticketing.ttf-2827c644cf898f44da02a3823ece14ba.fontdata"
 
 [deps]
 
-source_file="res://Arts/Fonts/Ticketing.ttf"
-dest_files=["res://.godot/imported/Ticketing.ttf-1f6cb4fdee042568fe9fe103c9d99f1d.fontdata"]
+source_file="res://arts/Fonts/Ticketing.ttf"
+dest_files=["res://.godot/imported/Ticketing.ttf-2827c644cf898f44da02a3823ece14ba.fontdata"]
 
 [params]
 

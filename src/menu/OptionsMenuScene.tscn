@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ppbd766vejnq" path="res://menu/InputManagerScript.gd" id="2_dr6kr"]
 [ext_resource type="PackedScene" uid="uid://bmymn0syhajdv" path="res://menu/InputKeybindOptionScene.tscn" id="2_lcbln"]
 [ext_resource type="Script" uid="uid://bpyigga64qllf" path="res://menu/VolumeManagementScript.gd" id="4_ss2nf"]
-[ext_resource type="FontFile" uid="uid://bwr73i28ligrq" path="res://Arts/Fonts/Ticketing.ttf" id="5_cvsgs"]
+[ext_resource type="FontFile" uid="uid://bwr73i28ligrq" path="res://arts/Fonts/Ticketing.ttf" id="5_cvsgs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kjv5q"]
 line_spacing = 5.0

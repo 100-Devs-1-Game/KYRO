@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://24bpsjhugqy2" path="res://player/CameraScript.gd" id="2_x12n0"]
 [ext_resource type="Script" uid="uid://dtrqt1k57s4rf" path="res://demo/ObjectToolScript.gd" id="4_4bdjt"]
 [ext_resource type="Script" uid="uid://cne7c30826lry" path="res://player/HUDScript.gd" id="4_f4mp1"]
-[ext_resource type="FontFile" uid="uid://bwr73i28ligrq" path="res://Arts/Fonts/Ticketing.ttf" id="5_kleop"]
+[ext_resource type="FontFile" uid="uid://bwr73i28ligrq" path="res://arts/Fonts/Ticketing.ttf" id="5_kleop"]
 [ext_resource type="PackedScene" uid="uid://dh3ln04ijax8n" path="res://menu/PauseMenuScene.tscn" id="6_3wmtt"]
-[ext_resource type="Texture2D" uid="uid://djoe54ae3gp0a" path="res://Arts/Textures/kenney_prototype_textures/orange/texture_06.png" id="7_jclwn"]
-[ext_resource type="Shader" uid="uid://c7irw3sttyxk" path="res://Arts/Shaders/SpeedLinesShader.gdshader" id="12_8u6b8"]
+[ext_resource type="Texture2D" uid="uid://djoe54ae3gp0a" path="res://arts/Textures/kenney_prototype_textures/orange/texture_06.png" id="7_jclwn"]
+[ext_resource type="Shader" uid="uid://c7irw3sttyxk" path="res://arts/Shaders/SpeedLinesShader.gdshader" id="12_8u6b8"]
 
 [sub_resource type="Curve" id="Curve_qvv7t"]
 _limits = [0.0, 100.0, 0.0, 1.0]
