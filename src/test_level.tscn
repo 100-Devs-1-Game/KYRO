@@ -1,12 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgvbxbok2rtcp"]
+[gd_scene load_steps=6 format=3 uid="uid://dgvbxbok2rtcp"]
 
 [ext_resource type="PackedScene" uid="uid://bwggrf7sbmkcv" path="res://player/PlayerCharacterScene.tscn" id="1_gojnm"]
+[ext_resource type="PackedScene" uid="uid://dscdjxipyx2tj" path="res://target/target.tscn" id="2_1c2mv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1c2mv"]
+
+[sub_resource type="Sky" id="Sky_f7g2b"]
+sky_material = SubResource("ProceduralSkyMaterial_1c2mv")
+
+[sub_resource type="Environment" id="Environment_4ptq8"]
+background_mode = 2
+sky = SubResource("Sky_f7g2b")
 
 [node name="Test Level" type="Node3D"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
 use_collision = true
 size = Vector3(10, 0.1, 100)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_gojnm")]
-transform = Transform3D(0.00645772, 0, -0.999979, 0, 1, 0, 0.999979, 0, 0.00645772, 0.0991647, 1.11111, -0.0303612)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0991647, 1.11111, -0.0303612)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+
+[node name="Target" parent="." instance=ExtResource("2_1c2mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.20543, 0, -29.6227)
+
+[node name="Target2" parent="." instance=ExtResource("2_1c2mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.42135, 0, -38.4175)
+
+[node name="Target3" parent="." instance=ExtResource("2_1c2mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74856, 0, -23.448)
+
+[node name="Target4" parent="." instance=ExtResource("2_1c2mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.10629, 0, -17.1294)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4ptq8")
