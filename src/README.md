@@ -1,16 +1,28 @@
+###KYRO
+
+# Design Decisions
+
+- A single floor collider box shouldnt be longer than 1000 units ( potential physics issues )
+
+# Design Questions
+
+- Different Hitboxes ( Head single shot, Body 2 shots to kill ) ?
+
+
 # Programming Questions
 
-- rename everything to the proper snake_case convention or keep using PascalCase?
+- Rename everything to the proper snake_case convention or keep using PascalCase?
 
 # TODO
 
 - [ ] Remove/Replace/Find license for arts/Font
 - [ ] Remove remaining stuff from arts/
 - [ ] Test Wall running and Sliding
-- [ ] Add gun and shooting
-- [ ] Add target scene
+- [x] Add gun and shooting
+- [x] Add target scene
 - [ ] Add pickups
 - [ ] Design level
+- [ ] Progressively increasing player speed
 
 
 # Bonus TODO
