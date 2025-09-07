@@ -87,6 +87,7 @@ useKnockbackTool={
 3d_physics/layer_1="structures"
 3d_physics/layer_2="playerCharacter"
 3d_physics/layer_3="walkableWalls"
+3d_physics/layer_8="hurtbox"
 
 [rendering]
 
