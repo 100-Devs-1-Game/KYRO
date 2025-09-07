@@ -425,6 +425,9 @@ func move(delta):
 	#direction input
 	inputDirection = Input.get_vector("moveLeft", "moveRight", "moveForward", "moveBackward")
 	
+	#HACK override forward/back movement to always forward
+	inputDirection.y= -1.0
+	
 	#get direction input when sliding
 	if currentState == states.SLIDE:
 		if moveDirection == Vector3.ZERO: #if the character is moving
