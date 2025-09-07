@@ -1,4 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dscdjxipyx2tj"]
+[gd_scene load_steps=9 format=3 uid="uid://dscdjxipyx2tj"]
+
+[ext_resource type="PackedScene" uid="uid://rmm6mttmlaw2" path="res://target/hurtbox.tscn" id="1_kia7g"]
+[ext_resource type="Script" uid="uid://ckfd4siq0fatw" path="res://target/target.gd" id="1_kswpl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fwhe5"]
 size = Vector3(0.5, 2, 0.2)
@@ -19,6 +22,7 @@ size = Vector3(0.7, 0.5, 0.25)
 albedo_color = Color(0.91573, 0.378299, 0.410519, 1)
 
 [node name="Target" type="Node3D"]
+script = ExtResource("1_kswpl")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -35,3 +39,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_06qar")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83242, 0)
 mesh = SubResource("BoxMesh_wr80t")
 surface_material_override/0 = SubResource("StandardMaterial3D_s6tsb")
+
+[node name="Hurtbox" parent="Head" instance=ExtResource("1_kia7g")]
+
+[connection signal="take_damage" from="Head/Hurtbox" to="." method="_on_hurtbox_take_damage"]
