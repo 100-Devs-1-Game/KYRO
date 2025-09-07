@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://dscdjxipyx2tj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fwhe5"]
+size = Vector3(0.5, 2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kia7g"]
+albedo_color = Color(0.345098, 0.384314, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8yd08"]
+size = Vector3(1, 0.2, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06qar"]
+albedo_color = Color(0.345098, 0.384314, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wr80t"]
+size = Vector3(0.7, 0.5, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6tsb"]
+albedo_color = Color(0.91573, 0.378299, 0.410519, 1)
+
+[node name="Target" type="Node3D"]
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_fwhe5")
+surface_material_override/0 = SubResource("StandardMaterial3D_kia7g")
+
+[node name="Arms" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.257953, 0)
+mesh = SubResource("BoxMesh_8yd08")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_06qar")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83242, 0)
+mesh = SubResource("BoxMesh_wr80t")
+surface_material_override/0 = SubResource("StandardMaterial3D_s6tsb")
