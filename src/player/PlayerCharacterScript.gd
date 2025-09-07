@@ -124,6 +124,11 @@ var timeBeforeCanGrappleAgainRef : float
 @onready var hud = $HUD
 @onready var pauseMenu = $PauseMenu
 
+@onready var gun_parent: Node3D = %GunParent
+@onready var ray_cast_bullet: RayCast3D = %"RayCast Bullet"
+
+
+
 func _ready():
 	#set the start move speed
 	moveSpeed = walkSpeed
@@ -181,6 +186,27 @@ func _physics_process(delta):
 	collisionHandling()
 	
 	move_and_slide()
+
+# added function
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action("shoot"):
+		shoot()
+
+
+# added function
+func shoot():
+	ray_cast_bullet.force_raycast_update()
+	if ray_cast_bullet.is_colliding():
+		var collider: Node3D= ray_cast_bullet.get_collider()
+		if collider is Hurtbox:
+			(collider as Hurtbox).hit()
+
+	get_gun().shoot()
+
+
+# added function
+func get_gun()-> Gun:
+	return gun_parent.get_child(0) 
 
 func inputManagement():
 	#for each state, check the possibles actions available
