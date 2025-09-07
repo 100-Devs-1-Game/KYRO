@@ -265,7 +265,7 @@ mesh = SubResource("BoxMesh_rsygy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CameraHolder/Camera3D/ObjectTool"]
 libraries = {
-"": SubResource("AnimationLibrary_hoq7f")
+&"": SubResource("AnimationLibrary_hoq7f")
 }
 
 [node name="standingHitbox" type="CollisionShape3D" parent="."]
