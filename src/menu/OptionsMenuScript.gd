@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @export_group("Input variables")
-@onready var inputKeybindBox : PackedScene = preload("res://Scenes/InputKeybindOptionScene.tscn")
+@export var inputKeybindBox : PackedScene = preload("res://Scenes/InputKeybindOptionScene.tscn")
 @onready var inputList : VBoxContainer = $TabContainer/Controls/Control/ScrollContainer/InputList
 var isRemapping : bool = false
 var actionToRemap = null
