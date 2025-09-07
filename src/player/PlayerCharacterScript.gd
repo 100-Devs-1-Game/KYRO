@@ -446,7 +446,11 @@ func move(delta):
 	else:
 		#get the move direction depending on the input
 		moveDirection = (cameraHolder.basis * Vector3(inputDirection.x, 0.0, inputDirection.y)).normalized()
-		
+
+	#HACK override move Direction
+	moveDirection = (Basis.IDENTITY * Vector3(inputDirection.x, 0.0, inputDirection.y)).normalized()
+	
+
 	#move applies when the character is on the floor
 	if is_on_floor():
 		#if the character is moving
