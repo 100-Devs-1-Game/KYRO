@@ -1,13 +1,14 @@
-[gd_scene load_steps=29 format=3 uid="uid://bwggrf7sbmkcv"]
+[gd_scene load_steps=30 format=3 uid="uid://bwggrf7sbmkcv"]
 
-[ext_resource type="Script" uid="uid://bkpfy1xiup1op" path="res://Scripts/PlayerCharacter/PlayerCharacterScript.gd" id="1_5dbx1"]
-[ext_resource type="Script" uid="uid://24bpsjhugqy2" path="res://Scripts/PlayerCharacter/CameraScript.gd" id="2_x12n0"]
-[ext_resource type="Script" uid="uid://dtrqt1k57s4rf" path="res://Scripts/Others/ObjectToolScript.gd" id="4_4bdjt"]
-[ext_resource type="Script" uid="uid://cne7c30826lry" path="res://Scripts/PlayerCharacter/UI/HUDScript.gd" id="4_f4mp1"]
-[ext_resource type="FontFile" uid="uid://bwr73i28ligrq" path="res://Arts/Fonts/Ticketing.ttf" id="5_kleop"]
-[ext_resource type="PackedScene" uid="uid://dh3ln04ijax8n" path="res://Scenes/PauseMenuScene.tscn" id="6_3wmtt"]
-[ext_resource type="Texture2D" uid="uid://djoe54ae3gp0a" path="res://Arts/Textures/kenney_prototype_textures/orange/texture_06.png" id="7_jclwn"]
-[ext_resource type="Shader" uid="uid://c7irw3sttyxk" path="res://Arts/Shaders/SpeedLinesShader.gdshader" id="12_8u6b8"]
+[ext_resource type="Script" uid="uid://bkpfy1xiup1op" path="res://player/PlayerCharacterScript.gd" id="1_5dbx1"]
+[ext_resource type="Script" uid="uid://24bpsjhugqy2" path="res://player/CameraScript.gd" id="2_x12n0"]
+[ext_resource type="Script" uid="uid://dtrqt1k57s4rf" path="res://demo/ObjectToolScript.gd" id="4_4bdjt"]
+[ext_resource type="Script" uid="uid://cne7c30826lry" path="res://player/HUDScript.gd" id="4_f4mp1"]
+[ext_resource type="PackedScene" uid="uid://bcxh78xaq1rsk" path="res://guns/gun.tscn" id="5_coc00"]
+[ext_resource type="FontFile" uid="uid://bwr73i28ligrq" path="res://arts/Fonts/Ticketing.ttf" id="5_kleop"]
+[ext_resource type="PackedScene" uid="uid://dh3ln04ijax8n" path="res://menu/PauseMenuScene.tscn" id="6_3wmtt"]
+[ext_resource type="Texture2D" uid="uid://djoe54ae3gp0a" path="res://arts/Textures/kenney_prototype_textures/orange/texture_06.png" id="7_jclwn"]
+[ext_resource type="Shader" uid="uid://c7irw3sttyxk" path="res://arts/Shaders/SpeedLinesShader.gdshader" id="12_8u6b8"]
 
 [sub_resource type="Curve" id="Curve_qvv7t"]
 _limits = [0.0, 100.0, 0.0, 1.0]
@@ -214,10 +215,6 @@ slideFOV = 120.0
 dashFOV = 150.0
 fovChangeSpeed = 4.0
 fovChangeSpeedWhenDash = 3.0
-bobFrequency = 0.8
-bobAmplitude = 0.06
-camTiltRotationValue = 0.35
-camTiltRotationSpeed = 2.2
 shakeDuration = 0.35
 shakeFade = 6.0
 mouseInputSpeed = 2.0
@@ -265,8 +262,21 @@ mesh = SubResource("BoxMesh_rsygy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CameraHolder/Camera3D/ObjectTool"]
 libraries = {
-"": SubResource("AnimationLibrary_hoq7f")
+&"": SubResource("AnimationLibrary_hoq7f")
 }
+
+[node name="GunParent" type="Node3D" parent="CameraHolder/Camera3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.319298, -0.354584, -0.805932)
+
+[node name="Gun" parent="CameraHolder/Camera3D/GunParent" instance=ExtResource("5_coc00")]
+
+[node name="RayCast Bullet" type="RayCast3D" parent="CameraHolder/Camera3D"]
+unique_name_in_owner = true
+enabled = false
+target_position = Vector3(0, 0, -50)
+collision_mask = 128
+collide_with_areas = true
 
 [node name="standingHitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_5yjma")

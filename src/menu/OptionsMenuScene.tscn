@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdhpuj7itpv6j"]
+[gd_scene load_steps=7 format=3 uid="uid://bdhpuj7itpv6j"]
 
-[ext_resource type="Script" uid="uid://c7ttwxqhh2nyw" path="res://Scripts/PlayerCharacter/UI/OptionsMenuScript.gd" id="1_bupa7"]
-[ext_resource type="Script" uid="uid://ppbd766vejnq" path="res://Scripts/PlayerCharacter/UI/InputManagerScript.gd" id="2_dr6kr"]
-[ext_resource type="Script" uid="uid://bpyigga64qllf" path="res://Scripts/PlayerCharacter/UI/VolumeManagementScript.gd" id="4_ss2nf"]
-[ext_resource type="FontFile" uid="uid://bwr73i28ligrq" path="res://Arts/Fonts/Ticketing.ttf" id="5_cvsgs"]
+[ext_resource type="Script" uid="uid://c7ttwxqhh2nyw" path="res://menu/OptionsMenuScript.gd" id="1_bupa7"]
+[ext_resource type="Script" uid="uid://ppbd766vejnq" path="res://menu/InputManagerScript.gd" id="2_dr6kr"]
+[ext_resource type="PackedScene" uid="uid://bmymn0syhajdv" path="res://menu/InputKeybindOptionScene.tscn" id="2_lcbln"]
+[ext_resource type="Script" uid="uid://bpyigga64qllf" path="res://menu/VolumeManagementScript.gd" id="4_ss2nf"]
+[ext_resource type="FontFile" uid="uid://bwr73i28ligrq" path="res://arts/Fonts/Ticketing.ttf" id="5_cvsgs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kjv5q"]
 line_spacing = 5.0
@@ -12,6 +13,7 @@ font_size = 42
 
 [node name="OptionsMenu" type="CanvasLayer"]
 script = ExtResource("1_bupa7")
+inputKeybindBox = ExtResource("2_lcbln")
 
 [node name="InputManager" type="Control" parent="."]
 layout_mode = 3

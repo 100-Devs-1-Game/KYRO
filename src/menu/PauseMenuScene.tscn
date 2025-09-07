@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dh3ln04ijax8n"]
 
-[ext_resource type="FontFile" uid="uid://bwr73i28ligrq" path="res://Arts/Fonts/Ticketing.ttf" id="1_g88fa"]
-[ext_resource type="Script" uid="uid://cxsdx4k8vv2tb" path="res://Scripts/PlayerCharacter/UI/PauseMenuScript.gd" id="1_oxp60"]
-[ext_resource type="PackedScene" uid="uid://bdhpuj7itpv6j" path="res://Scenes/OptionsMenuScene.tscn" id="3_0w74v"]
+[ext_resource type="FontFile" uid="uid://bwr73i28ligrq" path="res://arts/Fonts/Ticketing.ttf" id="1_g88fa"]
+[ext_resource type="Script" uid="uid://cxsdx4k8vv2tb" path="res://menu/PauseMenuScript.gd" id="1_oxp60"]
+[ext_resource type="PackedScene" uid="uid://bdhpuj7itpv6j" path="res://menu/OptionsMenuScene.tscn" id="3_0w74v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eaa6r"]
 line_spacing = 5.0

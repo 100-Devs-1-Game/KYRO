@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bmymn0syhajdv"]
 
-[ext_resource type="FontFile" uid="uid://bwr73i28ligrq" path="res://Arts/Fonts/Ticketing.ttf" id="2_aj2tc"]
+[ext_resource type="FontFile" uid="uid://bwr73i28ligrq" path="res://arts/Fonts/Ticketing.ttf" id="2_aj2tc"]
 
 [node name="InputOption" type="HBoxContainer"]
 

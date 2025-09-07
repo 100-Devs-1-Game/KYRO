@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://rmm6mttmlaw2"]
+
+[ext_resource type="Script" uid="uid://0goaxx7pktuj" path="res://target/hurtbox.gd" id="1_culgl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fwhe5"]
+size = Vector3(0.7, 0.5, 0.25)
+
+[node name="Hurtbox" type="Area3D"]
+collision_layer = 128
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_culgl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fwhe5")

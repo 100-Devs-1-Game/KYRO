@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcxh78xaq1rsk"]
+
+[ext_resource type="Script" uid="uid://d02t6fqhela0q" path="res://guns/gun.gd" id="1_yqs5w"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4qpwu"]
+size = Vector3(0.1, 0.1, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqs5w"]
+albedo_color = Color(0.162066, 0.162066, 0.162066, 1)
+metallic = 0.77
+roughness = 0.45
+
+[sub_resource type="BoxMesh" id="BoxMesh_rbtxg"]
+size = Vector3(0.1, 0.1, 0.23)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xawhb"]
+albedo_color = Color(0.162066, 0.162066, 0.162066, 1)
+metallic = 0.77
+roughness = 0.45
+
+[sub_resource type="Animation" id="Animation_6qpow"]
+resource_name = "shoot"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.0605471, 0.0675376), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.15523, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rbtxg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ximex"]
+_data = {
+&"RESET": SubResource("Animation_rbtxg"),
+&"shoot": SubResource("Animation_6qpow")
+}
+
+[node name="Gun" type="Node3D" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("1_yqs5w")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
+mesh = SubResource("BoxMesh_4qpwu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_yqs5w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 4.1541e-08, 5.7314e-08, -4.1541e-08, -0.311191, 0.950347, 5.7314e-08, -0.950347, -0.311191, 0, -0.0629774, 0.151724)
+mesh = SubResource("BoxMesh_rbtxg")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_xawhb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ximex")
+}
