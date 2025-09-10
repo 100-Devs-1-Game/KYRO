@@ -15,6 +15,7 @@ var sensitivity:float = 1 / PI / 60 # TODO: Move this to a GameSettings
 @onready var head:Node3D = %Head
 @onready var camera:Camera3D = %Camera3D
 @onready var gun_cast:RayCast3D = %GunCast
+@onready var wall_run_area:Area3D = %WallRunArea
 @onready var state_machine:StateMachine = $StateMachine
 @onready var state_walk:State = %Walk
 @onready var state_jump:State = %Jumping
@@ -56,7 +57,10 @@ func do_forward_movement(delta: float) -> void:
 
 
 func do_strafe_movement(delta: float) -> void:
-	velocity.x += Input.get_axis(&"ui_left", &"ui_right") * strafe_speed * delta
+	var axis:float = Input.get_axis(&"ui_left", &"ui_right")
+	velocity.x += axis * strafe_speed * delta
+	wall_run_area.position.x = axis * 0.4
+	print(wall_run_area.position.x)
 
 
 func do_gravity(delta: float) -> void:
@@ -78,6 +82,10 @@ func do_coyote_time(delta:float) -> void:
 
 func can_jump() -> bool:
 	return jump_coyote_time > 0.0
+
+
+func can_wallride() -> bool:
+	return len(wall_run_area.get_overlapping_bodies()) > 0
 
 
 func get_modal_basic_state() -> State:
