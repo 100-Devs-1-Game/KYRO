@@ -26,7 +26,7 @@ func _state_physics_process(delta: float) -> void:
 	owner.do_coyote_time(delta)
 	
 	if owner.can_wallride():
-		print("WALLRRIDE")
+		machine.to_state($"../Wallride")
 	
 	if owner.can_jump():
 		machine.to_state($"../Walk")

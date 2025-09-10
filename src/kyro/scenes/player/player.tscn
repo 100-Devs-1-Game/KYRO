@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://btres5r46w8pd"]
+[gd_scene load_steps=9 format=3 uid="uid://btres5r46w8pd"]
 
 [ext_resource type="Script" uid="uid://cx0dubayoiydg" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bshjfjpv4fojd" path="res://globals/components/state_machine/state_machine.gd" id="2_dovo2"]
 [ext_resource type="Script" uid="uid://b2avl7a8t843j" path="res://scenes/player/state/walk.gd" id="3_gmlin"]
 [ext_resource type="Script" uid="uid://e2fuxfjfbi6v" path="res://scenes/player/state/jumping.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://w7kclhp5i617" path="res://scenes/player/state/falling.gd" id="5_p47bc"]
+[ext_resource type="Script" uid="uid://c0ia5fjdsy8gi" path="res://scenes/player/state/wallride.gd" id="6_75vfm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7p2l"]
 size = Vector3(0.7, 1.8, 0.7)
@@ -46,6 +47,11 @@ metadata/_custom_type_script = "uid://c4wduh2exufqe"
 [node name="Falling" type="Node" parent="StateMachine"]
 unique_name_in_owner = true
 script = ExtResource("5_p47bc")
+metadata/_custom_type_script = "uid://c4wduh2exufqe"
+
+[node name="Wallride" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("6_75vfm")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
 [node name="Head" type="Node3D" parent="."]

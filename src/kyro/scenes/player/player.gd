@@ -60,7 +60,6 @@ func do_strafe_movement(delta: float) -> void:
 	var axis:float = Input.get_axis(&"ui_left", &"ui_right")
 	velocity.x += axis * strafe_speed * delta
 	wall_run_area.position.x = axis * 0.4
-	print(wall_run_area.position.x)
 
 
 func do_gravity(delta: float) -> void:
