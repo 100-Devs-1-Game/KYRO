@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://btres5r46w8pd"]
+
+[ext_resource type="Script" uid="uid://cx0dubayoiydg" path="res://scenes/player/player.gd" id="1_8afob"]
+[ext_resource type="Script" uid="uid://bshjfjpv4fojd" path="res://globals/components/state_machine/state_machine.gd" id="2_dovo2"]
+[ext_resource type="Script" uid="uid://b2avl7a8t843j" path="res://scenes/player/state/walk.gd" id="3_gmlin"]
+[ext_resource type="Script" uid="uid://e2fuxfjfbi6v" path="res://scenes/player/state/jumping.gd" id="4_lvxji"]
+[ext_resource type="Script" uid="uid://w7kclhp5i617" path="res://scenes/player/state/falling.gd" id="5_p47bc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x7p2l"]
+size = Vector3(0.7, 1.8, 0.7)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_8afob")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("BoxShape3D_x7p2l")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
+script = ExtResource("2_dovo2")
+default_state = NodePath("Walk")
+metadata/_custom_type_script = "uid://bshjfjpv4fojd"
+
+[node name="Walk" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("3_gmlin")
+metadata/_custom_type_script = "uid://c4wduh2exufqe"
+
+[node name="Jumping" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("4_lvxji")
+metadata/_custom_type_script = "uid://c4wduh2exufqe"
+
+[node name="Falling" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("5_p47bc")
+metadata/_custom_type_script = "uid://c4wduh2exufqe"
+
+[node name="Head" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+unique_name_in_owner = true
+
+[node name="GunCast" type="RayCast3D" parent="Head/Camera3D"]
+unique_name_in_owner = true
+enabled = false
+target_position = Vector3(0, 0, -300)
+collision_mask = 3
+collide_with_areas = true
+
+[node name="HudLayer" type="CanvasLayer" parent="."]
+
+[node name="Reticle" type="ColorRect" parent="HudLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
