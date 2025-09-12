@@ -25,6 +25,8 @@ func _state_physics_process(delta: float) -> void:
 	owner.move_and_slide()
 	owner.do_coyote_time(delta)
 	
+	owner.do_post_slide_updates()
+	
 	if owner.is_on_floor():
 		machine.to_state($"../Walk")
 		return

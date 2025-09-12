@@ -23,6 +23,8 @@ func _state_physics_process(delta: float) -> void:
 	owner.move_and_slide()
 	owner.do_coyote_time(delta)
 	
+	owner.do_post_slide_updates()
+	
 	var modal_basic:State = owner.get_modal_basic_state()
 	if modal_basic != self:
 		machine.to_state(modal_basic)

@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+
 @export_subgroup("Movement")
 @export var forward_speed:float = 100
 @export var strafe_speed: float = 120
@@ -8,14 +9,17 @@ extends CharacterBody3D
 @export_subgroup("Jumping")
 @export var jump_strength: float = 10.0
 @export var jump_coyote_max: float = 0.5
+@export_subgroup("Wallriding")
+@export_range(0, 180, 0.5, "radians_as_degrees") var wallride_angle_tolerance:float = PI/4
 
 var jump_coyote_time:float = 0.0
+## If this is 0, wallriding can't be acheived. Otherwise, this is a the wall that will be clung to
+var wallride_axis:float = 0.0
 var sensitivity:float = 1 / PI / 60 # TODO: Move this to a GameSettings 
 
 @onready var head:Node3D = %Head
 @onready var camera:Camera3D = %Camera3D
 @onready var gun_cast:RayCast3D = %GunCast
-@onready var wall_run_area:Area3D = %WallRunArea
 @onready var state_machine:StateMachine = $StateMachine
 @onready var state_walk:State = %Walk
 @onready var state_jump:State = %Jumping
@@ -59,7 +63,6 @@ func do_forward_movement(delta: float) -> void:
 func do_strafe_movement(delta: float) -> void:
 	var axis:float = Input.get_axis(&"ui_left", &"ui_right")
 	velocity.x += axis * strafe_speed * delta
-	wall_run_area.position.x = axis * 0.4
 
 
 func do_gravity(delta: float) -> void:
@@ -79,12 +82,21 @@ func do_coyote_time(delta:float) -> void:
 	jump_coyote_time -= delta
 
 
+func do_post_slide_updates() -> void:
+	wallride_axis = 0
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		var dot := Vector3.LEFT.dot(collision.get_normal())
+		if absf(dot) > absf(wallride_axis):
+			wallride_axis = dot
+
+
 func can_jump() -> bool:
 	return jump_coyote_time > 0.0
 
 
 func can_wallride() -> bool:
-	return len(wall_run_area.get_overlapping_bodies()) > 0
+	return abs(wallride_axis * PI) > wallride_angle_tolerance
 
 
 func get_modal_basic_state() -> State:

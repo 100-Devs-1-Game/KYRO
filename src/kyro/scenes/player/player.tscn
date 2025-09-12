@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://btres5r46w8pd"]
+[gd_scene load_steps=8 format=3 uid="uid://btres5r46w8pd"]
 
 [ext_resource type="Script" uid="uid://cx0dubayoiydg" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bshjfjpv4fojd" path="res://globals/components/state_machine/state_machine.gd" id="2_dovo2"]
@@ -10,9 +10,6 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7p2l"]
 size = Vector3(0.7, 1.8, 0.7)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_p47bc"]
-size = Vector3(0.1, 1.3, 0.6)
-
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 4
 script = ExtResource("1_8afob")
@@ -20,14 +17,6 @@ script = ExtResource("1_8afob")
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("BoxShape3D_x7p2l")
-
-[node name="WallRunArea" type="Area3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-
-[node name="Collider" type="CollisionShape3D" parent="WallRunArea"]
-shape = SubResource("BoxShape3D_p47bc")
-debug_color = Color(0.553186, 0.562638, 0, 0.42)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
 script = ExtResource("2_dovo2")
