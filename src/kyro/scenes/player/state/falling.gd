@@ -9,7 +9,6 @@ extends State
 
 
 func _state_entered() -> void:
-	print(owner.strafe_traction)
 	owner.strafe_damping *= strafe_damping_mod
 	
 
@@ -38,6 +37,5 @@ func _state_physics_process(delta: float) -> void:
 
 
 func _state_exited() -> void:
-	print(owner.strafe_traction)
 	owner.strafe_damping /= strafe_damping_mod
 	

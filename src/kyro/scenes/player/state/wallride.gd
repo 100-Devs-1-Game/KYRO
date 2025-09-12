@@ -28,7 +28,7 @@ func _state_physics_process(delta: float) -> void:
 		return
 	
 	var decay:float = mod_decay_curve.sample(wallride_time)
-	print(decay)
+	
 	
 	owner.do_forward_movement(delta * remap(decay, 0, 1, 1, forward_speed_mod,))
 	owner.do_strafe_movement(delta)

@@ -10,7 +10,6 @@ var jump_coyote_time:float = 0.0
 
 
 func _state_entered() -> void:
-	print(owner.strafe_traction)
 	owner.strafe_damping *= strafe_damping_mod
 	
 	owner.forward_damping *= forward_damping_mod
