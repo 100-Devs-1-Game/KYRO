@@ -1,18 +1,19 @@
 extends State
 ## Rising jump state for player.
 
-@export var traction_delta_mod:float = 1.0
-@export var forward_traction_mod:float = 0.5
-@export var strafe_traction_mod:float = 0.3
+@export var damping_delta_mod:float = 1.0
+@export var forward_damping_mod:float = 0.5
+@export var strafe_damping_mod:float = 0.3
 
 
 var jump_coyote_time:float = 0.0
 
 
 func _state_entered() -> void:
-	owner.strafe_traction *= strafe_traction_mod
 	print(owner.strafe_traction)
-	owner.forward_traction *= forward_traction_mod
+	owner.strafe_damping *= strafe_damping_mod
+	
+	owner.forward_damping *= forward_damping_mod
 
 
 func _state_process(delta: float) -> void:
@@ -29,7 +30,7 @@ func _state_physics_process(delta: float) -> void:
 	
 	owner.do_forward_movement(delta)
 	owner.do_strafe_movement(delta)
-	owner.do_damping(delta * traction_delta_mod)
+	owner.do_damping(delta * damping_delta_mod)
 	owner.do_gravity(delta)
 	
 	owner.move_and_slide()
@@ -48,8 +49,8 @@ func _state_physics_process(delta: float) -> void:
 
 
 func _state_exited() -> void:
-	owner.strafe_traction /= strafe_traction_mod
-	owner.forward_traction /= forward_traction_mod
+	owner.strafe_damping /= strafe_damping_mod
+	owner.forward_damping /= forward_damping_mod
 
 
 func do_coyote_time(delta:float) -> void:

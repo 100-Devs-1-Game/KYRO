@@ -2,15 +2,16 @@ extends State
 
 
 @export var gravity_mod:float = 2.0
-@export var strafe_traction_mod:float = 0.4
+@export var strafe_damping_mod:float = 0.4
 
 @export_group("State Connectons", "state_")
 @export var state_jump:State
 
 
 func _state_entered() -> void:
-	owner.strafe_traction *= strafe_traction_mod
 	print(owner.strafe_traction)
+	owner.strafe_damping *= strafe_damping_mod
+	
 
 
 func _state_process(delta: float) -> void:
@@ -37,5 +38,6 @@ func _state_physics_process(delta: float) -> void:
 
 
 func _state_exited() -> void:
-	owner.strafe_traction /= strafe_traction_mod
 	print(owner.strafe_traction)
+	owner.strafe_damping /= strafe_damping_mod
+	
