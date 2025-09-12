@@ -8,7 +8,7 @@ extends State
 
 
 func _state_entered() -> void:
-	pass
+	owner.forward_speed *= forward_speed_multiplier
 
 
 func _state_process(delta: float) -> void:
@@ -16,7 +16,7 @@ func _state_process(delta: float) -> void:
 
 
 func _state_physics_process(delta: float) -> void:
-	owner.do_forward_movement(delta * forward_speed_multiplier)
+	owner.do_forward_movement(delta)
 	owner.do_strafe_movement(delta)
 	owner.do_damping(delta)
 	owner.do_gravity(delta * gravity_multiplier)
@@ -31,4 +31,4 @@ func _state_physics_process(delta: float) -> void:
 
 
 func _state_exited() -> void:
-	pass
+	owner.forward_speed /= forward_speed_multiplier
