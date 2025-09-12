@@ -1,18 +1,18 @@
 extends CharacterBody3D
 
 
-@export_subgroup("Movement")
+@export_group("Movement")
 @export var forward_speed:float = 100
 @export var strafe_speed: float = 120
 @export var forward_traction: float = 8.0
 @export var strafe_traction: float = 10.0
-@export_subgroup("Jumping")
+@export_group("Jumping")
 @export var jump_strength: float = 10.0
 @export var jump_coyote_max: float = 0.5
-@export_subgroup("Wallriding")
+@export_group("Wallriding")
 @export_range(0, 180, 0.5, "radians_as_degrees") var wallride_angle_tolerance:float = PI/4
 
-var jump_coyote_time:float = 0.0
+
 ## If this is 0, wallriding can't be acheived. Otherwise, this is a the wall that will be clung to
 var wallride_axis:float = 0.0
 var sensitivity:float = 1 / PI / 60 # TODO: Move this to a GameSettings 
@@ -75,13 +75,6 @@ func do_damping(delta: float) -> void:
 	velocity.x /= 1 + (strafe_traction * delta)
 
 
-func do_coyote_time(delta:float) -> void:
-	if is_on_floor():
-		jump_coyote_time = jump_coyote_max
-		return
-	jump_coyote_time -= delta
-
-
 func do_post_slide_updates() -> void:
 	wallride_axis = 0
 	for i in get_slide_collision_count():
@@ -89,10 +82,6 @@ func do_post_slide_updates() -> void:
 		var dot := Vector3.LEFT.dot(collision.get_normal())
 		if absf(dot) > absf(wallride_axis):
 			wallride_axis = dot
-
-
-func can_jump() -> bool:
-	return jump_coyote_time > 0.0
 
 
 func can_wallride() -> bool:
@@ -105,8 +94,4 @@ func get_modal_basic_state() -> State:
 	if velocity.y > 0:
 		return state_jump
 	return state_fall
-
-
-func jump() -> void: # TODO: Not this
-	state_jump.jump()
 #endregion

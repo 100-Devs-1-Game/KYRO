@@ -3,6 +3,9 @@ extends State
 @export var forward_speed_multiplier:float = 1.2
 @export var gravity_multiplier:float = 0.2
 
+@export_group("State Connectons", "state_")
+@export var state_jump:State
+
 
 func _state_entered() -> void:
 	pass
@@ -19,7 +22,6 @@ func _state_physics_process(delta: float) -> void:
 	owner.do_gravity(delta * gravity_multiplier)
 	
 	owner.move_and_slide()
-	owner.do_coyote_time(delta)
 	
 	owner.do_post_slide_updates()
 	

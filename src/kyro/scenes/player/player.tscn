@@ -23,9 +23,10 @@ script = ExtResource("2_dovo2")
 default_state = NodePath("Walk")
 metadata/_custom_type_script = "uid://bshjfjpv4fojd"
 
-[node name="Walk" type="Node" parent="StateMachine"]
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_jump")]
 unique_name_in_owner = true
 script = ExtResource("3_gmlin")
+state_jump = NodePath("../Jumping")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
 [node name="Jumping" type="Node" parent="StateMachine"]
@@ -33,9 +34,10 @@ unique_name_in_owner = true
 script = ExtResource("4_lvxji")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
-[node name="Falling" type="Node" parent="StateMachine"]
+[node name="Falling" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_jump")]
 unique_name_in_owner = true
 script = ExtResource("5_p47bc")
+state_jump = NodePath("../Jumping")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
 [node name="Wallride" type="Node" parent="StateMachine"]
