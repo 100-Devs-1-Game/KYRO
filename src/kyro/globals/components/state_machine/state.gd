@@ -1,5 +1,7 @@
 class_name State
 extends Node
+## State of a finite [StateMachine].
+
 
 var machine: StateMachine:
 	get():

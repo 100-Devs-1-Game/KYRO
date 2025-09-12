@@ -1,11 +1,14 @@
 @icon("res://globals/components/state_machine/state_machine.svg")
 class_name StateMachine
 extends Node
+## Manages multiple [State]s and switches between them.
 
 
+## The default [State] to move to at project start.
 @export var default_state:State
 
 
+## The current [State] of the [StateMachine].
 var current_state:State
 
 
