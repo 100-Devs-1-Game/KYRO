@@ -2,8 +2,8 @@ extends CharacterBody3D
 
 
 @export_group("Movement")
-@export var forward_speed:float = 100
-@export var strafe_speed: float = 120
+@export var forward_speed:float = 10
+@export var strafe_speed: float = 12
 @export var forward_traction: float = 8.0
 @export var strafe_traction: float = 10.0
 @export_group("Jumping")
@@ -57,12 +57,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 #region State common methods
 func do_forward_movement(delta: float) -> void:
-	velocity.z -= forward_speed * delta 
+	velocity.z -= forward_speed * delta * forward_traction
 
 
 func do_strafe_movement(delta: float) -> void:
 	var axis:float = Input.get_axis(&"ui_left", &"ui_right")
-	velocity.x += axis * strafe_speed * delta
+	velocity.x += axis * strafe_speed * delta * strafe_traction
 
 
 func do_gravity(delta: float) -> void:
