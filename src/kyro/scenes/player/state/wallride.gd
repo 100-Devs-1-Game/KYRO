@@ -1,5 +1,7 @@
 extends State
 
+const WALLRIDE_CAMERA_ROLL:float = PI/54
+
 @export var forward_speed_mod:float = 1.2
 @export var gravity_mod:float = 0.2
 @export var mod_decay_curve:Curve # TODO: this should probably be baked
@@ -18,7 +20,7 @@ func _state_entered() -> void:
 
 
 func _state_process(delta: float) -> void:
-	pass
+	owner.camera.rotation.z = roundf(owner.wallride_axis) * WALLRIDE_CAMERA_ROLL
 
 
 func _state_physics_process(delta: float) -> void:
@@ -46,4 +48,4 @@ func _state_physics_process(delta: float) -> void:
 
 
 func _state_exited() -> void:
-	pass
+	owner.camera.owner.camera.rotation.z = 0
