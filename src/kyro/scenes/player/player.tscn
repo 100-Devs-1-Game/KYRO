@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://btres5r46w8pd"]
+[gd_scene load_steps=9 format=3 uid="uid://btres5r46w8pd"]
 
 [ext_resource type="Script" uid="uid://cx0dubayoiydg" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bshjfjpv4fojd" path="res://globals/components/state_machine/state_machine.gd" id="2_dovo2"]
@@ -9,6 +9,12 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7p2l"]
 size = Vector3(0.7, 1.8, 0.7)
+
+[sub_resource type="Curve" id="Curve_75vfm"]
+_limits = [0.0, 1.0, 0.0, 2.5]
+bake_resolution = 30
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(2.5, 0), -0.7, 0.0, 0, 0]
+point_count = 2
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 4
@@ -43,6 +49,7 @@ metadata/_custom_type_script = "uid://c4wduh2exufqe"
 [node name="Wallride" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_jump")]
 unique_name_in_owner = true
 script = ExtResource("6_75vfm")
+mod_decay_curve = SubResource("Curve_75vfm")
 state_jump = NodePath("../Jumping")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
