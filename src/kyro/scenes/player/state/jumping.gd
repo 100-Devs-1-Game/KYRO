@@ -27,7 +27,7 @@ func _state_physics_process(delta: float) -> void:
 	owner.do_gravity(delta)
 	
 	owner.move_and_slide()
-	owner.do_coyote_time(delta)
+	do_coyote_time(delta)
 	
 	owner.do_post_slide_updates()
 	
@@ -82,6 +82,6 @@ func jump_wanted() -> bool:
 
 ## Performs a standard jump
 func jump() -> void:
-	owner.jump_coyote_time = 0
+	jump_coyote_time = 0
 	owner.velocity.y = owner.jump_strength
 	machine.to_state(self)

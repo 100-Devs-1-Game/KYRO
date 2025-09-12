@@ -2,6 +2,7 @@ extends State
 
 @export var forward_speed_multiplier:float = 1.2
 @export var gravity_multiplier:float = 0.2
+@export var jump_impulse:float = 30
 
 @export_group("State Connectons", "state_")
 @export var state_jump:State
@@ -16,6 +17,11 @@ func _state_process(delta: float) -> void:
 
 
 func _state_physics_process(delta: float) -> void:
+	if state_jump.jump_wanted():
+		owner.velocity.x = jump_impulse * -roundf(owner.wallride_axis)
+		state_jump.jump()
+		return
+	
 	owner.do_forward_movement(delta)
 	owner.do_strafe_movement(delta)
 	owner.do_damping(delta)

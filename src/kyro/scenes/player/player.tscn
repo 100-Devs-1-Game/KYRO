@@ -40,9 +40,10 @@ script = ExtResource("5_p47bc")
 state_jump = NodePath("../Jumping")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
-[node name="Wallride" type="Node" parent="StateMachine"]
+[node name="Wallride" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_jump")]
 unique_name_in_owner = true
 script = ExtResource("6_75vfm")
+state_jump = NodePath("../Jumping")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
 [node name="Head" type="Node3D" parent="."]
