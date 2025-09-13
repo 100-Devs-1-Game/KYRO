@@ -85,6 +85,7 @@ transform = Transform3D(-0.273943, 0.918545, 0.285011, -0.224305, 0.227155, -0.9
 
 [node name="AnimationPlayer" parent="Head/Camera3D/Arm" index="1"]
 autoplay = "WeildPistol"
+next/Shoot = &"WeildPistol"
 
 [node name="HudLayer" type="CanvasLayer" parent="."]
 
