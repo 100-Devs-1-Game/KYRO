@@ -61,6 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0206336)
 
 [node name="GunCast" type="RayCast3D" parent="Head/Camera3D"]
 unique_name_in_owner = true
@@ -70,7 +71,7 @@ collision_mask = 3
 collide_with_areas = true
 
 [node name="Arm" parent="Head/Camera3D" instance=ExtResource("8_qek5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.349723, -0.255538, 0.0233023)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28368, -0.255538, -0.137871)
 
 [node name="Skeleton3D" parent="Head/Camera3D/Arm/ArmRig" index="0"]
 transform = Transform3D(0.998153, -0.0259395, -0.0549393, 0.0287191, 0.998315, 0.0504255, 0.0535387, -0.0519101, 0.997216, 0, 0, 0)
