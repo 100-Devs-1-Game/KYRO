@@ -1,6 +1,6 @@
 {
 	"asset":{
-		"generator":"Khronos glTF Blender I/O v4.5.48",
+		"generator":"Khronos glTF Blender I/O v4.4.55",
 		"version":"2.0"
 	},
 	"scene":0,
@@ -15,12 +15,7 @@
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"Silenced_Pistol",
-			"scale":[
-				2.3748326301574707,
-				2.3748326301574707,
-				2.3748326301574707
-			]
+			"name":"Silenced_Pistol"
 		}
 	],
 	"materials":[
@@ -31,7 +26,7 @@
 				1,
 				1
 			],
-			"name":"Simple Crystal.001",
+			"name":"GlassWhite",
 			"pbrMetallicRoughness":{
 				"baseColorFactor":[
 					0,
@@ -48,7 +43,7 @@
 				1,
 				1
 			],
-			"name":"Simple Crystal.002",
+			"name":"GlassRed",
 			"pbrMetallicRoughness":{
 				"baseColorFactor":[
 					0,
@@ -61,24 +56,28 @@
 	],
 	"meshes":[
 		{
-			"name":"Untitled.051",
+			"name":"Pistol",
 			"primitives":[
 				{
 					"attributes":{
 						"POSITION":0,
 						"NORMAL":1,
-						"TEXCOORD_0":2
+						"TEXCOORD_0":2,
+						"COLOR_0":3,
+						"COLOR_1":4
 					},
-					"indices":3,
+					"indices":5,
 					"material":0
 				},
 				{
 					"attributes":{
-						"POSITION":4,
-						"NORMAL":5,
-						"TEXCOORD_0":6
+						"POSITION":6,
+						"NORMAL":7,
+						"TEXCOORD_0":8,
+						"COLOR_0":9,
+						"COLOR_1":10
 					},
-					"indices":7,
+					"indices":11,
 					"material":1
 				}
 			]
@@ -88,67 +87,95 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":21258,
+			"count":22238,
 			"max":[
-				0.006128120236098766,
-				0.022749818861484528,
-				0.060518618673086166
+				0.014553260058164597,
+				0.0540270134806633,
+				0.1437215954065323
 			],
 			"min":[
-				-0.0074006724171340466,
-				-0.04437816143035889,
-				-0.10097216069698334
+				-0.017575358971953392,
+				-0.10539070516824722,
+				-0.23979198932647705
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":21258,
+			"count":22238,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":21258,
+			"count":22238,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
+			"componentType":5121,
+			"count":22238,
+			"normalized":true,
+			"type":"VEC4"
+		},
+		{
+			"bufferView":4,
+			"componentType":5123,
+			"count":22238,
+			"normalized":true,
+			"type":"VEC4"
+		},
+		{
+			"bufferView":5,
 			"componentType":5123,
 			"count":85755,
 			"type":"SCALAR"
 		},
 		{
-			"bufferView":4,
-			"componentType":5126,
-			"count":1877,
-			"max":[
-				0.005610059481114149,
-				0.020314469933509827,
-				0.054023049771785736
-			],
-			"min":[
-				-0.005728506483137608,
-				0.003703849855810404,
-				-0.03453914821147919
-			],
-			"type":"VEC3"
-		},
-		{
-			"bufferView":5,
-			"componentType":5126,
-			"count":1877,
-			"type":"VEC3"
-		},
-		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":1877,
-			"type":"VEC2"
+			"count":1993,
+			"max":[
+				0.013322952203452587,
+				0.04824346676468849,
+				0.12829570472240448
+			],
+			"min":[
+				-0.013604244217276573,
+				0.008796023204922676,
+				-0.08202469348907471
+			],
+			"type":"VEC3"
 		},
 		{
 			"bufferView":7,
+			"componentType":5126,
+			"count":1993,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":8,
+			"componentType":5126,
+			"count":1993,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":9,
+			"componentType":5121,
+			"count":1993,
+			"normalized":true,
+			"type":"VEC4"
+		},
+		{
+			"bufferView":10,
+			"componentType":5123,
+			"count":1993,
+			"normalized":true,
+			"type":"VEC4"
+		},
+		{
+			"bufferView":11,
 			"componentType":5123,
 			"count":5247,
 			"type":"SCALAR"
@@ -157,57 +184,81 @@
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":255096,
+			"byteLength":266856,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":255096,
-			"byteOffset":255096,
+			"byteLength":266856,
+			"byteOffset":266856,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":170064,
-			"byteOffset":510192,
+			"byteLength":177904,
+			"byteOffset":533712,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":88952,
+			"byteOffset":711616,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":177904,
+			"byteOffset":800568,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":171510,
-			"byteOffset":680256,
+			"byteOffset":978472,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":22524,
-			"byteOffset":851768,
+			"byteLength":23916,
+			"byteOffset":1149984,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":22524,
-			"byteOffset":874292,
+			"byteLength":23916,
+			"byteOffset":1173900,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":15016,
-			"byteOffset":896816,
+			"byteLength":15944,
+			"byteOffset":1197816,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":7972,
+			"byteOffset":1213760,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":15944,
+			"byteOffset":1221732,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":10494,
-			"byteOffset":911832,
+			"byteOffset":1237676,
 			"target":34963
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":922328,
-			"uri":"pistol_w_silencer.bin"
+			"byteLength":1248172,
+			"uri":"pistol.bin"
 		}
 	]
 }

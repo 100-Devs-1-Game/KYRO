@@ -34,23 +34,13 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Simple Crystal.001": {
-"use_external/enabled": true,
-"use_external/path": "uid://dq1tuv2ax088g"
-},
-"Simple Crystal.002": {
+"GlassRed": {
 "use_external/enabled": true,
 "use_external/path": "uid://2g2x2ibe8kkk"
-}
 },
-"meshes": {
-"pistol_Untitled_051": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 2,
-"lods/normal_merge_angle": 60.0,
-"save_to_file/enabled": false,
-"save_to_file/path": ""
+"GlassWhite": {
+"use_external/enabled": true,
+"use_external/path": "uid://dq1tuv2ax088g"
 }
 }
 }
