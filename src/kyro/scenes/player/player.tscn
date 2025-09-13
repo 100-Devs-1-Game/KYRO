@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://btres5r46w8pd"]
+[gd_scene load_steps=11 format=3 uid="uid://btres5r46w8pd"]
 
 [ext_resource type="Script" uid="uid://cx0dubayoiydg" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bshjfjpv4fojd" path="res://globals/components/state_machine/state_machine.gd" id="2_dovo2"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://e2fuxfjfbi6v" path="res://scenes/player/state/jumping.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://w7kclhp5i617" path="res://scenes/player/state/falling.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://c0ia5fjdsy8gi" path="res://scenes/player/state/wallride.gd" id="6_75vfm"]
+[ext_resource type="PackedScene" uid="uid://dexf80uod4r33" path="res://scenes/gun/pistol.gltf" id="7_0owmy"]
+[ext_resource type="PackedScene" uid="uid://c5wrnb4pgq0i0" path="res://scenes/player/arm/arm.gltf" id="8_qek5x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7p2l"]
 size = Vector3(0.7, 1.8, 0.7)
@@ -23,6 +25,10 @@ script = ExtResource("1_8afob")
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("BoxShape3D_x7p2l")
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="."]
+transform = Transform3D(0.378475, -0.525935, 0.761675, 0.451486, -0.613463, -0.647938, 0.808033, 0.589114, 0.00527146, -0.317482, -0.281795, 0.206556)
+bone_name = "hand.R"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
 script = ExtResource("2_dovo2")
@@ -67,6 +73,20 @@ target_position = Vector3(0, 0, -300)
 collision_mask = 3
 collide_with_areas = true
 
+[node name="Arm" parent="Head/Camera3D" instance=ExtResource("8_qek5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.349723, -0.255538, 0.0233023)
+
+[node name="Skeleton3D" parent="Head/Camera3D/Arm/ArmRig" index="0"]
+transform = Transform3D(0.998153, -0.0259395, -0.0549393, 0.0287191, 0.998315, 0.0504255, 0.0535387, -0.0519101, 0.997216, 0, 0, 0)
+
+[node name="PalmAttachment" type="BoneAttachment3D" parent="Head/Camera3D/Arm/ArmRig/Skeleton3D" index="1"]
+transform = Transform3D(0.378475, -0.525935, 0.761675, 0.451486, -0.613463, -0.647938, 0.808033, 0.589114, 0.00527146, -0.317481, -0.281795, 0.206556)
+bone_name = "hand.R"
+bone_idx = 2
+
+[node name="Pistol" parent="Head/Camera3D/Arm/ArmRig/Skeleton3D/PalmAttachment" instance=ExtResource("7_0owmy")]
+transform = Transform3D(-0.208216, 0.937669, 0.27825, -0.206552, 0.235915, -0.949569, -0.956024, -0.255189, 0.144556, 0.0145449, 0.170792, -0.00642323)
+
 [node name="HudLayer" type="CanvasLayer" parent="."]
 
 [node name="Reticle" type="ColorRect" parent="HudLayer"]
@@ -82,3 +102,5 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[editable path="Head/Camera3D/Arm"]
