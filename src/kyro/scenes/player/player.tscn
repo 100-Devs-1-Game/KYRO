@@ -26,10 +26,6 @@ script = ExtResource("1_8afob")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("BoxShape3D_x7p2l")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="."]
-transform = Transform3D(0.378475, -0.525935, 0.761675, 0.451486, -0.613463, -0.647938, 0.808033, 0.589114, 0.00527146, -0.317482, -0.281795, 0.206556)
-bone_name = "hand.R"
-
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
 script = ExtResource("2_dovo2")
 default_state = NodePath("Walk")
@@ -85,7 +81,10 @@ bone_name = "hand.R"
 bone_idx = 2
 
 [node name="Pistol" parent="Head/Camera3D/Arm/ArmRig/Skeleton3D/PalmAttachment" instance=ExtResource("7_0owmy")]
-transform = Transform3D(-0.208216, 0.937669, 0.27825, -0.206552, 0.235915, -0.949569, -0.956024, -0.255189, 0.144556, 0.0145449, 0.170792, -0.00642323)
+transform = Transform3D(-0.273943, 0.918545, 0.285011, -0.224305, 0.227155, -0.947675, -0.935223, -0.323539, 0.143806, 0.0158007, 0.161956, -0.0110452)
+
+[node name="AnimationPlayer" parent="Head/Camera3D/Arm" index="1"]
+autoplay = "WeildPistol"
 
 [node name="HudLayer" type="CanvasLayer" parent="."]
 
