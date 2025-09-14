@@ -1,6 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://cugvx1d40wwv1"]
+[gd_scene load_steps=5 format=3 uid="uid://cugvx1d40wwv1"]
 
 [ext_resource type="Script" uid="uid://cfcy826amslv0" path="res://scenes/player/ui/time/time.gd" id="1_uvsii"]
+
+[sub_resource type="Animation" id="Animation_5hf2i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uvsii"]
+resource_name = "running"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.166667, 0.266667, 0.933333, 1),
+"transitions": PackedFloat32Array(0.4, 2.5, 1, 2, 2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.98, 0.98), Vector2(1, 1), Vector2(1, 1), Vector2(1.05, 1.05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yxrii"]
+_data = {
+&"RESET": SubResource("Animation_5hf2i"),
+&"Running": SubResource("Animation_uvsii")
+}
 
 [node name="Time" type="Control"]
 layout_mode = 3
@@ -14,11 +51,19 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -178.0
-offset_top = 2.0
-offset_bottom = 69.0
+offset_left = -181.0
+offset_top = 19.0
+offset_right = -3.0
+offset_bottom = 86.0
 grow_horizontal = 0
 rotation = 0.0946723
+pivot_offset = Vector2(178, 0)
 theme_override_font_sizes/font_size = 48
 text = "0000.00"
 horizontal_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_yxrii")
+}
+autoplay = "Running"
