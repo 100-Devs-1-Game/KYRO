@@ -65,7 +65,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0, -0.0333333, 6.04143, 0.0333333, -4.56064, 5.41104, -0.0345979, 3.62844, 0.0333333, -3.49582, 5.41104, -0.0333333, 1.54733, 0.0487178, -2.26148),
-"times": PackedFloat32Array(3.72529e-09, 0.0666667, 0.133333)
+"times": PackedFloat32Array(3.72529e-09, 0.1, 0.2)
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -74,7 +74,7 @@ tracks/1/path = NodePath("ClipAmmoCount:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.166667),
 "transitions": PackedFloat32Array(0.8, 1),
 "update": 0,
 "values": [Color(1, 0.4, 0.4, 1), Color(1, 1, 1, 1)]
