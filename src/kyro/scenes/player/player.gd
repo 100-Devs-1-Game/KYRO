@@ -21,6 +21,7 @@ var sensitivity:float = 1 / PI / 60 # TODO: Move this to a GameSettings
 @onready var camera:Camera3D = %Camera3D
 @onready var gun_cast:RayCast3D = %GunCast
 @onready var arm_animation_player:AnimationPlayer = $Head/Camera3D/Arm/AnimationPlayer
+@onready var crouch_animation_player:AnimationPlayer = $CrouchAnimationPlayer
 @onready var state_machine:StateMachine = $StateMachine
 @onready var state_walk:State = %Walk
 @onready var state_jump:State = %Jumping
@@ -59,7 +60,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 #region State common methods
 func do_forward_movement(delta: float) -> void:
-	velocity.z -= forward_speed * delta * forward_damping
+	velocity += get_forward_floor_normal() * forward_speed * delta * forward_damping
 
 
 func do_strafe_movement(delta: float) -> void:
@@ -68,8 +69,7 @@ func do_strafe_movement(delta: float) -> void:
 
 
 func do_gravity(delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	velocity += get_gravity() * delta
 
 
 func do_damping(delta: float) -> void:
@@ -96,4 +96,14 @@ func get_modal_basic_state() -> State:
 	if velocity.y > 0:
 		return state_jump
 	return state_fall
+
+
+## gets the forward-pointing normal parallel to the floor slope. If the player isn't on
+## a floor, returns the basis forward instead.
+func get_forward_floor_normal() -> Vector3:
+	if not is_on_floor():
+		return -global_basis.z
+	# This sucks and projection is probably technically more correct but I don't. Care.
+	var fwd:Vector3 = get_floor_normal().slide(global_basis.x).rotated(global_basis.x, -PI/2)
+	return fwd
 #endregion

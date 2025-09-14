@@ -27,9 +27,9 @@ func _state_physics_process(delta: float) -> void:
 		falling._state_physics_process(delta)
 		return
 	
+	owner.do_damping(delta * damping_delta_mod)
 	owner.do_forward_movement(delta)
 	owner.do_strafe_movement(delta)
-	owner.do_damping(delta * damping_delta_mod)
 	owner.do_gravity(delta)
 	
 	owner.move_and_slide()

@@ -21,9 +21,9 @@ func _state_physics_process(delta: float) -> void:
 	if state_jump.jumpswitch():
 		return
 	
+	owner.do_damping(delta)
 	owner.do_forward_movement(delta)
 	owner.do_strafe_movement(delta)
-	owner.do_damping(delta)
 	owner.do_gravity(delta * gravity_mod)
 	
 	owner.move_and_slide()
