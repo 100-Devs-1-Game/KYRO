@@ -20,11 +20,6 @@ var amount_to_reload:int = 12
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 
 
-func _ready() -> void:
-	clip_ammo = 9
-	reserve_ammo = 12
-
-
 func shoot() -> void:
 	animation_player.play(&"Shoot")
 

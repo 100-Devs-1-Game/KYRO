@@ -11,11 +11,14 @@ extends CharacterBody3D
 @export var jump_coyote_max: float = 0.5
 @export_group("Wallriding")
 @export_range(0, 180, 0.5, "radians_as_degrees") var wallride_angle_tolerance:float = PI/4
+@export_group("Gun")
+@export_range(0, 99) var clip_size:int = 12
 
 
 ## If this is 0, wallriding can't be acheived. Otherwise, this is a the wall that will be clung to
 var wallride_axis:float = 0.0
 var sensitivity:float = 1 / PI / 60 # TODO: Move this to a GameSettings 
+
 
 @onready var head:Node3D = %Head
 @onready var camera:Camera3D = %Camera3D
@@ -56,6 +59,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			return
 		gun_cast.force_raycast_update()
 		arm_animation_player.play(&"Shoot")
+		ammo_count.clip_ammo -= 1
 		ammo_count.shoot()
 		
 		var collider := gun_cast.get_collider()
@@ -90,6 +94,14 @@ func do_post_slide_updates() -> void:
 		var dot := Vector3.LEFT.dot(collision.get_normal())
 		if absf(dot) > absf(wallride_axis):
 			wallride_axis = dot
+
+
+func do_reload() -> void:
+	if not Input.is_action_just_pressed(&"reload"):
+		return
+	# I shouldn't be using this thing as state information
+	ammo_count.amount_to_reload = maxi(clip_size - ammo_count.clip_ammo, ammo_count.reserve_ammo)
+	ammo_count.reload()
 
 
 func can_wallride() -> bool:

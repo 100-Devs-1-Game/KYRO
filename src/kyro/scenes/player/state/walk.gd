@@ -10,7 +10,7 @@ func _state_entered() -> void:
 
 
 func _state_process(delta: float) -> void:
-	pass
+	owner.do_reload()
 
 
 func _state_physics_process(delta: float) -> void:
