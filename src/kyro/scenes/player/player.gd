@@ -55,19 +55,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotation.x -= event.relative.y * sensitivity
 		get_viewport().set_input_as_handled()
 		return
-	
-	#if event is InputEventMouseButton:
-		#if not event.pressed or event.button_index != MOUSE_BUTTON_LEFT:
-			#return
-		#gun_cast.force_raycast_update()
-		#arm_animation_player.play(&"Shoot")
-		#ammo_count.clip_ammo -= 1
-		#ammo_count.shoot()
-		#
-		#var collider := gun_cast.get_collider()
-		#if collider and collider is Hurtbox:
-			#collider.take_damage(100)
-		#return
 
 
 #region State common methods
@@ -129,3 +116,10 @@ func _on_gun_manager_ammo_counts_updated() -> void:
 func _on_gun_manager_animation_reload_requested(_duration: float, reload_amount: int) -> void:
 	ammo_count.amount_to_reload = reload_amount
 	ammo_count.reload()
+
+
+func _on_gun_manager_animation_shoot_requested(duration: float) -> void:
+	arm_animation_player.play(&"Shoot", -1, 
+			duration / arm_animation_player.get_animation(&"Shoot").length
+	)
+	ammo_count.shoot()

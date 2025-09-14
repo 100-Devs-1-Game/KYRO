@@ -14,9 +14,10 @@ script = ExtResource("2_gt4vg")
 default_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://bshjfjpv4fojd"
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_reload")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_reload", "state_fire")]
 script = ExtResource("4_imdpj")
 state_reload = NodePath("../Reloading")
+state_fire = NodePath("../Firing")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
 [node name="Reloading" type="Node" parent="StateMachine"]

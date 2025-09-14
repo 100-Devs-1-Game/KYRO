@@ -193,8 +193,9 @@ state_jump = NodePath("../Jumping")
 state_walk = NodePath("../Walk")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
-[node name="GunManager" parent="." instance=ExtResource("8_je7p5")]
+[node name="GunManager" parent="." node_paths=PackedStringArray("raycast") instance=ExtResource("8_je7p5")]
 unique_name_in_owner = true
+raycast = NodePath("../Head/Camera3D/GunCast")
 
 [node name="Head" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -255,5 +256,6 @@ libraries = {
 
 [connection signal="ammo_counts_updated" from="GunManager" to="." method="_on_gun_manager_ammo_counts_updated"]
 [connection signal="animation_reload_requested" from="GunManager" to="." method="_on_gun_manager_animation_reload_requested"]
+[connection signal="animation_shoot_requested" from="GunManager" to="." method="_on_gun_manager_animation_shoot_requested"]
 
 [editable path="Head/Camera3D/Arm"]
