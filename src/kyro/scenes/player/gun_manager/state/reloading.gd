@@ -8,7 +8,7 @@ var amount_to_reload:int = 0
 func _state_entered() -> void:
 	reload_time = owner.reload_time
 	amount_to_reload = get_amount_to_reload()
-	owner.animation_reload_requested(reload_time, amount_to_reload)
+	owner.animation_reload_requested.emit(reload_time, amount_to_reload)
 
 
 func _state_process(delta: float) -> void:

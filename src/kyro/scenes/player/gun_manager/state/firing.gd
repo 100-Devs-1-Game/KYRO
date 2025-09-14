@@ -7,7 +7,9 @@ var cooldown_time:float = 0.0
 func _state_entered() -> void:
 	cooldown_time = 1.0 / owner.firing_rate
 	owner.animation_shoot_requested(cooldown_time)
+	owner.shoot_bullet_requested()
 	owner.clip_ammo -= 1
+	owner.ammo_counts_updated.emit()
 
 
 func _state_process(delta: float) -> void:

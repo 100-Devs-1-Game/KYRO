@@ -24,6 +24,7 @@ var sensitivity:float = 1 / PI / 60 # TODO: Move this to a GameSettings
 @onready var camera:Camera3D = %Camera3D
 @onready var gun_cast:RayCast3D = %GunCast
 
+@onready var gun_manager:Node = %GunManager
 @onready var ammo_count:Control = %AmmoCount
 
 @onready var arm_animation_player:AnimationPlayer = $Head/Camera3D/Arm/AnimationPlayer
@@ -37,6 +38,7 @@ var sensitivity:float = 1 / PI / 60 # TODO: Move this to a GameSettings
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_on_gun_manager_ammo_counts_updated()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -54,18 +56,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		return
 	
-	if event is InputEventMouseButton:
-		if not event.pressed or event.button_index != MOUSE_BUTTON_LEFT:
-			return
-		gun_cast.force_raycast_update()
-		arm_animation_player.play(&"Shoot")
-		ammo_count.clip_ammo -= 1
-		ammo_count.shoot()
-		
-		var collider := gun_cast.get_collider()
-		if collider and collider is Hurtbox:
-			collider.take_damage(100)
-		return
+	#if event is InputEventMouseButton:
+		#if not event.pressed or event.button_index != MOUSE_BUTTON_LEFT:
+			#return
+		#gun_cast.force_raycast_update()
+		#arm_animation_player.play(&"Shoot")
+		#ammo_count.clip_ammo -= 1
+		#ammo_count.shoot()
+		#
+		#var collider := gun_cast.get_collider()
+		#if collider and collider is Hurtbox:
+			#collider.take_damage(100)
+		#return
 
 
 #region State common methods
@@ -117,3 +119,13 @@ func get_forward_floor_normal() -> Vector3:
 	var fwd:Vector3 = get_floor_normal().slide(global_basis.x).rotated(global_basis.x, -PI/2)
 	return fwd
 #endregion
+
+
+func _on_gun_manager_ammo_counts_updated() -> void:
+	ammo_count.clip_ammo = gun_manager.clip_ammo
+	ammo_count.reserve_ammo = gun_manager.reserve_ammo
+
+
+func _on_gun_manager_animation_reload_requested(_duration: float, reload_amount: int) -> void:
+	ammo_count.amount_to_reload = reload_amount
+	ammo_count.reload()
