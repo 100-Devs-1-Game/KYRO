@@ -53,36 +53,9 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_180fx"]
-resource_name = "shoot"
-length = 0.2
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ClipAmmoCount:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.0333333, 6.04143, 0.0333333, -4.56064, 5.41104, -0.0345979, 3.62844, 0.0333333, -3.49582, 5.41104, -0.0333333, 1.54733, 0.0487178, -2.26148),
-"times": PackedFloat32Array(3.72529e-09, 0.1, 0.2)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ClipAmmoCount:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.166667),
-"transitions": PackedFloat32Array(0.8, 1),
-"update": 0,
-"values": [Color(1, 0.4, 0.4, 1), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_a0oaw"]
 resource_name = "Reload"
-length = 1.5
+length = 1.4
 step = 0.0167
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -131,6 +104,33 @@ tracks/3/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
 "points": PackedFloat32Array(5, -0.0659685, -0.168289, 0.0519094, 0.132423, -9, -0.0500256, 5.08819, 0.068576, -6.97498, -15.0831, -0.0980906, -0.880586, 0.118576, 0.594574, 5, -0.031424, -14.7319, 0.0122774, 5.75577, 5, -0.1329, 5.92952, 0.0376812, -1.6812),
 "times": PackedFloat32Array(0.516667, 0.666667, 1.05, 1.25, 1.36667)
+}
+
+[sub_resource type="Animation" id="Animation_180fx"]
+resource_name = "shoot"
+length = 0.2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ClipAmmoCount:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.0333333, 6.04143, 0.0333333, -4.56064, 5.41104, -0.0345979, 3.62844, 0.0333333, -3.49582, 5.41104, -0.0333333, 1.54733, 0.0487178, -2.26148),
+"times": PackedFloat32Array(3.72529e-09, 0.1, 0.2)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ClipAmmoCount:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(0.8, 1),
+"update": 0,
+"values": [Color(1, 0.4, 0.4, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a0oaw"]

@@ -96,14 +96,6 @@ func do_post_slide_updates() -> void:
 			wallride_axis = dot
 
 
-func do_reload() -> void:
-	if not Input.is_action_just_pressed(&"reload"):
-		return
-	# I shouldn't be using this thing as state information
-	ammo_count.amount_to_reload = maxi(clip_size - ammo_count.clip_ammo, ammo_count.reserve_ammo)
-	ammo_count.reload()
-
-
 func can_wallride() -> bool:
 	return abs(wallride_axis * PI) > wallride_angle_tolerance
 

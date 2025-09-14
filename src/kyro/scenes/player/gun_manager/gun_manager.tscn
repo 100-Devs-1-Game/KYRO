@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dolikj2gdhqhr"]
+
+[ext_resource type="Script" uid="uid://cq3qkdy50nfmp" path="res://scenes/player/gun_manager/gun_manager.gd" id="1_imdpj"]
+[ext_resource type="Script" uid="uid://bshjfjpv4fojd" path="res://globals/components/state_machine/state_machine.gd" id="2_gt4vg"]
+[ext_resource type="Script" uid="uid://0sjh6f6ylgho" path="res://scenes/player/gun_manager/state/reloading.gd" id="3_xsnig"]
+[ext_resource type="Script" uid="uid://3exqcpf8jk8b" path="res://scenes/player/gun_manager/state/idle.gd" id="4_imdpj"]
+[ext_resource type="Script" uid="uid://bbojjtguupu3l" path="res://scenes/player/gun_manager/state/firing.gd" id="5_gt4vg"]
+
+[node name="GunManager" type="Node"]
+script = ExtResource("1_imdpj")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
+script = ExtResource("2_gt4vg")
+default_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://bshjfjpv4fojd"
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_imdpj")
+metadata/_custom_type_script = "uid://c4wduh2exufqe"
+
+[node name="Reloading" type="Node" parent="StateMachine"]
+script = ExtResource("3_xsnig")
+metadata/_custom_type_script = "uid://c4wduh2exufqe"
+
+[node name="Firing" type="Node" parent="StateMachine"]
+script = ExtResource("5_gt4vg")
+metadata/_custom_type_script = "uid://c4wduh2exufqe"

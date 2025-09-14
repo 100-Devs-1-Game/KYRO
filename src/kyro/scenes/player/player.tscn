@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://btres5r46w8pd"]
+[gd_scene load_steps=18 format=3 uid="uid://btres5r46w8pd"]
 
 [ext_resource type="Script" uid="uid://cx0dubayoiydg" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bshjfjpv4fojd" path="res://globals/components/state_machine/state_machine.gd" id="2_dovo2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c0ia5fjdsy8gi" path="res://scenes/player/state/wallride.gd" id="6_75vfm"]
 [ext_resource type="PackedScene" uid="uid://dexf80uod4r33" path="res://scenes/gun/pistol.gltf" id="7_0owmy"]
 [ext_resource type="Script" uid="uid://de3qt6f12rm0d" path="res://scenes/player/state/crouching.gd" id="7_5gtgg"]
+[ext_resource type="PackedScene" uid="uid://dolikj2gdhqhr" path="res://scenes/player/gun_manager/gun_manager.tscn" id="8_je7p5"]
 [ext_resource type="PackedScene" uid="uid://c5wrnb4pgq0i0" path="res://scenes/player/arm/arm.gltf" id="8_qek5x"]
 [ext_resource type="PackedScene" uid="uid://n1a3cmwjxmib" path="res://scenes/player/ui/ammo_count.tscn" id="10_h17s1"]
 
@@ -191,6 +192,8 @@ script = ExtResource("7_5gtgg")
 state_jump = NodePath("../Jumping")
 state_walk = NodePath("../Walk")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
+
+[node name="GunManager" parent="." instance=ExtResource("8_je7p5")]
 
 [node name="Head" type="Node3D" parent="."]
 unique_name_in_owner = true
