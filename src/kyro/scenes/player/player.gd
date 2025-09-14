@@ -20,8 +20,12 @@ var sensitivity:float = 1 / PI / 60 # TODO: Move this to a GameSettings
 @onready var head:Node3D = %Head
 @onready var camera:Camera3D = %Camera3D
 @onready var gun_cast:RayCast3D = %GunCast
+
+@onready var ammo_count:Control = %AmmoCount
+
 @onready var arm_animation_player:AnimationPlayer = $Head/Camera3D/Arm/AnimationPlayer
 @onready var crouch_animation_player:AnimationPlayer = $CrouchAnimationPlayer
+
 @onready var state_machine:StateMachine = $StateMachine
 @onready var state_walk:State = %Walk
 @onready var state_jump:State = %Jumping
@@ -52,6 +56,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			return
 		gun_cast.force_raycast_update()
 		arm_animation_player.play(&"Shoot")
+		ammo_count.shoot()
+		
 		var collider := gun_cast.get_collider()
 		if collider and collider is Hurtbox:
 			collider.take_damage(100)

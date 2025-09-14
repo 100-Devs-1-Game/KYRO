@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://btres5r46w8pd"]
+[gd_scene load_steps=17 format=3 uid="uid://btres5r46w8pd"]
 
 [ext_resource type="Script" uid="uid://cx0dubayoiydg" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bshjfjpv4fojd" path="res://globals/components/state_machine/state_machine.gd" id="2_dovo2"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dexf80uod4r33" path="res://scenes/gun/pistol.gltf" id="7_0owmy"]
 [ext_resource type="Script" uid="uid://de3qt6f12rm0d" path="res://scenes/player/state/crouching.gd" id="7_5gtgg"]
 [ext_resource type="PackedScene" uid="uid://c5wrnb4pgq0i0" path="res://scenes/player/arm/arm.gltf" id="8_qek5x"]
+[ext_resource type="PackedScene" uid="uid://n1a3cmwjxmib" path="res://scenes/player/ui/ammo_count.tscn" id="10_h17s1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7p2l"]
 size = Vector3(0.7, 1.8, 0.7)
@@ -239,6 +240,9 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="AmmoCount" parent="HudLayer" instance=ExtResource("10_h17s1")]
+unique_name_in_owner = true
 
 [node name="CrouchAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
