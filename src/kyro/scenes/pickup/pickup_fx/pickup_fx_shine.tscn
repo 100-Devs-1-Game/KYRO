@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw061i1wyx5aq"]
+
+[ext_resource type="Texture2D" uid="uid://cmfa3ouc3ro8e" path="res://scenes/pickup/pickup_fx/shine.png" id="1_01nln"]
+
+[node name="PickupFxShine" type="Sprite3D"]
+pixel_size = 0.0013
+billboard = 1
+double_sided = false
+render_priority = -1
+texture = ExtResource("1_01nln")
