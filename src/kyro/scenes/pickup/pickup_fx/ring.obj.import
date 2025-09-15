@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dp7du2t6esl5n"
+path="res://.godot/imported/ring.obj-5aef5ad3eadc8d6115863e932b6d56e0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ring.obj-5aef5ad3eadc8d6115863e932b6d56e0.mesh"]
+
+source_file="res://scenes/pickup/pickup_fx/ring.obj"
+dest_files=["res://.godot/imported/ring.obj-5aef5ad3eadc8d6115863e932b6d56e0.mesh", "res://.godot/imported/ring.obj-5aef5ad3eadc8d6115863e932b6d56e0.mesh"]
+
+[params]
+
+generate_tangents=false
+generate_lods=false
+generate_shadow_mesh=false
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

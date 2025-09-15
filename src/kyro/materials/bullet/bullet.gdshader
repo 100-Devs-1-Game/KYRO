@@ -31,11 +31,10 @@ void vertex() {
 void fragment() {
 	float core_dist = 0.5 - abs(UV.x - 0.5);
 	ALBEDO = mix(color_outside, color_core, core_dist);
-	
+
 	float depth_remap = pixel_dist(INV_PROJECTION_MATRIX, SCREEN_UV, FRAGCOORD);
 	depth_remap = (depth_remap - dither_end) / (dither_start - dither_end);
 	if (depth_remap < 0.001 || depth_remap < fract(dither_magic.z * fract(dot(FRAGCOORD.xy, dither_magic.xy)))) {
 		discard;
 	}
 }
-
