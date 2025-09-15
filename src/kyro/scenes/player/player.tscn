@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://btres5r46w8pd"]
+[gd_scene load_steps=21 format=3 uid="uid://btres5r46w8pd"]
 
 [ext_resource type="Script" uid="uid://cx0dubayoiydg" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bshjfjpv4fojd" path="res://globals/components/state_machine/state_machine.gd" id="2_dovo2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://w7kclhp5i617" path="res://scenes/player/state/falling.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://c0ia5fjdsy8gi" path="res://scenes/player/state/wallride.gd" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://de3qt6f12rm0d" path="res://scenes/player/state/crouching.gd" id="7_5gtgg"]
+[ext_resource type="Script" uid="uid://b8emx6hnleqgi" path="res://scenes/player/camera.gd" id="8_fm80t"]
 [ext_resource type="PackedScene" uid="uid://c5wrnb4pgq0i0" path="res://scenes/player/arm/arm.gltf" id="8_qek5x"]
 [ext_resource type="PackedScene" uid="uid://n1a3cmwjxmib" path="res://scenes/player/ui/ammo_count.tscn" id="10_h17s1"]
 [ext_resource type="PackedScene" uid="uid://cugvx1d40wwv1" path="res://scenes/player/ui/time/time.tscn" id="12_fm80t"]
@@ -20,6 +21,10 @@ _limits = [0.0, 1.0, 0.0, 2.5]
 bake_resolution = 30
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(2.5, 0), -0.7, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fm80t"]
+frequency = 1.0
+fractal_gain = 3.0
 
 [sub_resource type="Animation" id="Animation_je7p5"]
 length = 0.001
@@ -203,6 +208,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0206336)
+script = ExtResource("8_fm80t")
+shake_noise = SubResource("FastNoiseLite_fm80t")
+shake_trauma_decay = 0.0
+shake_rotation_max = Vector3(0.059, 0.059, 0)
 
 [node name="GunCast" type="RayCast3D" parent="Head/Camera3D"]
 unique_name_in_owner = true
