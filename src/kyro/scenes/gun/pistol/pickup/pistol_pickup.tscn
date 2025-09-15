@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cyv2clj4b5wld"]
+[gd_scene load_steps=22 format=3 uid="uid://cyv2clj4b5wld"]
 
 [ext_resource type="PackedScene" uid="uid://dexf80uod4r33" path="res://scenes/gun/pistol.gltf" id="1_wqw4h"]
 [ext_resource type="PackedScene" uid="uid://d7lmkhsp4q3p" path="res://scenes/pickup/pickup_fx/pickup_fx_ring.tscn" id="2_dgvwk"]
@@ -6,8 +6,9 @@
 [ext_resource type="Shader" uid="uid://k2vvsw5o6k07" path="res://materials/item_pickup/glow.gdshader" id="2_tl5id"]
 [ext_resource type="Shader" uid="uid://jte2im05o31l" path="res://materials/item_pickup/pickup_ring.gdshader" id="3_k4qiy"]
 [ext_resource type="PackedScene" uid="uid://djmr2qjmhr6xk" path="res://globals/components/pickup/pickup_area/pickup_area.tscn" id="4_cyd3v"]
-[ext_resource type="Script" uid="uid://b6hur5p3ixtp4" path="res://globals/components/pickup/pickup_grant_gun/pickup_grant_gun.gd" id="5_3xbmc"]
+[ext_resource type="Script" uid="uid://b6hur5p3ixtp4" path="res://globals/components/pickup/pickup_grant_gun.gd" id="5_3xbmc"]
 [ext_resource type="Resource" uid="uid://bhmetexyihmcy" path="res://scenes/gun/data/pistol.tres" id="6_qtm64"]
+[ext_resource type="Script" uid="uid://ixc7h7jy0lkq" path="res://globals/components/pickup/pickup_play_animation.gd" id="9_yimc2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tl5id"]
 render_priority = 2
@@ -43,6 +44,7 @@ shader = ExtResource("3_k4qiy")
 shader_parameter/noise = SubResource("NoiseTexture2D_dngyk")
 shader_parameter/height_grad = SubResource("CurveTexture_2tk01")
 shader_parameter/tint = Color(1, 0.411765, 0.396078, 1)
+shader_parameter/scroll_offset = Vector2(0, 0)
 shader_parameter/scroll_rate = Vector2(0.05, 0.1)
 
 [sub_resource type="Animation" id="Animation_cyd3v"]
@@ -73,6 +75,72 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1)
 }
 
+[sub_resource type="Animation" id="Animation_tl5id"]
+resource_name = "Pickup"
+length = 0.3
+step = 0.0334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PickupFxRing:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.166667, 0.266667),
+"transitions": PackedFloat32Array(0.5, 2, 1, 1),
+"update": 0,
+"values": [Vector3(0.8, 0.4, 0.8), Vector3(0.85, 0.3, 0.85), Vector3(0.8, 0.4, 0.8), Vector3(0, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PickupFxRing:material_override:shader_parameter/scroll_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-0.1, -0.2), Vector2(1, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gun:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0), Vector3(0, 0.4, 0), Vector3(0, 2, 0)]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gun:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0),
+"points": PackedFloat32Array(0, -0.0252664, -0.196093, 0.0333333, 0.258701, 0.258701, -0.0333333, 0, 0.106806, 0, -1.5, 0, 0.775145, 0.0666667, -0.725646),
+"times": PackedFloat32Array(0, 0.133333, 0.266667)
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_k4qiy"]
 resource_name = "RESET"
 length = 0.01
@@ -99,10 +167,46 @@ tracks/1/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PickupFxRing:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8, 0.4, 0.8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PickupFxRing:material_override:shader_parameter/scroll_offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Gun:rotation:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3xbmc"]
 _data = {
 &"Idle": SubResource("Animation_cyd3v"),
+&"Pickup": SubResource("Animation_tl5id"),
 &"RESET": SubResource("Animation_k4qiy")
 }
 
@@ -143,6 +247,12 @@ shape = SubResource("CylinderShape3D_3xbmc")
 script = ExtResource("5_3xbmc")
 data = ExtResource("6_qtm64")
 
+[node name="PickupPlayAnimation" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("9_yimc2")
+player = NodePath("../AnimationPlayer")
+animation = &"Pickup"
+
 [connection signal="picked_up" from="PickupArea" to="PickupGrantGun" method="_on_pickup_area_picked_up"]
+[connection signal="picked_up" from="PickupArea" to="PickupPlayAnimation" method="_on_pickup_area_picked_up"]
 
 [editable path="Gun"]

@@ -6,6 +6,7 @@ uniform sampler2D depth_tex: hint_depth_texture;
 uniform sampler2D noise;
 uniform sampler2D height_grad;
 uniform vec3 tint: source_color = vec3(1.0);
+uniform vec2 scroll_offset;
 uniform vec2 scroll_rate = vec2(0.0, 1.0);
 
 varying float y_scale;
@@ -18,7 +19,7 @@ void vertex() {
 
 void fragment() {
 	vec2 uv = vec2(UV.x, UV.y * y_scale);
-	uv += scroll_rate * TIME;
+	uv += scroll_rate * TIME + scroll_offset;
 	
 	vec4 height_col = texture(height_grad, vec2(height));
 	// treating this thing as floats because red is the only real data channel
