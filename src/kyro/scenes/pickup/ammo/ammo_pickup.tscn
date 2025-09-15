@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dq7vudt7py1yb"]
+[gd_scene load_steps=13 format=3 uid="uid://dq7vudt7py1yb"]
 
+[ext_resource type="Script" uid="uid://nm0ft5rxwn4r" path="res://scenes/pickup/ammo/ammo_pickup.gd" id="1_oi8dv"]
 [ext_resource type="PackedScene" uid="uid://dw061i1wyx5aq" path="res://scenes/pickup/pickup_fx/pickup_fx_shine.tscn" id="3_dtmc7"]
 [ext_resource type="PackedScene" uid="uid://d7lmkhsp4q3p" path="res://scenes/pickup/pickup_fx/pickup_fx_ring.tscn" id="4_junon"]
 [ext_resource type="Shader" uid="uid://jte2im05o31l" path="res://materials/item_pickup/pickup_ring.gdshader" id="5_s4to6"]
@@ -42,6 +43,7 @@ radius = 0.3
 
 [node name="AmmoPickup" type="Node3D"]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)
+script = ExtResource("1_oi8dv")
 
 [node name="PickupFxShine" parent="." instance=ExtResource("3_dtmc7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -57,3 +59,5 @@ material_override = SubResource("ShaderMaterial_cyd3v")
 [node name="Collider" type="CollisionShape3D" parent="PickupArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_3xbmc")
+
+[connection signal="picked_up" from="PickupArea" to="." method="_on_pickup_area_picked_up"]
