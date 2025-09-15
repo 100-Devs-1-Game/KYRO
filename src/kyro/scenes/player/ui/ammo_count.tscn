@@ -176,8 +176,10 @@ offset_left = 95.0
 offset_top = 32.0
 offset_right = 132.0
 offset_bottom = 77.0
+pivot_offset = Vector2(18.5, 22.5)
 theme_override_font_sizes/font_size = 32
 text = "00"
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,5 +1,15 @@
 extends Control
 
+const INFINITY:String = "∞"
+
+var infinite_reserve:bool = false:
+	set(new):
+		infinite_reserve = new
+		if infinite_reserve:
+			reserve_ammo_count.self_modulate = Color(1.0, 1.0, 0.51)
+		else:
+			reserve_ammo_count.self_modulate = Color(1.0, 1.0, 1.0)
+		reserve_ammo = reserve_ammo
 
 var clip_ammo:int:
 	set(new):
@@ -9,6 +19,9 @@ var clip_ammo:int:
 var reserve_ammo:int:
 	set(new):
 		reserve_ammo = new
+		if infinite_reserve:
+			reserve_ammo_count.text = INFINITY
+			return
 		reserve_ammo_count.text = "%02d" % new
 
 
