@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 
+const FORWARD_NORMAL_THRESHOLD:float = 0.9
 const TRACER_SCENE:PackedScene = preload("res://scenes/gun/tracer/bullet_tracer.tscn")
 
 
@@ -52,6 +53,7 @@ var bullet_tracer_point:Marker3D
 @onready var state_walk:State = %Walk
 @onready var state_jump:State = %Jumping
 @onready var state_fall:State = %Falling
+@onready var state_dying:State = %Dying
 
 
 func _ready() -> void:
@@ -110,6 +112,9 @@ func do_post_slide_updates() -> void:
 		var dot := Vector3.LEFT.dot(collision.get_normal())
 		if absf(dot) > absf(wallride_axis):
 			wallride_axis = dot
+		dot = Vector3.FORWARD.dot(collision.get_normal())
+		if absf(dot) > FORWARD_NORMAL_THRESHOLD:
+			state_machine.to_state(state_dying)
 
 
 func can_wallride() -> bool:

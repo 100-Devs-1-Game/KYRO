@@ -274,6 +274,7 @@ state_walk = NodePath("../Walk")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
 [node name="Dying" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
 script = ExtResource("8_gx1jg")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
