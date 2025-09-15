@@ -41,7 +41,9 @@ var bullet_tracer_point:Marker3D
 @onready var gun_cast:RayCast3D = %GunCast
 @onready var gun_attach_point:Marker3D = %GunAttachPoint
 
+@onready var hud:CanvasLayer = %Hud
 @onready var ammo_count:Control = %AmmoCount
+@onready var game_over:CanvasLayer = %GameOver
 
 @onready var arm_animation_player:AnimationPlayer = $Head/Camera3D/Arm/AnimationPlayer
 @onready var crouch_animation_player:AnimationPlayer = $CrouchAnimationPlayer

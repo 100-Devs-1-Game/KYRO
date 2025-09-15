@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://btres5r46w8pd"]
+[gd_scene load_steps=22 format=3 uid="uid://btres5r46w8pd"]
 
 [ext_resource type="Script" uid="uid://cx0dubayoiydg" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bshjfjpv4fojd" path="res://globals/components/state_machine/state_machine.gd" id="2_dovo2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c0ia5fjdsy8gi" path="res://scenes/player/state/wallride.gd" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://de3qt6f12rm0d" path="res://scenes/player/state/crouching.gd" id="7_5gtgg"]
 [ext_resource type="Script" uid="uid://b8emx6hnleqgi" path="res://scenes/player/camera.gd" id="8_fm80t"]
+[ext_resource type="Script" uid="uid://0d0g04ernni7" path="res://scenes/player/state/dying.gd" id="8_gx1jg"]
 [ext_resource type="PackedScene" uid="uid://c5wrnb4pgq0i0" path="res://scenes/player/arm/arm.gltf" id="8_qek5x"]
 [ext_resource type="PackedScene" uid="uid://n1a3cmwjxmib" path="res://scenes/player/ui/ammo_count.tscn" id="10_h17s1"]
 [ext_resource type="PackedScene" uid="uid://cugvx1d40wwv1" path="res://scenes/player/ui/time/time.tscn" id="12_fm80t"]
@@ -201,6 +202,10 @@ state_jump = NodePath("../Jumping")
 state_walk = NodePath("../Walk")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
+[node name="Dying" type="Node" parent="StateMachine"]
+script = ExtResource("8_gx1jg")
+metadata/_custom_type_script = "uid://c4wduh2exufqe"
+
 [node name="Head" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -239,9 +244,10 @@ transform = Transform3D(-0.27296, 0.918934, 0.284699, -0.223958, 0.227107, -0.94
 autoplay = "WeildPistol"
 next/Shoot = &"WeildPistol"
 
-[node name="HudLayer" type="CanvasLayer" parent="."]
+[node name="Hud" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
-[node name="Reticle" type="ColorRect" parent="HudLayer"]
+[node name="Reticle" type="ColorRect" parent="Hud"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -255,16 +261,79 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="AmmoCount" parent="HudLayer" instance=ExtResource("10_h17s1")]
+[node name="AmmoCount" parent="Hud" instance=ExtResource("10_h17s1")]
 unique_name_in_owner = true
 
-[node name="Time" parent="HudLayer" instance=ExtResource("12_fm80t")]
+[node name="Time" parent="Hud" instance=ExtResource("12_fm80t")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -185.0
 offset_right = 0.0
 grow_horizontal = 0
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Control" type="Control" parent="GameOver"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="GameOver/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3)
+
+[node name="Menu" type="Control" parent="GameOver/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.5
+offset_top = -219.5
+offset_right = 202.5
+offset_bottom = 219.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="GameOver/Control/Menu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/Control/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Restart" type="Button" parent="GameOver/Control/Menu/VBoxContainer"]
+layout_mode = 2
+text = "RESTART"
+
+[node name="Quit" type="Button" parent="GameOver/Control/Menu/VBoxContainer"]
+layout_mode = 2
+text = "QUIT TO MENU"
 
 [node name="CrouchAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
