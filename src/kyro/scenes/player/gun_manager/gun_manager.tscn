@@ -20,10 +20,12 @@ state_reload = NodePath("../Reloading")
 state_fire = NodePath("../Firing")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
-[node name="Reloading" type="Node" parent="StateMachine"]
+[node name="Reloading" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_idle")]
 script = ExtResource("3_xsnig")
+state_idle = NodePath("../Idle")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
-[node name="Firing" type="Node" parent="StateMachine"]
+[node name="Firing" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_idle")]
 script = ExtResource("5_gt4vg")
+state_idle = NodePath("../Idle")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"

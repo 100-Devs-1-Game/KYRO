@@ -4,6 +4,10 @@ extends State
 var cooldown_time:float = 0.0
 
 
+@export_group("State Connectons", "state_")
+@export var state_idle:State
+
+
 func _state_entered() -> void:
 	cooldown_time = 1.0 / owner.fire_rate
 	owner.animation_shoot_requested.emit(cooldown_time)
@@ -14,9 +18,12 @@ func _state_entered() -> void:
 
 func _state_process(delta: float) -> void:
 	cooldown_time -= delta
-	if cooldown_time <= 0:
-		if can_fire() and firing_wanted():
-			machine.to_state(self) # funny
+	if cooldown_time > 0:
+		return
+	if can_fire() and firing_wanted():
+		machine.to_state(self) # funny
+	else:
+		machine.to_state(state_idle)
 
 
 func _state_physics_process(delta: float) -> void:

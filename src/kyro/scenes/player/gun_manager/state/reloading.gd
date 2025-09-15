@@ -5,6 +5,10 @@ var reload_time:float = 0.0
 var amount_to_reload:int = 0
 
 
+@export_group("State Connectons", "state_")
+@export var state_idle:State
+
+
 func _state_entered() -> void:
 	reload_time = owner.reload_time
 	amount_to_reload = get_amount_to_reload()
@@ -14,7 +18,7 @@ func _state_entered() -> void:
 func _state_process(delta: float) -> void:
 	reload_time -= delta
 	if reload_time <= 0:
-		pass
+		machine.to_state(state_idle)
 
 
 func _state_exited() -> void:
