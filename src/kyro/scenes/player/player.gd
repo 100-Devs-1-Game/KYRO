@@ -1,6 +1,9 @@
 extends CharacterBody3D
 
 
+const TRACER_SCENE:PackedScene = preload("res://scenes/gun/tracer/bullet_tracer.tscn")
+
+
 @export_group("Movement")
 @export var forward_speed:float = 10
 @export var strafe_speed: float = 12
@@ -23,6 +26,7 @@ var sensitivity:float = 1 / PI / 60 # TODO: Move this to a GameSettings
 @onready var head:Node3D = %Head
 @onready var camera:Camera3D = %Camera3D
 @onready var gun_cast:RayCast3D = %GunCast
+@onready var bullet_tracer_point:Marker3D = %TracerPoint
 
 @onready var gun_manager:Node = %GunManager
 @onready var ammo_count:Control = %AmmoCount

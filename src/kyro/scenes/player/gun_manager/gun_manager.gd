@@ -6,6 +6,7 @@ signal ammo_counts_updated()
 signal animation_reload_requested(duration:float, reload_amount:int)
 signal animation_shoot_requested(duration:float)
 
+
 @export_group("Stats")
 @export var fire_rate:float = 2.0
 @export_range(0, 99) var clip_size:int = 12
@@ -27,3 +28,14 @@ func fire_bullet() -> void:
 	raycast.force_raycast_update()
 	if raycast.is_colliding() and raycast.get_collider() is Hurtbox:
 		raycast.get_collider().take_damage(100)
+	
+	var tracer_endpoint:Vector3
+	if raycast.is_colliding():
+		tracer_endpoint = raycast.get_collision_point()
+	else:
+		tracer_endpoint = raycast.to_global(raycast.target_position)
+	# Awful code but it works
+	var tracer:Node3D = raycast.owner.TRACER_SCENE.instantiate()
+	raycast.owner.add_sibling(tracer)
+	tracer.global_position = raycast.owner.bullet_tracer_point.global_position
+	tracer.fire_at(tracer_endpoint)

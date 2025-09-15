@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://btres5r46w8pd"]
+[gd_scene load_steps=20 format=3 uid="uid://btres5r46w8pd"]
 
 [ext_resource type="Script" uid="uid://cx0dubayoiydg" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bshjfjpv4fojd" path="res://globals/components/state_machine/state_machine.gd" id="2_dovo2"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dolikj2gdhqhr" path="res://scenes/player/gun_manager/gun_manager.tscn" id="8_je7p5"]
 [ext_resource type="PackedScene" uid="uid://c5wrnb4pgq0i0" path="res://scenes/player/arm/arm.gltf" id="8_qek5x"]
 [ext_resource type="PackedScene" uid="uid://n1a3cmwjxmib" path="res://scenes/player/ui/ammo_count.tscn" id="10_h17s1"]
+[ext_resource type="Texture2D" uid="uid://b6ip2av33pwnx" path="res://scenes/gun/muzzle_small.png" id="11_gx1jg"]
 [ext_resource type="PackedScene" uid="uid://cugvx1d40wwv1" path="res://scenes/player/ui/time/time.tscn" id="12_fm80t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7p2l"]
@@ -226,6 +227,17 @@ bone_idx = 2
 
 [node name="Pistol" parent="Head/Camera3D/Arm/ArmRig/Skeleton3D/PalmAttachment" instance=ExtResource("7_0owmy")]
 transform = Transform3D(-0.273943, 0.918545, 0.285011, -0.224305, 0.227155, -0.947675, -0.935223, -0.323539, 0.143806, 0.0158007, 0.161956, -0.0110452)
+
+[node name="MuzzleFlash" type="Sprite3D" parent="Head/Camera3D/Arm/ArmRig/Skeleton3D/PalmAttachment/Pistol"]
+transform = Transform3D(1, -3.49246e-09, 5.96046e-08, 9.31323e-10, 1, -9.31323e-09, 0, 0, 1, 0.0150555, 0.0285555, -0.239489)
+visible = false
+pixel_size = 0.0007
+double_sided = false
+texture = ExtResource("11_gx1jg")
+
+[node name="TracerPoint" type="Marker3D" parent="Head/Camera3D/Arm/ArmRig/Skeleton3D/PalmAttachment/Pistol"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029, -0.23)
 
 [node name="AnimationPlayer" parent="Head/Camera3D/Arm" index="1"]
 autoplay = "WeildPistol"
