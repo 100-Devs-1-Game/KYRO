@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://duxaw5j5vtg2r"]
+[gd_scene load_steps=5 format=3 uid="uid://duxaw5j5vtg2r"]
 
 [ext_resource type="PackedScene" uid="uid://btres5r46w8pd" path="res://scenes/player/player.tscn" id="1_h3e3j"]
 [ext_resource type="PackedScene" uid="uid://dvtl8l6g0xsfb" path="res://scenes/enemy/enemy.tscn" id="2_nbgty"]
-[ext_resource type="PackedScene" uid="uid://cyv2clj4b5wld" path="res://scenes/gun/pistol/pickup/pistol_pickup.tscn" id="3_i166f"]
+[ext_resource type="PackedScene" uid="uid://cyv2clj4b5wld" path="res://scenes/pickup/gun/pistol_pickup.tscn" id="3_i166f"]
+[ext_resource type="PackedScene" uid="uid://dq7vudt7py1yb" path="res://scenes/pickup/ammo/ammo_pickup.tscn" id="4_qkmgm"]
 
 [node name="Level" type="Node3D"]
 
@@ -76,3 +77,9 @@ size = Vector3(18, 0.1, 193.224)
 
 [node name="PistolPickup" parent="." instance=ExtResource("3_i166f")]
 transform = Transform3D(-9.61651e-08, 0, 2.2, 0, 2.2, 0, -2.2, 0, -9.61651e-08, 0, 0, -56.3251)
+
+[node name="AmmoPickup" parent="." instance=ExtResource("4_qkmgm")]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 1.17141, 0.05, -83.3258)
+
+[node name="AmmoPickup2" parent="." instance=ExtResource("4_qkmgm")]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, -1.80334, 0.05, -92.2411)
