@@ -1,8 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cyv2clj4b5wld"]
+[gd_scene load_steps=17 format=3 uid="uid://cyv2clj4b5wld"]
 
 [ext_resource type="PackedScene" uid="uid://dexf80uod4r33" path="res://scenes/gun/pistol.gltf" id="1_wqw4h"]
 [ext_resource type="PackedScene" uid="uid://d7lmkhsp4q3p" path="res://scenes/pickup/pickup_fx/pickup_fx_ring.tscn" id="2_dgvwk"]
 [ext_resource type="Shader" uid="uid://jte2im05o31l" path="res://materials/item_pickup/pickup_ring.gdshader" id="3_k4qiy"]
+[ext_resource type="PackedScene" uid="uid://djmr2qjmhr6xk" path="res://globals/components/pickup/pickup_area/pickup_area.tscn" id="4_cyd3v"]
+[ext_resource type="Script" uid="uid://b6hur5p3ixtp4" path="res://globals/components/pickup/pickup_grant_gun/pickup_grant_gun.gd" id="5_3xbmc"]
+[ext_resource type="Resource" uid="uid://bhmetexyihmcy" path="res://scenes/gun/data/pistol.tres" id="6_qtm64"]
 
 [sub_resource type="Curve" id="Curve_eea5j"]
 _limits = [0.0, 1.4, 0.0, 1.0]
@@ -95,6 +98,10 @@ _data = {
 &"RESET": SubResource("Animation_k4qiy")
 }
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3xbmc"]
+height = 1.0
+radius = 0.4
+
 [node name="PistolPickup" type="Node3D"]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)
 
@@ -110,3 +117,15 @@ libraries = {
 }
 autoplay = "Idle"
 speed_scale = 0.5
+
+[node name="PickupArea" parent="." instance=ExtResource("4_cyd3v")]
+
+[node name="Collider" type="CollisionShape3D" parent="PickupArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_3xbmc")
+
+[node name="PickupGrantGun" type="Node" parent="."]
+script = ExtResource("5_3xbmc")
+data = ExtResource("6_qtm64")
+
+[connection signal="picked_up" from="PickupArea" to="PickupGrantGun" method="_on_pickup_area_picked_up"]

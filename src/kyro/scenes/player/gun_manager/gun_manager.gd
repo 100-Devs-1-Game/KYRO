@@ -17,11 +17,20 @@ signal animation_shoot_requested(duration:float)
 @export var raycast:RayCast3D
 
 
-var clip_ammo:int = clip_size - 1
+var clip_ammo:int = clip_size
 var reserve_ammo:int = 1
 
 
 @onready var state_machine:StateMachine = $StateMachine
+
+
+func load_data(data:GunData) -> void:
+	mirror_metadata(&"fire_rate", data)
+	mirror_metadata(&"clip_size", data)
+	mirror_metadata(&"reload_time", data)
+	
+	clip_ammo = data.get_meta(&"starting_clip_ammo", 0)
+	reserve_ammo = data.get_meta(&"starting_reserve_ammo", 0)
 
 
 func fire_bullet() -> void:
@@ -39,3 +48,8 @@ func fire_bullet() -> void:
 	raycast.owner.add_sibling(tracer)
 	tracer.global_position = raycast.owner.bullet_tracer_point.global_position
 	tracer.fire_at(tracer_endpoint)
+
+
+## Sets a property on the GunManager to the value in the Object metadata (if it exists).
+func mirror_metadata(property:StringName, object:Object) -> void:
+	set(property, object.get_meta(property, get(property)))

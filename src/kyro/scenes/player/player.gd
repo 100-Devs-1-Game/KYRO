@@ -21,14 +21,26 @@ const TRACER_SCENE:PackedScene = preload("res://scenes/gun/tracer/bullet_tracer.
 ## If this is 0, wallriding can't be acheived. Otherwise, this is a the wall that will be clung to
 var wallride_axis:float = 0.0
 var sensitivity:float = 1 / PI / 60 # TODO: Move this to a GameSettings 
+var gun_manager:Node:
+	set(new):
+		if gun_manager:
+			gun_manager.ammo_counts_updated.disconnect(_update_ammo_count)
+			gun_manager.animation_reload_requested.disconnect(_on_gun_manager_animation_reload_requested)
+			gun_manager.animation_shoot_requested.disconnect(_on_gun_manager_animation_shoot_requested)
+		gun_manager = new
+		if gun_manager:
+			gun_manager.ammo_counts_updated.connect(_update_ammo_count)
+			gun_manager.animation_reload_requested.connect(_on_gun_manager_animation_reload_requested)
+			gun_manager.animation_shoot_requested.connect(_on_gun_manager_animation_shoot_requested)
+			_update_ammo_count()
+var bullet_tracer_point:Marker3D
 
 
 @onready var head:Node3D = %Head
 @onready var camera:Camera3D = %Camera3D
 @onready var gun_cast:RayCast3D = %GunCast
-@onready var bullet_tracer_point:Marker3D = %TracerPoint
+@onready var gun_attach_point:Marker3D = %GunAttachPoint
 
-@onready var gun_manager:Node = %GunManager
 @onready var ammo_count:Control = %AmmoCount
 
 @onready var arm_animation_player:AnimationPlayer = $Head/Camera3D/Arm/AnimationPlayer
@@ -42,7 +54,7 @@ var sensitivity:float = 1 / PI / 60 # TODO: Move this to a GameSettings
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	_on_gun_manager_ammo_counts_updated()
+	_update_ammo_count()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -59,6 +71,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotation.x -= event.relative.y * sensitivity
 		get_viewport().set_input_as_handled()
 		return
+
+
+func add_gun(data:GunData) -> void:
+	gun_manager = data.create_manager(gun_cast)
+
+	var gun_held := data.gun_held.instantiate()
+	gun_attach_point.add_child(gun_held)
+	bullet_tracer_point = gun_held.get_node(^"%TracerPoint")
+	add_child(gun_manager)
 
 
 #region State common methods
@@ -112,7 +133,10 @@ func get_forward_floor_normal() -> Vector3:
 #endregion
 
 
-func _on_gun_manager_ammo_counts_updated() -> void:
+func _update_ammo_count() -> void:
+	ammo_count.visible = is_instance_valid(gun_manager)
+	if not ammo_count.visible:
+		return
 	ammo_count.clip_ammo = gun_manager.clip_ammo
 	ammo_count.reserve_ammo = gun_manager.reserve_ammo
 

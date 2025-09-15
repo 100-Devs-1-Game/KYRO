@@ -7,11 +7,10 @@
 [ext_resource type="Script" uid="uid://w7kclhp5i617" path="res://scenes/player/state/falling.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://c0ia5fjdsy8gi" path="res://scenes/player/state/wallride.gd" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://de3qt6f12rm0d" path="res://scenes/player/state/crouching.gd" id="7_5gtgg"]
-[ext_resource type="PackedScene" uid="uid://dolikj2gdhqhr" path="res://scenes/player/gun_manager/gun_manager.tscn" id="8_je7p5"]
 [ext_resource type="PackedScene" uid="uid://c5wrnb4pgq0i0" path="res://scenes/player/arm/arm.gltf" id="8_qek5x"]
-[ext_resource type="PackedScene" uid="uid://bnt6mgfhyiurd" path="res://scenes/gun/pistol/held/pistol_held.tscn" id="10_fm80t"]
 [ext_resource type="PackedScene" uid="uid://n1a3cmwjxmib" path="res://scenes/player/ui/ammo_count.tscn" id="10_h17s1"]
 [ext_resource type="PackedScene" uid="uid://cugvx1d40wwv1" path="res://scenes/player/ui/time/time.tscn" id="12_fm80t"]
+[ext_resource type="Script" uid="uid://cjtgimnfqhxq6" path="res://scenes/player/pickupper.gd" id="13_gx1jg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7p2l"]
 size = Vector3(0.7, 1.8, 0.7)
@@ -148,6 +147,9 @@ _data = {
 &"crouch_up": SubResource("Animation_fm80t")
 }
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fm80t"]
+height = 1.8
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 4
 floor_snap_length = 0.2
@@ -194,10 +196,6 @@ state_jump = NodePath("../Jumping")
 state_walk = NodePath("../Walk")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
-[node name="GunManager" parent="." node_paths=PackedStringArray("raycast") instance=ExtResource("8_je7p5")]
-unique_name_in_owner = true
-raycast = NodePath("../Head/Camera3D/GunCast")
-
 [node name="Head" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -225,9 +223,8 @@ bone_name = "hand.R"
 bone_idx = 2
 
 [node name="GunAttachPoint" type="Marker3D" parent="Head/Camera3D/Arm/ArmRig/Skeleton3D/PalmAttachment"]
+unique_name_in_owner = true
 transform = Transform3D(-0.27296, 0.918934, 0.284699, -0.223958, 0.227107, -0.947768, -0.935594, -0.322464, 0.143812, 0.016, 0.162, -0.011)
-
-[node name="Pistol" parent="Head/Camera3D/Arm/ArmRig/Skeleton3D/PalmAttachment/GunAttachPoint" instance=ExtResource("10_fm80t")]
 
 [node name="AnimationPlayer" parent="Head/Camera3D/Arm" index="1"]
 autoplay = "WeildPistol"
@@ -265,8 +262,15 @@ libraries = {
 &"": SubResource("AnimationLibrary_gx1jg")
 }
 
-[connection signal="ammo_counts_updated" from="GunManager" to="." method="_on_gun_manager_ammo_counts_updated"]
-[connection signal="animation_reload_requested" from="GunManager" to="." method="_on_gun_manager_animation_reload_requested"]
-[connection signal="animation_shoot_requested" from="GunManager" to="." method="_on_gun_manager_animation_shoot_requested"]
+[node name="Pickupper" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+script = ExtResource("13_gx1jg")
+
+[node name="Collider" type="CollisionShape3D" parent="Pickupper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CylinderShape3D_fm80t")
+debug_color = Color(0.164706, 0.643137, 0, 0.0941176)
 
 [editable path="Head/Camera3D/Arm"]

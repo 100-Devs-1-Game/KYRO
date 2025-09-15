@@ -69,6 +69,13 @@ shoot={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Level"
+3d_physics/layer_2="Hurtboxes"
+3d_physics/layer_3="Player"
+3d_physics/layer_4="Pickups"
+
 [physics]
 
 3d/default_gravity=29.4
