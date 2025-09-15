@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://dnd8lkyxv4ra6" path="res://materials/bullet/bullet.gdshader" id="1_o5ej7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ugbui"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_o5ej7")
 shader_parameter/color_outside = Color(0.96, 0.544, 0, 1)
