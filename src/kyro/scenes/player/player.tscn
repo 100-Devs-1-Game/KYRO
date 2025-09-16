@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://btres5r46w8pd"]
+[gd_scene load_steps=23 format=3 uid="uid://btres5r46w8pd"]
 
 [ext_resource type="Script" uid="uid://cx0dubayoiydg" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bshjfjpv4fojd" path="res://globals/components/state_machine/state_machine.gd" id="2_dovo2"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://b8emx6hnleqgi" path="res://scenes/player/camera.gd" id="8_fm80t"]
 [ext_resource type="Script" uid="uid://0d0g04ernni7" path="res://scenes/player/state/dying.gd" id="8_gx1jg"]
 [ext_resource type="PackedScene" uid="uid://c5wrnb4pgq0i0" path="res://scenes/player/arm/arm.gltf" id="8_qek5x"]
-[ext_resource type="Script" uid="uid://b5njaw142h5j0" path="res://scenes/player/state_commons.gd" id="9_ugbui"]
 [ext_resource type="PackedScene" uid="uid://n1a3cmwjxmib" path="res://scenes/player/ui/ammo_count.tscn" id="10_h17s1"]
 [ext_resource type="PackedScene" uid="uid://cugvx1d40wwv1" path="res://scenes/player/ui/time/time.tscn" id="12_fm80t"]
 [ext_resource type="Script" uid="uid://cjtgimnfqhxq6" path="res://scenes/player/pickupper.gd" id="13_gx1jg"]
@@ -232,6 +231,7 @@ height = 1.8
 collision_layer = 4
 floor_snap_length = 0.2
 script = ExtResource("1_8afob")
+on_rails = true
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -278,10 +278,6 @@ metadata/_custom_type_script = "uid://c4wduh2exufqe"
 unique_name_in_owner = true
 script = ExtResource("8_gx1jg")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
-
-[node name="StateCommons" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("9_ugbui")
 
 [node name="Head" type="Node3D" parent="."]
 unique_name_in_owner = true

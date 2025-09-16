@@ -42,7 +42,7 @@ func _state_physics_process(delta: float) -> void:
 	owner.state_commons.do_post_slide_updates()
 	
 	wallride_time += delta
-	if not owner.can_wallride():
+	if not owner.state_commons.can_wallride():
 		var modal_basic:State = owner.state_commons.get_modal_basic_state()
 		machine.to_state(modal_basic)
 

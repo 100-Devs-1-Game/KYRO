@@ -1,7 +1,14 @@
-extends Node
+extends RefCounted
 
 
 const FORWARD_NORMAL_THRESHOLD:float = 0.9
+
+
+var owner:Node
+
+
+func _init(p_owner:Node) -> void:
+	owner = p_owner
 
 
 func do_forward_movement(delta: float) -> void:

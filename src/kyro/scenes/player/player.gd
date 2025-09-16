@@ -6,6 +6,8 @@ signal restart_requested()
 signal to_menu_requested()
 
 
+const STATE_COMMONS:Script = preload("res://scenes/player/state_commons.gd")
+const STATE_COMMONS_RAILS:Script = preload("res://scenes/player/state_commons_rails.gd")
 const TRACER_SCENE:PackedScene = preload("res://scenes/gun/tracer/bullet_tracer.tscn")
 
 
@@ -18,8 +20,7 @@ static var instance:Player
 @export var strafe_speed: float = 12
 @export var forward_damping: float = 8.0
 @export var strafe_damping: float = 10.0
-@export var on_rails:bool = true
-
+@export var on_rails:bool = false
 @export_group("Jumping")
 @export var jump_strength: float = 10.0
 @export var jump_coyote_max: float = 0.5
@@ -32,6 +33,7 @@ static var instance:Player
 ## If this is 0, wallriding can't be acheived. Otherwise, this is a the wall that will be clung to
 var wallride_axis:float = 0.0
 var sensitivity:float = 1 / PI / 60 # TODO: Move this to a GameSettings 
+var state_commons:RefCounted
 var gun_manager:Node:
 	set(new):
 		if gun_manager:
@@ -60,7 +62,6 @@ var bullet_tracer_point:Marker3D
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 
 @onready var state_machine:StateMachine = $StateMachine
-@onready var state_commons = %StateCommons
 @onready var state_walk:State = %Walk
 @onready var state_jump:State = %Jumping
 @onready var state_fall:State = %Falling
@@ -71,6 +72,10 @@ func _ready() -> void:
 	instance = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_update_ammo_count()
+	if not on_rails:
+		state_commons = STATE_COMMONS.new(self)
+	else:
+		state_commons = STATE_COMMONS_RAILS.new(self)
 
 
 func _unhandled_input(event: InputEvent) -> void:
