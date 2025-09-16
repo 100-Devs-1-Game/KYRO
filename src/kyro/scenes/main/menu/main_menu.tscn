@@ -60,3 +60,4 @@ grow_vertical = 0
 alignment = 1
 
 [connection signal="pressed" from="Buttons/SelectLevel" to="." method="_on_select_level_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]

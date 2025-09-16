@@ -29,3 +29,7 @@ func make_level_buttons() -> void:
 func _on_select_level_pressed() -> void:
 	menu_buttons.visible = false
 	level_buttons.visible = true
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
