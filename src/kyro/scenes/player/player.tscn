@@ -407,7 +407,7 @@ text = "RESTART"
 layout_mode = 2
 text = "QUIT TO MENU"
 
-[node name="CrouchAnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_gx1jg")
 }

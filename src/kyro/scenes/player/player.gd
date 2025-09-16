@@ -51,7 +51,7 @@ var bullet_tracer_point:Marker3D
 @onready var game_over:CanvasLayer = %GameOver
 
 @onready var arm_animation_player:AnimationPlayer = $Head/Camera3D/Arm/AnimationPlayer
-@onready var crouch_animation_player:AnimationPlayer = $CrouchAnimationPlayer
+@onready var crouch_animation_player:AnimationPlayer = $AnimationPlayer
 
 @onready var state_machine:StateMachine = $StateMachine
 @onready var state_walk:State = %Walk

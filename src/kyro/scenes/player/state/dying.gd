@@ -5,7 +5,7 @@ func _state_entered() -> void:
 	owner.hud.visible = false
 	owner.game_over.visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	owner.crouch_animation_player.play(&"dying")
+	owner.animation_player.play(&"dying")
 
 
 func _state_process(delta: float) -> void:

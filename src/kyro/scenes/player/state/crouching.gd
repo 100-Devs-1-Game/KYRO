@@ -27,7 +27,7 @@ func _state_entered() -> void:
 	owner.velocity += owner.get_forward_floor_normal() * inital_forward_boost
 	owner.forward_damping *= forward_damping_mod
 	owner.strafe_damping *= strafe_damping_mod
-	owner.crouch_animation_player.play(&"crouch_down")
+	owner.animation_player.play(&"crouch_down")
 
 
 func _process(delta: float) -> void:
@@ -64,7 +64,7 @@ func _state_physics_process(delta: float) -> void:
 func _state_exited() -> void:
 	owner.forward_damping /= forward_damping_mod
 	owner.strafe_damping /= strafe_damping_mod
-	owner.crouch_animation_player.play(&"crouch_up")
+	owner.animation_player.play(&"crouch_up")
 	owner.floor_stop_on_slope = true
 	slide_cooldown = SLIDE_COOLDOWN_MAX
 
