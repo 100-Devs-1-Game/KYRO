@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 import/blender/enabled=false
 
+[gui]
+
+theme/custom="uid://cinsah8u2jssm"
+
 [input]
 
 ui_left={

@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2udeflnw6hvh"]
+
+[ext_resource type="Script" uid="uid://epemhndfmd6k" path="res://scenes/main/menu/main_menu.gd" id="1_gv3up"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_gv3up")
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.0
+offset_top = 45.0
+offset_right = 85.0
+offset_bottom = 133.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+text = "KYRO"
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -488.0
+offset_right = 201.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="SelectLevel" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "LEVEL SELECT"
+
+[node name="Quit" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "QUIT"
+
+[node name="Levels" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -488.0
+offset_right = 201.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Level1" type="Button" parent="Levels"]
+layout_mode = 2
+text = "#1"

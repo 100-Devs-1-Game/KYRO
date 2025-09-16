@@ -1,6 +1,10 @@
 extends CharacterBody3D
 
 
+signal restart_requested()
+signal to_menu_requested()
+
+
 const FORWARD_NORMAL_THRESHOLD:float = 0.9
 const TRACER_SCENE:PackedScene = preload("res://scenes/gun/tracer/bullet_tracer.tscn")
 
