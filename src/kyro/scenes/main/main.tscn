@@ -7,3 +7,5 @@
 script = ExtResource("1_hyk8p")
 
 [node name="MainMenu" parent="." instance=ExtResource("2_iuonh")]
+
+[connection signal="play_level_requested" from="MainMenu" to="." method="_on_main_menu_play_level_requested"]
