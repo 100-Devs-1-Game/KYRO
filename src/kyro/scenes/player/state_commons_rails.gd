@@ -16,10 +16,7 @@ func do_strafe_movement(delta: float) -> void:
 	if wanted_rail == current_rail:
 		return
 	
-	owner.velocity.x = (Tween.interpolate_value(
-		current_rail * rail_spacing, (wanted_rail - current_rail) * rail_spacing, rail_transition_elapsed,
-		RAIL_TRAVERSE_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT
-	) - owner.global_position.x) / delta
+	rail_transition_elapsed = minf(rail_transition_elapsed + delta, RAIL_TRAVERSE_DURATION)
 	
 	if rail_transition_elapsed == RAIL_TRAVERSE_DURATION:
 		owner.position.x = wanted_rail * rail_spacing
@@ -28,7 +25,10 @@ func do_strafe_movement(delta: float) -> void:
 		rail_transition_elapsed = 0.0
 		return
 	
-	rail_transition_elapsed = minf(rail_transition_elapsed + delta, RAIL_TRAVERSE_DURATION)
+	owner.velocity.x = (Tween.interpolate_value(
+		current_rail * rail_spacing, (wanted_rail - current_rail) * rail_spacing, rail_transition_elapsed,
+		RAIL_TRAVERSE_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT
+	) - owner.global_position.x) / delta
 
 
 func do_damping(delta: float) -> void:
