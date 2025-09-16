@@ -168,3 +168,11 @@ func _on_gun_manager_animation_shoot_requested(duration: float) -> void:
 			duration / arm_animation_player.get_animation(&"Shoot").length
 	)
 	ammo_count.shoot()
+
+
+func _on_restart_pressed() -> void:
+	restart_requested.emit()
+
+
+func _on_quit_pressed() -> void:
+	to_menu_requested.emit()

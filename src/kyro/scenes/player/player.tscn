@@ -423,4 +423,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CylinderShape3D_fm80t")
 debug_color = Color(0.164706, 0.643137, 0, 0.0941176)
 
+[connection signal="pressed" from="GameOver/Control/Menu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOver/Control/Menu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+
 [editable path="Head/Camera3D/Arm"]
