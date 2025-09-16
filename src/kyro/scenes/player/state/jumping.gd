@@ -27,17 +27,17 @@ func _state_physics_process(delta: float) -> void:
 		falling._state_physics_process(delta)
 		return
 	
-	owner.do_damping(delta * damping_delta_mod)
-	owner.do_forward_movement(delta)
-	owner.do_strafe_movement(delta)
-	owner.do_gravity(delta)
+	owner.state_commons.do_damping(delta * damping_delta_mod)
+	owner.state_commons.do_forward_movement(delta)
+	owner.state_commons.do_strafe_movement(delta)
+	owner.state_commons.do_gravity(delta)
 	
 	owner.move_and_slide()
 	do_coyote_time(delta)
 	
-	owner.do_post_slide_updates()
+	owner.state_commons.do_post_slide_updates()
 	
-	if owner.can_wallride():
+	if owner.state_commons.can_wallride():
 		machine.to_state($"../Wallride")
 	
 	if owner.is_on_floor():

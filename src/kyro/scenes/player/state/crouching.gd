@@ -24,7 +24,7 @@ var slide_cooldown:float = 0.0
 
 
 func _state_entered() -> void:
-	owner.velocity += owner.get_forward_floor_normal() * inital_forward_boost
+	owner.velocity += owner.state_commons.get_forward_floor_normal() * inital_forward_boost
 	owner.forward_damping *= forward_damping_mod
 	owner.strafe_damping *= strafe_damping_mod
 	owner.animation_player.play(&"crouch_down")
@@ -43,10 +43,10 @@ func _state_physics_process(delta: float) -> void:
 		machine.current_state._state_physics_process(delta)
 		return
 	
-	owner.do_forward_movement(delta * forward_speed_mod)
-	owner.do_strafe_movement(delta * strafe_speed_mod)
-	owner.do_damping(delta)
-	owner.do_gravity(delta)
+	owner.state_commons.do_forward_movement(delta * forward_speed_mod)
+	owner.state_commons.do_strafe_movement(delta * strafe_speed_mod)
+	owner.state_commons.do_damping(delta)
+	owner.state_commons.do_gravity(delta)
 	
 	var floor_degree:float = Vector3.FORWARD.dot(owner.get_floor_normal())
 	owner.velocity += owner.get_forward_floor_normal() * floor_degree * slope_forward_boost * delta
@@ -54,7 +54,7 @@ func _state_physics_process(delta: float) -> void:
 	owner.move_and_slide()
 	state_jump.do_coyote_time(delta)
 	
-	owner.do_post_slide_updates()
+	owner.state_commons.do_post_slide_updates()
 	
 	if not can_crouch():
 		machine.to_state(state_walk)
