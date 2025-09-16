@@ -6,5 +6,5 @@ func _on_pickup_area_picked_up(by: Node) -> void:
 		return
 	
 	by.gun_manager.reserve_ammo += 1
-	by.gun_manager.ammo_counts_updated.emit()
+	by.ammo_count.reserve_ammo += 1 # Hack
 	queue_free()
