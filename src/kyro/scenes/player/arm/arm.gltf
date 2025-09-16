@@ -1760,7 +1760,7 @@
 					}
 				}
 			],
-			"name":"Shoot",
+			"name":"ShootPistol",
 			"samplers":[
 				{
 					"input":74,

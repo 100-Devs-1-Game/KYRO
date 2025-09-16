@@ -118,8 +118,8 @@ func _on_gun_manager_animation_reload_requested(_duration: float, reload_amount:
 
 
 func _on_gun_manager_animation_shoot_requested(duration: float) -> void:
-	arm_animation_player.play(&"Shoot", -1, 
-			duration / arm_animation_player.get_animation(&"Shoot").length
+	arm_animation_player.play(&"ShootPistol", -1, 
+			duration / arm_animation_player.get_animation(&"ShootPistol").length
 	)
 	ammo_count.shoot()
 
