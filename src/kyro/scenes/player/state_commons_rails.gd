@@ -20,10 +20,8 @@ func do_strafe_movement(delta: float) -> void:
 		current_rail * rail_spacing, (wanted_rail - current_rail) * rail_spacing, rail_transition_elapsed,
 		RAIL_TRAVERSE_DURATION, Tween.TRANS_QUAD, Tween.EASE_OUT
 	) - owner.global_position.x) / delta
-	print(owner.velocity.x, ", ", rail_transition_elapsed)
 	
 	if rail_transition_elapsed == RAIL_TRAVERSE_DURATION:
-		print("SNAP")
 		owner.position.x = wanted_rail * rail_spacing
 		owner.velocity.x = 0
 		current_rail = wanted_rail
