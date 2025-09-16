@@ -112,9 +112,12 @@ func _update_ammo_count() -> void:
 	ammo_count.reserve_ammo = gun_manager.reserve_ammo
 
 
-func _on_gun_manager_animation_reload_requested(_duration: float, reload_amount: int) -> void:
+func _on_gun_manager_animation_reload_requested(duration: float, reload_amount: int) -> void:
 	ammo_count.amount_to_reload = reload_amount
 	ammo_count.reload()
+	arm_animation_player.play(&"ReloadPistol", -1, 
+			duration / arm_animation_player.get_animation(&"ReloadPistol").length
+	)
 
 
 func _on_gun_manager_animation_shoot_requested(duration: float) -> void:

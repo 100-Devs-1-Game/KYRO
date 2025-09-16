@@ -231,7 +231,6 @@ height = 1.8
 collision_layer = 4
 floor_snap_length = 0.2
 script = ExtResource("1_8afob")
-on_rails = true
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -315,7 +314,7 @@ transform = Transform3D(-0.27296, 0.918934, 0.284699, -0.223958, 0.227107, -0.94
 
 [node name="AnimationPlayer" parent="Head/Camera3D/Arm" index="1"]
 autoplay = "WeildPistol"
-next/Shoot = &"WeildPistol"
+next/ShootPistol = &"WeildPistol"
 
 [node name="Hud" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
