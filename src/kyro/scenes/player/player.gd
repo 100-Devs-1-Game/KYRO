@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 
@@ -7,6 +8,10 @@ signal to_menu_requested()
 
 const FORWARD_NORMAL_THRESHOLD:float = 0.9
 const TRACER_SCENE:PackedScene = preload("res://scenes/gun/tracer/bullet_tracer.tscn")
+
+
+## Singleton instance
+static var instance:Player
 
 
 @export_group("Movement")
@@ -61,6 +66,7 @@ var bullet_tracer_point:Marker3D
 
 
 func _ready() -> void:
+	instance = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_update_ammo_count()
 

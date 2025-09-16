@@ -26,6 +26,11 @@ func make_level_buttons() -> void:
 		instance.pressed.connect(play_level_requested.emit.bind(level.level_path))
 
 
+func reset() -> void:
+	menu_buttons.visible = true
+	level_buttons.visible = false
+
+
 func _on_select_level_pressed() -> void:
 	menu_buttons.visible = false
 	level_buttons.visible = true

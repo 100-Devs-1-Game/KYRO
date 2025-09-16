@@ -9,11 +9,14 @@ var level:Node
 
 
 func _on_player_restart_requested() -> void:
-	pass
+	to_level(level_packed) # This sucks but it'll work
 
 
 func _on_player_to_menu_requested() -> void:
-	pass
+	if is_instance_valid(level):
+		remove_child(level)
+		level.queue_free()
+	main_menu.visible = true
 
 
 func _on_main_menu_play_level_requested(level_path: String) -> void:
@@ -22,9 +25,15 @@ func _on_main_menu_play_level_requested(level_path: String) -> void:
 
 
 func to_level(p_level_packed:PackedScene) -> void:
+	if is_instance_valid(Player.instance):
+		Player.instance.restart_requested.disconnect(_on_player_restart_requested)
+		Player.instance.to_menu_requested.disconnect(_on_player_to_menu_requested)
 	level_packed = p_level_packed
 	if is_instance_valid(level):
 		remove_child(level)
 		level.queue_free()
 	level = level_packed.instantiate()
 	add_child(level)
+	if Player.instance:
+		Player.instance.restart_requested.connect(_on_player_restart_requested)
+		Player.instance.to_menu_requested.connect(_on_player_to_menu_requested)
