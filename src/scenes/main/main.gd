@@ -17,11 +17,13 @@ func _on_player_to_menu_requested() -> void:
 		remove_child(level)
 		level.queue_free()
 	main_menu.visible = true
+	MusicManager.song_request(&"Main Menu")
 
 
 func _on_main_menu_play_level_requested(level_path: String) -> void:
 	to_level(load(level_path))
 	main_menu.visible = false
+	MusicManager.song_request(&"Tesserakt")
 
 
 func to_level(p_level_packed:PackedScene) -> void:
