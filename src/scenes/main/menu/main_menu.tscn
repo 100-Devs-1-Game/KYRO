@@ -1,24 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2udeflnw6hvh"]
+[gd_scene load_steps=5 format=3 uid="uid://c2udeflnw6hvh"]
 
 [ext_resource type="Script" uid="uid://epemhndfmd6k" path="res://scenes/main/menu/main_menu.gd" id="1_gv3up"]
 [ext_resource type="Script" uid="uid://fxkg88hiywvr" path="res://scenes/level/level_data.gd" id="2_6gyl1"]
 [ext_resource type="Resource" uid="uid://b84pg3k23vmpk" path="res://scenes/level/test/level_test.tres" id="3_mvqfy"]
+[ext_resource type="Texture2D" uid="uid://cfkroo836cojq" path="res://assets/textures/logo/logo.png" id="4_mvqfy"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_gv3up")
 levels = Array[ExtResource("2_6gyl1")]([ExtResource("3_mvqfy")])
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="TextureRect" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -85.0
-offset_top = 45.0
-offset_right = 85.0
-offset_bottom = 133.0
+offset_left = -337.315
+offset_top = 69.0
+offset_right = 328.032
+offset_bottom = 209.0
 grow_horizontal = 2
-theme_type_variation = &"HeaderLarge"
-text = "KYRO"
+texture = ExtResource("4_mvqfy")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
