@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c7m7dr5anh2mv"]
 
-[ext_resource type="MultiMesh" uid="uid://bdu4vb06c087k" path="res://scenes/level/cubes/random_cubes.tres" id="1_sjaw6"]
+[ext_resource type="MultiMesh" uid="uid://bdu4vb06c087k" path="res://scenes/level/props/cubes/random_cubes.tres" id="1_sjaw6"]
 
 [node name="RandomCubes" type="MultiMeshInstance3D"]
 cast_shadow = 0
