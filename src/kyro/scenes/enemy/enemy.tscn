@@ -1,21 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvtl8l6g0xsfb"]
+[gd_scene load_steps=6 format=3 uid="uid://dvtl8l6g0xsfb"]
 
 [ext_resource type="Script" uid="uid://caajfjxu1st41" path="res://globals/components/hurtbox/hurtbox.gd" id="1_4a83h"]
 [ext_resource type="Script" uid="uid://c0y5tb4ny2n70" path="res://scenes/enemy/enemy.gd" id="1_40wdo"]
 [ext_resource type="Script" uid="uid://cj74wherkwvp7" path="res://globals/components/health_component/health_component.gd" id="1_a3pup"]
+[ext_resource type="PackedScene" uid="uid://dt51po4yy3afv" path="res://scenes/enemy/enemy.gltf" id="4_tjssy"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_40wdo"]
-radius = 0.4
-height = 1.8
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_40wdo"]
-albedo_color = Color(1, 0.145098, 0.34902, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_40wdo"]
-material = SubResource("StandardMaterial3D_40wdo")
-top_radius = 0.4
-bottom_radius = 0.4
-height = 1.8
+[sub_resource type="BoxShape3D" id="BoxShape3D_gl05p"]
+size = Vector3(1.8, 2.2, 1)
 
 [node name="Enemy" type="Node3D"]
 script = ExtResource("1_40wdo")
@@ -29,12 +20,10 @@ script = ExtResource("1_4a83h")
 metadata/_custom_type_script = "uid://caajfjxu1st41"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-shape = SubResource("CapsuleShape3D_40wdo")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+shape = SubResource("BoxShape3D_gl05p")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-mesh = SubResource("CylinderMesh_40wdo")
+[node name="Enemy" parent="." instance=ExtResource("4_tjssy")]
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
 [connection signal="took_damage" from="Hurtbox" to="HealthComponent" method="take_damage"]

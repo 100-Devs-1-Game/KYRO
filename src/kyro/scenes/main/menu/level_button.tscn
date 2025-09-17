@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cea86rnbqnmmx"]
+
+[node name="LevelButton" type="Button"]
+text = "LEVEL"

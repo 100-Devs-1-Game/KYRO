@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=4 format=3 uid="uid://bhmetexyihmcy"]
+
+[ext_resource type="PackedScene" uid="uid://bnt6mgfhyiurd" path="res://scenes/gun/pistol/held/pistol_held.tscn" id="1_lm1db"]
+[ext_resource type="PackedScene" uid="uid://dolikj2gdhqhr" path="res://scenes/player/gun_manager/gun_manager.tscn" id="2_kdsss"]
+[ext_resource type="Script" uid="uid://dfvuh4pfhi44l" path="res://scenes/gun/data/gun_data.gd" id="3_jm3st"]
+
+[resource]
+script = ExtResource("3_jm3st")
+gun_held = ExtResource("1_lm1db")
+gun_manager = ExtResource("2_kdsss")
+metadata/_custom_type_script = "uid://dfvuh4pfhi44l"
+metadata/fire_rate = 2.0
+metadata/clip_size = 12
+metadata/reload_time = 1.4
+metadata/starting_reserve_ammo = 1
+metadata/starting_clip_ammo = 1
