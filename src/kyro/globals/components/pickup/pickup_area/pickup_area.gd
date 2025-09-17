@@ -1,4 +1,4 @@
-@icon("res://globals/components/pickup_area/pickup_3d.svg")
+@icon("res://globals/components/pickup/pickup_area/pickup_3d.svg")
 class_name PickupArea
 extends Area3D
 
