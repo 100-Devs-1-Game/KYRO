@@ -22,6 +22,7 @@ var reserve_ammo:int = 1
 
 
 @onready var state_machine:StateMachine = $StateMachine
+@onready var gunshot_player:AudioStreamPlayer = $GunshotPlayer
 
 
 func load_data(data:GunData) -> void:
@@ -48,6 +49,7 @@ func fire_bullet() -> void:
 	raycast.owner.add_sibling(tracer)
 	tracer.global_position = raycast.owner.bullet_tracer_point.global_position
 	tracer.fire_at(tracer_endpoint)
+	gunshot_player.play()
 
 
 ## Sets a property on the GunManager to the value in the Object metadata (if it exists).
