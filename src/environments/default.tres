@@ -1,0 +1,16 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://mpnao256vhud"]
+
+[ext_resource type="Texture2D" uid="uid://dkdehkcqve0rt" path="res://assets/textures/sky/qwantani_noon_puresky.hdr" id="1_vxf3i"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sjrnr"]
+panorama = ExtResource("1_vxf3i")
+energy_multiplier = 0.8
+
+[sub_resource type="Sky" id="Sky_2fxgs"]
+sky_material = SubResource("PanoramaSkyMaterial_sjrnr")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 0.65
+sky = SubResource("Sky_2fxgs")
+glow_enabled = true

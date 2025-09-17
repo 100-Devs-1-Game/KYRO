@@ -20,13 +20,13 @@ void vertex() {
 void fragment() {
 	vec2 uv = vec2(UV.x, UV.y * y_scale);
 	uv += scroll_rate * TIME + scroll_offset;
-	
+
 	vec4 height_col = texture(height_grad, vec2(height));
 	// treating this thing as floats because red is the only real data channel
 	height_col.a = clamp(height_col.r, 0.0, 1.0);
 	height_col.b = height_col.r - height_col.a;
 	height_col.r = height_col.a;
 	vec4 noise_col = texture(noise, uv) * height_col.r + height_col.b;
-	
+
 	ALBEDO = noise_col.rgb * noise_col.a * tint;
 }
