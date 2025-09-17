@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://btres5r46w8pd"]
+[gd_scene load_steps=24 format=3 uid="uid://btres5r46w8pd"]
 
 [ext_resource type="Script" uid="uid://cx0dubayoiydg" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bshjfjpv4fojd" path="res://globals/components/state_machine/state_machine.gd" id="2_dovo2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b8emx6hnleqgi" path="res://scenes/player/camera.gd" id="8_fm80t"]
 [ext_resource type="Script" uid="uid://0d0g04ernni7" path="res://scenes/player/state/dying.gd" id="8_gx1jg"]
 [ext_resource type="PackedScene" uid="uid://c5wrnb4pgq0i0" path="res://assets/models/player/arm/arm.gltf" id="8_qek5x"]
+[ext_resource type="Script" uid="uid://vtsno6ihqmcm" path="res://scenes/player/state/won.gd" id="9_ugbui"]
 [ext_resource type="PackedScene" uid="uid://n1a3cmwjxmib" path="res://scenes/player/ui/ammo_count.tscn" id="10_h17s1"]
 [ext_resource type="PackedScene" uid="uid://cugvx1d40wwv1" path="res://scenes/player/ui/time/time.tscn" id="12_fm80t"]
 [ext_resource type="Script" uid="uid://cjtgimnfqhxq6" path="res://scenes/player/pickupper.gd" id="13_gx1jg"]
@@ -278,6 +279,11 @@ unique_name_in_owner = true
 script = ExtResource("8_gx1jg")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
+[node name="Won" type="Node" parent="StateMachine"]
+unique_name_in_owner = true
+script = ExtResource("9_ugbui")
+metadata/_custom_type_script = "uid://c4wduh2exufqe"
+
 [node name="Head" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -345,7 +351,6 @@ grow_horizontal = 0
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-visible = false
 
 [node name="Control" type="Control" parent="GameOver"]
 layout_mode = 3
@@ -379,6 +384,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GameOverLabel" type="Label" parent="GameOver/Control/Menu"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
