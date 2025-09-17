@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dw061i1wyx5aq"]
+[gd_scene load_steps=5 format=3 uid="uid://dw061i1wyx5aq"]
 
-[ext_resource type="Texture2D" uid="uid://cmfa3ouc3ro8e" path="res://scenes/pickup/pickup_fx/shine.png" id="1_01nln"]
+[ext_resource type="Texture2D" uid="uid://cmfa3ouc3ro8e" path="res://assets/textures/pickup/shine.png" id="1_01nln"]
+[ext_resource type="Shader" uid="uid://8jwrq6aoldax" path="res://assets/materials/item_pickup/pickup_shine.gdshader" id="1_njss3"]
 
-[node name="PickupFxShine" type="Sprite3D"]
-pixel_size = 0.0013
-billboard = 1
-double_sided = false
+[sub_resource type="QuadMesh" id="QuadMesh_njss3"]
+size = Vector2(0.4, 0.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_njss3"]
 render_priority = -1
-texture = ExtResource("1_01nln")
+shader = ExtResource("1_njss3")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("1_01nln")
+
+[node name="PickupFxShine" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_njss3")
+surface_material_override/0 = SubResource("ShaderMaterial_njss3")

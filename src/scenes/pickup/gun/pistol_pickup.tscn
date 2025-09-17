@@ -1,12 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://cyv2clj4b5wld"]
+[gd_scene load_steps=25 format=3 uid="uid://cyv2clj4b5wld"]
 
-[ext_resource type="PackedScene" path="res://assets/models/gun/pistol/pistol.gltf" id="1_wqw4h"]
+[ext_resource type="PackedScene" uid="uid://dexf80uod4r33" path="res://assets/models/gun/pistol/pistol.gltf" id="1_wqw4h"]
 [ext_resource type="PackedScene" uid="uid://d7lmkhsp4q3p" path="res://scenes/pickup/pickup_fx/pickup_fx_ring.tscn" id="2_dgvwk"]
 [ext_resource type="PackedScene" uid="uid://dw061i1wyx5aq" path="res://scenes/pickup/pickup_fx/pickup_fx_shine.tscn" id="2_rr6bm"]
 [ext_resource type="Shader" uid="uid://k2vvsw5o6k07" path="res://assets/materials/item_pickup/glow.gdshader" id="2_tl5id"]
 [ext_resource type="Shader" uid="uid://jte2im05o31l" path="res://assets/materials/item_pickup/pickup_ring.gdshader" id="3_k4qiy"]
 [ext_resource type="PackedScene" uid="uid://djmr2qjmhr6xk" path="res://globals/components/pickup/pickup_area/pickup_area.tscn" id="4_cyd3v"]
+[ext_resource type="Shader" uid="uid://8jwrq6aoldax" path="res://assets/materials/item_pickup/pickup_shine.gdshader" id="4_jyqiu"]
 [ext_resource type="Script" uid="uid://b6hur5p3ixtp4" path="res://globals/components/pickup/pickup_grant_gun.gd" id="5_3xbmc"]
+[ext_resource type="Texture2D" uid="uid://cmfa3ouc3ro8e" path="res://assets/textures/pickup/shine.png" id="5_43yp8"]
 [ext_resource type="Resource" uid="uid://bhmetexyihmcy" path="res://scenes/gun/data/pistol.tres" id="6_qtm64"]
 [ext_resource type="Script" uid="uid://ixc7h7jy0lkq" path="res://globals/components/pickup/pickup_play_animation.gd" id="9_yimc2"]
 
@@ -15,6 +17,12 @@ render_priority = 2
 shader = ExtResource("2_tl5id")
 shader_parameter/color = Color(0.953029, 0, 0.238826, 1)
 shader_parameter/energy = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_156e1"]
+render_priority = -1
+shader = ExtResource("4_jyqiu")
+shader_parameter/albedo = Color(1, 0.749, 0.74, 1)
+shader_parameter/texture_albedo = ExtResource("5_43yp8")
 
 [sub_resource type="Curve" id="Curve_eea5j"]
 _limits = [0.0, 1.4, 0.0, 1.0]
@@ -224,8 +232,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 material_overlay = SubResource("ShaderMaterial_tl5id")
 
 [node name="PickupFxShine" parent="Gun" instance=ExtResource("2_rr6bm")]
-modulate = Color(1, 0.748667, 0.74, 1)
-pixel_size = 0.002
+surface_material_override/0 = SubResource("ShaderMaterial_156e1")
 
 [node name="PickupFxRing" parent="." instance=ExtResource("2_dgvwk")]
 material_override = SubResource("ShaderMaterial_cyd3v")
