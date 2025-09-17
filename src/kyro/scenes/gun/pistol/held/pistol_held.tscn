@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bnt6mgfhyiurd"]
 
-[ext_resource type="PackedScene" uid="uid://dexf80uod4r33" path="res://scenes/gun/pistol.gltf" id="1_qau1w"]
-[ext_resource type="Texture2D" uid="uid://b6ip2av33pwnx" path="res://scenes/gun/muzzle_small.png" id="2_3mt0d"]
+[ext_resource type="PackedScene" uid="uid://dexf80uod4r33" path="res://assets/models/gun/pistol/pistol.gltf" id="1_qau1w"]
+[ext_resource type="Texture2D" uid="uid://b6ip2av33pwnx" path="res://assets/textures/gun/muzzle_small.png" id="2_3mt0d"]
 
 [node name="Pistol" instance=ExtResource("1_qau1w")]
 

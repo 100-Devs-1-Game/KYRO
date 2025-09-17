@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c5wrnb4pgq0i0"
-path="res://.godot/imported/arm.gltf-97f323f3419ae21b6fb1b14c01d03324.scn"
+path="res://.godot/imported/arm.gltf-8f57e490414d83f2a2d9a3c0d420612f.scn"
 
 [deps]
 
-source_file="res://scenes/player/arm/arm.gltf"
-dest_files=["res://.godot/imported/arm.gltf-97f323f3419ae21b6fb1b14c01d03324.scn"]
+source_file="res://assets/models/player/arm/arm.gltf"
+dest_files=["res://.godot/imported/arm.gltf-8f57e490414d83f2a2d9a3c0d420612f.scn"]
 
 [params]
 

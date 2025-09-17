@@ -1,10 +1,10 @@
 [gd_scene load_steps=22 format=3 uid="uid://cyv2clj4b5wld"]
 
-[ext_resource type="PackedScene" uid="uid://dexf80uod4r33" path="res://scenes/gun/pistol.gltf" id="1_wqw4h"]
+[ext_resource type="PackedScene" path="res://assets/models/gun/pistol/pistol.gltf" id="1_wqw4h"]
 [ext_resource type="PackedScene" uid="uid://d7lmkhsp4q3p" path="res://scenes/pickup/pickup_fx/pickup_fx_ring.tscn" id="2_dgvwk"]
 [ext_resource type="PackedScene" uid="uid://dw061i1wyx5aq" path="res://scenes/pickup/pickup_fx/pickup_fx_shine.tscn" id="2_rr6bm"]
-[ext_resource type="Shader" uid="uid://k2vvsw5o6k07" path="res://materials/item_pickup/glow.gdshader" id="2_tl5id"]
-[ext_resource type="Shader" uid="uid://jte2im05o31l" path="res://materials/item_pickup/pickup_ring.gdshader" id="3_k4qiy"]
+[ext_resource type="Shader" uid="uid://k2vvsw5o6k07" path="res://assets/materials/item_pickup/glow.gdshader" id="2_tl5id"]
+[ext_resource type="Shader" uid="uid://jte2im05o31l" path="res://assets/materials/item_pickup/pickup_ring.gdshader" id="3_k4qiy"]
 [ext_resource type="PackedScene" uid="uid://djmr2qjmhr6xk" path="res://globals/components/pickup/pickup_area/pickup_area.tscn" id="4_cyd3v"]
 [ext_resource type="Script" uid="uid://b6hur5p3ixtp4" path="res://globals/components/pickup/pickup_grant_gun.gd" id="5_3xbmc"]
 [ext_resource type="Resource" uid="uid://bhmetexyihmcy" path="res://scenes/gun/data/pistol.tres" id="6_qtm64"]

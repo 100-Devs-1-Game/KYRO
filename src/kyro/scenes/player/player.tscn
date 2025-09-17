@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://de3qt6f12rm0d" path="res://scenes/player/state/crouching.gd" id="7_5gtgg"]
 [ext_resource type="Script" uid="uid://b8emx6hnleqgi" path="res://scenes/player/camera.gd" id="8_fm80t"]
 [ext_resource type="Script" uid="uid://0d0g04ernni7" path="res://scenes/player/state/dying.gd" id="8_gx1jg"]
-[ext_resource type="PackedScene" uid="uid://c5wrnb4pgq0i0" path="res://scenes/player/arm/arm.gltf" id="8_qek5x"]
+[ext_resource type="PackedScene" uid="uid://c5wrnb4pgq0i0" path="res://assets/models/player/arm/arm.gltf" id="8_qek5x"]
 [ext_resource type="PackedScene" uid="uid://n1a3cmwjxmib" path="res://scenes/player/ui/ammo_count.tscn" id="10_h17s1"]
 [ext_resource type="PackedScene" uid="uid://cugvx1d40wwv1" path="res://scenes/player/ui/time/time.tscn" id="12_fm80t"]
 [ext_resource type="Script" uid="uid://cjtgimnfqhxq6" path="res://scenes/player/pickupper.gd" id="13_gx1jg"]
