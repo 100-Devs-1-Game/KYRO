@@ -1,14 +1,21 @@
 shader_type spatial;
-render_mode blend_add;
+render_mode unshaded, blend_add;
 
 uniform vec4 color: source_color;
-uniform float energy = 1.0;
+uniform vec3 highlight_band_color: source_color = vec3(0.5);
+uniform float highlight_band_period = 1.0;
+uniform float highlight_band_width = 0.5;
+
 
 void fragment() {
-	ALBEDO = color.rgb * color.a * energy;
-}
+	ALBEDO = color.rgb * color.a;
+	
+	vec3 view_corrected = (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	ALBEDO = color.rgb * color.a;
 
-//void light() {
-//	// Called for every pixel for every light affecting the material.
-//	// Uncomment to replace the default light processing function with this one.
-//}
+	vec2 coord = view_corrected.xy;
+	
+	if(mod((coord.x + coord.y - TIME), highlight_band_period) < highlight_band_width){
+		ALBEDO += highlight_band_color;
+	}
+}

@@ -14,7 +14,7 @@ void vertex() {
 			MAIN_CAM_INV_VIEW_MATRIX[1],
 			MAIN_CAM_INV_VIEW_MATRIX[2],
 			MODEL_MATRIX[3]);
-	
+
 	// Billboard Keep Scale: Enabled
 	MODELVIEW_MATRIX = MODELVIEW_MATRIX * mat4(
 			vec4(length(MODEL_MATRIX[0].xyz), 0.0, 0.0, 0.0),
@@ -26,9 +26,9 @@ void vertex() {
 
 void fragment() {
 	vec2 base_uv = UV;
-	
+
 	vec4 albedo_tex = texture(texture_albedo, base_uv);
 	ALBEDO = albedo.rgb * albedo_tex.rgb;
-	
+
 	ALPHA *= albedo.a * albedo_tex.a;
 }
