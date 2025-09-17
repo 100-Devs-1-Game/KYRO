@@ -2,7 +2,6 @@ extends MultiMeshInstance3D
 ## Tooling script to populate a space with Multimeshes randomly
 
 @export var extents:Vector3
-@export_file() var output:String
 
 
 func _ready() -> void:
@@ -13,8 +12,7 @@ func _ready() -> void:
 		)
 		multimesh.set_instance_transform(i, transform)
 	
-	var file := FileAccess.open(output, FileAccess.WRITE)
-	file.store_string(str(multimesh.buffer))
+	ResourceSaver.save(multimesh, multimesh.resource_path)
 
 
 func randvec3_range(from:Vector3, to:Vector3) -> Vector3:
