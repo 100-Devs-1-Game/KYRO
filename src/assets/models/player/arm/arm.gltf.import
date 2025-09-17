@@ -48,11 +48,6 @@ _subresources={
 "save_to_file/enabled": false,
 "save_to_file/path": ""
 }
-},
-"nodes": {
-"PATH:ArmRig/Skeleton3D/Arm": {
-"mesh_instance/cast_shadow": 0
-}
 }
 }
 gltf/naming_version=1
