@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c6hcavfd31nfy"]
+
+[ext_resource type="Texture2D" uid="uid://b5lqd04vvehes" path="res://assets/textures/player/light_skinned_male_albedo.png" id="1_mase0"]
+[ext_resource type="Texture2D" uid="uid://ds12fjohqugok" path="res://assets/textures/player/light_skinned_male_normal.png" id="2_h1tmp"]
+
+[resource]
+albedo_texture = ExtResource("1_mase0")
+normal_enabled = true
+normal_texture = ExtResource("2_h1tmp")

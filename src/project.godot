@@ -83,7 +83,3 @@ shoot={
 [physics]
 
 3d/default_gravity=29.4
-
-[rendering]
-
-environment/defaults/default_environment="uid://mpnao256vhud"
