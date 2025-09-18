@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://duxaw5j5vtg2r"]
+[gd_scene load_steps=6 format=3 uid="uid://duxaw5j5vtg2r"]
 
 [ext_resource type="PackedScene" uid="uid://btres5r46w8pd" path="res://scenes/player/player.tscn" id="1_7f8j5"]
 [ext_resource type="PackedScene" uid="uid://dvtl8l6g0xsfb" path="res://scenes/enemy/enemy.tscn" id="2_vk03a"]
 [ext_resource type="PackedScene" uid="uid://cyv2clj4b5wld" path="res://scenes/pickup/gun/pistol_pickup.tscn" id="3_5r3of"]
 [ext_resource type="PackedScene" uid="uid://dq7vudt7py1yb" path="res://scenes/pickup/ammo/ammo_pickup.tscn" id="4_rivyd"]
+[ext_resource type="PackedScene" uid="uid://cyj4tbfkmoa08" path="res://scenes/level/props/finish_line/finish_line.tscn" id="5_vk03a"]
 
 [node name="Level" type="Node3D"]
 
@@ -65,15 +66,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.423352, 1.17719, -188.987)
 use_collision = true
 size = Vector3(3.08447, 3.35437, 1)
 
-[node name="SlopedFloor" type="CSGBox3D" parent="Level"]
-transform = Transform3D(0.999986, 0.00523596, 0, -0.00376644, 0.71933, 0.694658, 0.00363721, -0.694649, 0.71934, 1.40262, -83.0045, -277.106)
-use_collision = true
-size = Vector3(13, 1, 239)
-
 [node name="Floor" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -96.6118)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100.47)
 use_collision = true
-size = Vector3(18, 0.1, 193.224)
+size = Vector3(18, 0.1, 200.941)
 
 [node name="PistolPickup" parent="Level" instance=ExtResource("3_5r3of")]
 transform = Transform3D(-9.61651e-08, 0, 2.2, 0, 2.2, 0, -2.2, 0, -9.61651e-08, 0, 0, -56.3251)
@@ -83,3 +79,6 @@ transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 1.17141, 0.05, -83.3258
 
 [node name="AmmoPickup2" parent="Level" instance=ExtResource("4_rivyd")]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, -1.80334, 0.05, -92.2411)
+
+[node name="FinishLine" parent="Level" instance=ExtResource("5_vk03a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.344, -193.173)

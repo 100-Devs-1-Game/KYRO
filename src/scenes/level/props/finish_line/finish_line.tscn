@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyj4tbfkmoa08"]
+
+[ext_resource type="Shader" uid="uid://80auvq71ufdv" path="res://assets/materials/props/finish_line/finish_line.gdshader" id="1_atuc8"]
+[ext_resource type="Script" uid="uid://cts4x4sevq4t5" path="res://scenes/level/props/finish_line/finish_line.gd" id="1_gx5pa"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_art3c"]
+plane = Plane(0, 0, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_k2fmo"]
+colors = PackedColorArray(1, 1, 1, 0.85, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l3cfh"]
+gradient = SubResource("Gradient_k2fmo")
+width = 64
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gx5pa"]
+render_priority = 0
+shader = ExtResource("1_atuc8")
+shader_parameter/color_1 = Color(0.75, 0.75, 0.75, 1)
+shader_parameter/color_2 = Color(0.25, 0.25, 0.25, 1)
+shader_parameter/fade_taper = SubResource("GradientTexture1D_l3cfh")
+shader_parameter/fade_taper_length = 2.0
+shader_parameter/checker_scale = 0.5
+shader_parameter/scroll_rate = Vector2(0.25, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_art3c"]
+material = SubResource("ShaderMaterial_gx5pa")
+size = Vector2(15, 1)
+
+[node name="FinishLine" type="Area3D"]
+script = ExtResource("1_gx5pa")
+metadata/_custom_type_script = "uid://b8wtst7tuu321"
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+shape = SubResource("WorldBoundaryShape3D_art3c")
+debug_color = Color(0.471416, 0.590102, 3.85046e-07, 0.42)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_art3c")
+
+[connection signal="picked_up" from="." to="." method="_on_picked_up"]
