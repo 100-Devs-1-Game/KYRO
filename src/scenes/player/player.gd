@@ -100,6 +100,7 @@ func add_gun(data:GunData) -> void:
 	var gun_held := data.gun_held.instantiate()
 	gun_attach_point.add_child(gun_held)
 	bullet_tracer_point = gun_held.get_node(^"%TracerPoint")
+	%Arm.visible = true
 	add_child(gun_manager)
 
 

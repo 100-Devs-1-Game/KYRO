@@ -14,4 +14,4 @@ metadata/clip_size = 6
 metadata/reload_time = 1.4
 metadata/starting_reserve_ammo = 0
 metadata/starting_clip_ammo = 6
-metadata/damage = 50
+metadata/damage = 100
