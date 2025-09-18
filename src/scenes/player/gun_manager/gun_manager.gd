@@ -12,6 +12,7 @@ signal animation_shoot_requested(duration:float)
 @export_range(0, 99) var clip_size:int = 12
 # NOTE: Not implemented properly. Keep at 1.4
 @export var reload_time:float = 1.4
+@export var damage:int = 50
 
 @export_group("Nodes")
 @export var raycast:RayCast3D
@@ -29,6 +30,7 @@ func load_data(data:GunData) -> void:
 	mirror_metadata(&"fire_rate", data)
 	mirror_metadata(&"clip_size", data)
 	mirror_metadata(&"reload_time", data)
+	mirror_metadata(&"damage", data)
 	
 	clip_ammo = data.get_meta(&"starting_clip_ammo", 0)
 	reserve_ammo = data.get_meta(&"starting_reserve_ammo", 0)
@@ -37,7 +39,7 @@ func load_data(data:GunData) -> void:
 func fire_bullet() -> void:
 	raycast.force_raycast_update()
 	if raycast.is_colliding() and raycast.get_collider() is Hurtbox:
-		raycast.get_collider().take_damage(100)
+		raycast.get_collider().take_damage(damage)
 	
 	var tracer_endpoint:Vector3
 	if raycast.is_colliding():
