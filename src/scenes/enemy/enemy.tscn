@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvtl8l6g0xsfb"]
+[gd_scene load_steps=10 format=3 uid="uid://dvtl8l6g0xsfb"]
 
 [ext_resource type="Script" uid="uid://caajfjxu1st41" path="res://globals/components/hurtbox/hurtbox.gd" id="1_4a83h"]
 [ext_resource type="Script" uid="uid://c0y5tb4ny2n70" path="res://scenes/enemy/enemy.gd" id="1_40wdo"]
@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dt51po4yy3afv" path="res://assets/models/enemy/enemy.gltf" id="4_tjssy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gl05p"]
-size = Vector3(0.868518, 0.770044, 0.771362)
+size = Vector3(0.412198, 0.770044, 0.771362)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_13gj6"]
+size = Vector3(1.14413, 0.355475, 0.644348)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cwlon"]
 size = Vector3(0.279463, 2.08466, 0.21209)
@@ -29,8 +32,12 @@ script = ExtResource("1_4a83h")
 metadata/_custom_type_script = "uid://caajfjxu1st41"
 
 [node name="BodyCollider" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00249633, 1.67411, -0.114319)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.674, -0.114)
 shape = SubResource("BoxShape3D_gl05p")
+
+[node name="ShouldersCollider" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00162853, 1.85536, -0.177507)
+shape = SubResource("BoxShape3D_13gj6")
 
 [node name="ArmLCollider" type="CollisionShape3D" parent="Hurtbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.698, 1.101, -0.252)
