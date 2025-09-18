@@ -6,5 +6,8 @@ extends Area3D
 signal took_damage(damage:int)
 
 
+@export var damage_multiplier:float = 1.0
+
+
 func take_damage(damage:int) -> void:
-	took_damage.emit(damage)
+	took_damage.emit(damage * damage_multiplier)
