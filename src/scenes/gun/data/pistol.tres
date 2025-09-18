@@ -12,6 +12,6 @@ metadata/_custom_type_script = "uid://dfvuh4pfhi44l"
 metadata/fire_rate = 2.0
 metadata/clip_size = 6
 metadata/reload_time = 1.4
-metadata/starting_reserve_ammo = 12
+metadata/starting_reserve_ammo = 0
 metadata/starting_clip_ammo = 6
 metadata/damage = 50
