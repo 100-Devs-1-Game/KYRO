@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://csxul4yg6ldj6"
-path.s3tc="res://.godot/imported/airduct_albedo.png-61496ab22680b3b4099f8584d83313cb.s3tc.ctex"
+path.s3tc="res://.godot/imported/airduct_albedo.png-b5cf7b9143269c69fef1fca05d1b759d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/metal/airduct_albedo.png"
-dest_files=["res://.godot/imported/airduct_albedo.png-61496ab22680b3b4099f8584d83313cb.s3tc.ctex"]
+source_file="res://assets/textures/props/airduct/airduct_albedo.png"
+dest_files=["res://.godot/imported/airduct_albedo.png-b5cf7b9143269c69fef1fca05d1b759d.s3tc.ctex"]
 
 [params]
 

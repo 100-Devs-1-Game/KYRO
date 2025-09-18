@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://djw5u45bcsd31"]
 
 [ext_resource type="PackedScene" uid="uid://uh5jq4jd27cl" path="res://assets/models/airduct/airduct_01.gltf" id="1_aslsm"]
-[ext_resource type="Material" uid="uid://cmvhxo7u4uv4s" path="res://assets/materials/metal/airduct.tres" id="2_gb0c6"]
+[ext_resource type="Material" uid="uid://cmvhxo7u4uv4s" path="res://assets/materials/props/airduct/airduct.tres" id="2_gb0c6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aslsm"]
 size = Vector3(0.674255, 0.487549, 3.02478)

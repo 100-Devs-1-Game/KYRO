@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://cmvhxo7u4uv4s"]
+
+[ext_resource type="Texture2D" uid="uid://csxul4yg6ldj6" path="res://assets/textures/props/airduct/airduct_albedo.png" id="1_8702a"]
+[ext_resource type="Texture2D" uid="uid://ckg065i0ijkf4" path="res://assets/textures/props/airduct/airduct_metalic.png" id="2_ofwp0"]
+[ext_resource type="Texture2D" uid="uid://bb8e4333m200n" path="res://assets/textures/props/airduct/airduct_normal.png" id="3_orgut"]
+[ext_resource type="Texture2D" uid="uid://yqwn82mb7tv" path="res://assets/textures/props/airduct/airduct_roughness.png" id="4_4163p"]
+
+[resource]
+albedo_texture = ExtResource("1_8702a")
+metallic = 1.0
+metallic_texture = ExtResource("2_ofwp0")
+roughness_texture = ExtResource("4_4163p")
+normal_enabled = true
+normal_texture = ExtResource("3_orgut")
