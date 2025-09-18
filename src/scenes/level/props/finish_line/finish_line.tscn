@@ -20,12 +20,12 @@ shader_parameter/color_1 = Color(0.75, 0.75, 0.75, 1)
 shader_parameter/color_2 = Color(0.25, 0.25, 0.25, 1)
 shader_parameter/fade_taper = SubResource("GradientTexture1D_l3cfh")
 shader_parameter/fade_taper_length = 2.0
-shader_parameter/checker_scale = 0.5
+shader_parameter/checker_scale = 0.3
 shader_parameter/scroll_rate = Vector2(0.25, 0)
 
 [sub_resource type="QuadMesh" id="QuadMesh_art3c"]
 material = SubResource("ShaderMaterial_gx5pa")
-size = Vector2(15, 1)
+size = Vector2(15, 0.3)
 
 [node name="FinishLine" type="Area3D"]
 collision_layer = 0
