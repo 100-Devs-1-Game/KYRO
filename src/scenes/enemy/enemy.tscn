@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvtl8l6g0xsfb"]
+[gd_scene load_steps=12 format=3 uid="uid://dvtl8l6g0xsfb"]
 
 [ext_resource type="Script" uid="uid://caajfjxu1st41" path="res://globals/components/hurtbox/hurtbox.gd" id="1_4a83h"]
 [ext_resource type="Script" uid="uid://c0y5tb4ny2n70" path="res://scenes/enemy/enemy.gd" id="1_40wdo"]
 [ext_resource type="Script" uid="uid://cj74wherkwvp7" path="res://globals/components/health_component/health_component.gd" id="1_a3pup"]
 [ext_resource type="PackedScene" uid="uid://dt51po4yy3afv" path="res://assets/models/enemy/enemy.gltf" id="4_tjssy"]
+[ext_resource type="PackedScene" uid="uid://be6sqao35j608" path="res://globals/components/kill_zone/kill_zone.tscn" id="5_gl05p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gl05p"]
 size = Vector3(0.412198, 0.770044, 0.771362)
@@ -19,6 +20,10 @@ size = Vector3(0.209317, 1.35621, 0.342499)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tjssy"]
 size = Vector3(0.654224, 0.459723, 0.383423)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cwlon"]
+height = 2.51611
+radius = 0.629883
 
 [node name="Enemy" type="Node3D"]
 script = ExtResource("1_40wdo")
@@ -66,6 +71,13 @@ shape = SubResource("BoxShape3D_tjssy")
 debug_color = Color(0.986348, 0, 0.324526, 0.42)
 
 [node name="Enemy" parent="." instance=ExtResource("4_tjssy")]
+
+[node name="KillZone" parent="." instance=ExtResource("5_gl05p")]
+
+[node name="Collider" type="CollisionShape3D" parent="KillZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00685048, 1.25629, -0.202467)
+shape = SubResource("CylinderShape3D_cwlon")
+debug_color = Color(0.990786, 0.0914651, 0, 0.42)
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
 [connection signal="took_damage" from="Hurtbox" to="HealthComponent" method="take_damage"]
