@@ -8,6 +8,8 @@ var tracer_tween:Tween
 
 func fire_at(point:Vector3) -> void:
 	look_at(point)
+	_update_tracer_mesh_param((global_position - point).length(), &"tracer_dist")
+	
 	if tracer_tween and tracer_tween.is_valid() and tracer_tween.is_running():
 		tracer_tween.stop()
 	tracer_tween = create_tween()
