@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://d7lmkhsp4q3p"]
 
 [ext_resource type="ArrayMesh" uid="uid://dp7du2t6esl5n" path="res://scenes/pickup/pickup_fx/ring.obj" id="1_eea5j"]
-[ext_resource type="Shader" uid="uid://jte2im05o31l" path="res://assets/materials/item_pickup/pickup_ring.gdshader" id="2_2tk01"]
+[ext_resource type="Shader" uid="uid://jte2im05o31l" path="res://assets/materials/pickup/pickup_ring.gdshader" id="2_2tk01"]
 
 [sub_resource type="Curve" id="Curve_eea5j"]
 _limits = [0.0, 1.4, 0.0, 1.0]

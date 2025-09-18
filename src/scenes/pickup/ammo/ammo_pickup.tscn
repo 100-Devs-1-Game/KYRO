@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=3 uid="uid://dq7vudt7py1yb"]
 
 [ext_resource type="Script" uid="uid://nm0ft5rxwn4r" path="res://scenes/pickup/ammo/ammo_pickup.gd" id="1_oi8dv"]
-[ext_resource type="Shader" uid="uid://8jwrq6aoldax" path="res://assets/materials/item_pickup/pickup_shine.gdshader" id="3_6s133"]
+[ext_resource type="Shader" uid="uid://8jwrq6aoldax" path="res://assets/materials/pickup/pickup_shine.gdshader" id="3_6s133"]
 [ext_resource type="PackedScene" uid="uid://dw061i1wyx5aq" path="res://scenes/pickup/pickup_fx/pickup_fx_shine.tscn" id="3_dtmc7"]
 [ext_resource type="Texture2D" uid="uid://cmfa3ouc3ro8e" path="res://assets/textures/pickup/shine.png" id="3_hoobd"]
 [ext_resource type="PackedScene" uid="uid://d7lmkhsp4q3p" path="res://scenes/pickup/pickup_fx/pickup_fx_ring.tscn" id="4_junon"]
-[ext_resource type="Shader" uid="uid://jte2im05o31l" path="res://assets/materials/item_pickup/pickup_ring.gdshader" id="5_s4to6"]
+[ext_resource type="Shader" uid="uid://jte2im05o31l" path="res://assets/materials/pickup/pickup_ring.gdshader" id="5_s4to6"]
 [ext_resource type="PackedScene" uid="uid://djmr2qjmhr6xk" path="res://globals/components/pickup/pickup_area/pickup_area.tscn" id="6_3lou1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i1rme"]

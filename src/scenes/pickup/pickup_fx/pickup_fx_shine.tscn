@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dw061i1wyx5aq"]
 
 [ext_resource type="Texture2D" uid="uid://cmfa3ouc3ro8e" path="res://assets/textures/pickup/shine.png" id="1_01nln"]
-[ext_resource type="Shader" uid="uid://8jwrq6aoldax" path="res://assets/materials/item_pickup/pickup_shine.gdshader" id="1_njss3"]
+[ext_resource type="Shader" uid="uid://8jwrq6aoldax" path="res://assets/materials/pickup/pickup_shine.gdshader" id="1_njss3"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_njss3"]
 size = Vector2(0.4, 0.4)
