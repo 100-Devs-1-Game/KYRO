@@ -28,8 +28,10 @@ material = SubResource("ShaderMaterial_gx5pa")
 size = Vector2(15, 1)
 
 [node name="FinishLine" type="Area3D"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
 script = ExtResource("1_gx5pa")
-metadata/_custom_type_script = "uid://b8wtst7tuu321"
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 shape = SubResource("WorldBoundaryShape3D_art3c")
@@ -38,4 +40,4 @@ debug_color = Color(0.471416, 0.590102, 3.85046e-07, 0.42)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_art3c")
 
-[connection signal="picked_up" from="." to="." method="_on_picked_up"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

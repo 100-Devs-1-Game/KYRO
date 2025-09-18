@@ -13,7 +13,8 @@ func _state_process(delta: float) -> void:
 
 
 func _state_physics_process(delta: float) -> void:
-	pass
+	owner.state_commons.do_damping(delta)
+	owner.move_and_slide()
 
 
 func _state_exited() -> void:
