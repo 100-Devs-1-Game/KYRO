@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c1bvvuc3df6py"]
+
+[ext_resource type="Shader" uid="uid://cucsbq11wm7r8" path="res://assets/materials/glass/roughness_glass.gdshader" id="1_2g36f"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_2g36f")
+shader_parameter/albedo = Color(0.942823, 0.942823, 0.942823, 0.176471)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.25
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.89
+shader_parameter/refraction = 0.05
+shader_parameter/refraction_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)

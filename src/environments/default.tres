@@ -13,4 +13,5 @@ sky_material = SubResource("PanoramaSkyMaterial_sjrnr")
 background_mode = 2
 background_energy_multiplier = 0.65
 sky = SubResource("Sky_2fxgs")
+sky_rotation = Vector3(0, -1.93732, 0)
 glow_enabled = true
