@@ -48,6 +48,16 @@ func fire_bullet() -> void:
 		tracer_endpoint = raycast.to_global(raycast.target_position)
 	# Awful code but it works
 	var tracer:Node3D = raycast.owner.TRACER_SCENE.instantiate()
+	
+	if not raycast.get_collider() is Hurtbox:
+		var sparks:GPUParticles3D = raycast.owner.SPARKS_SCENE.instantiate()
+		var normal:Vector3 = raycast.get_collision_normal()
+		sparks.transform.basis = Basis().looking_at(normal)
+		raycast.owner.add_sibling(sparks)
+		sparks.emitting = true
+		sparks.global_position = tracer_endpoint
+		get_tree().create_timer(0.4).timeout.connect(sparks.queue_free)
+	
 	raycast.owner.add_sibling(tracer)
 	tracer.global_position = raycast.owner.bullet_tracer_point.global_position
 	tracer.fire_at(tracer_endpoint)

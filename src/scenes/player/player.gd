@@ -9,6 +9,7 @@ signal to_menu_requested()
 const STATE_COMMONS:Script = preload("res://scenes/player/state_commons.gd")
 const STATE_COMMONS_RAILS:Script = preload("res://scenes/player/state_commons_rails.gd")
 const TRACER_SCENE:PackedScene = preload("res://scenes/gun/tracer/bullet_tracer.tscn")
+const SPARKS_SCENE:PackedScene = preload("res://scenes/gun/tracer/sparks.tscn")
 
 
 ## Singleton instance

@@ -19,15 +19,15 @@ void fragment() {
 		floor(coords.x) + floor(coords.y), 2.0
 	);
 	vec4 color = mix(color_1, color_2, selector);
-	
-	
+
+
 	float cabs_uvx = abs(UV.x - 0.5) * 2.0; // Centered Absolute UV x
 	float xscale = abs((UV2.x / cabs_uvx));
 	float normalized_fade_taper = fade_taper_length / xscale;
-	
+
 	//// Fading
 	// there's probably a better way to get this
-	float value = 
+	float value =
 	max((cabs_uvx - (1.0 - normalized_fade_taper)) * (1.0 / normalized_fade_taper), 0.0);
 	color *= texture(fade_taper, vec2(value, 0.0));
 
@@ -35,7 +35,7 @@ void fragment() {
 		//fade_taper,
 		//vec2(abs(UV.x - 0.5) * 2.0)
 	//);
-	
+
 	ALBEDO = color.rgb;
 	ALPHA = color.a;
 }
