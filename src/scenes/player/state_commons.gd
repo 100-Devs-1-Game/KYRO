@@ -53,6 +53,15 @@ func get_modal_basic_state() -> State:
 	return owner.state_fall
 
 
+func can_uncrouch() -> bool:
+	for c:RayCast3D in owner.uncrouch_check_rays:
+		c.force_update_transform()
+		c.force_raycast_update()
+		if c.is_colliding():
+			return false
+	return true
+
+
 ## gets the forward-pointing normal parallel to the floor slope. If the player isn't on
 ## a floor, returns the basis forward instead.
 func get_forward_floor_normal() -> Vector3:

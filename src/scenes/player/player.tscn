@@ -431,6 +431,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CylinderShape3D_fm80t")
 debug_color = Color(0.164706, 0.643137, 0, 0.0941176)
 
+[node name="UncrouchChecks" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="RayCast3D" type="RayCast3D" parent="UncrouchChecks"]
+enabled = false
+target_position = Vector3(0, 1.8, 0)
+
+[node name="RayCast3D2" type="RayCast3D" parent="UncrouchChecks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.350331)
+enabled = false
+target_position = Vector3(0, 1.8, 0)
+
+[node name="RayCast3D3" type="RayCast3D" parent="UncrouchChecks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.35)
+enabled = false
+target_position = Vector3(0, 1.8, 0)
+
+[node name="RayCast3D4" type="RayCast3D" parent="UncrouchChecks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0, 0)
+enabled = false
+target_position = Vector3(0, 1.8, 0)
+
+[node name="RayCast3D5" type="RayCast3D" parent="UncrouchChecks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0, 0)
+enabled = false
+target_position = Vector3(0, 1.8, 0)
+
 [connection signal="pressed" from="GameOver/Control/Menu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="GameOver/Control/Menu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 

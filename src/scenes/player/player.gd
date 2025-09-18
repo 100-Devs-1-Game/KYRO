@@ -62,6 +62,8 @@ var bullet_tracer_point:Marker3D
 @onready var arm_animation_player:AnimationPlayer = $Head/Camera3D/Arm/AnimationPlayer
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 
+@onready var uncrouch_check_rays:Array[Node] = %UncrouchChecks.get_children()
+
 @onready var state_machine:StateMachine = $StateMachine
 @onready var state_walk:State = %Walk
 @onready var state_jump:State = %Jumping

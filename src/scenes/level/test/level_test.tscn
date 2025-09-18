@@ -42,9 +42,9 @@ use_collision = true
 size = Vector3(18.3342, 8.52261, 1)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Level"]
-transform = Transform3D(0.886656, 0, 0.46243, 0, 1, 0, -0.46243, 0, 0.886656, 0.0650244, 0.435272, -62.339)
+transform = Transform3D(0.999946, 0, 0.0104546, 0, 1, 0, -0.0104546, 0, 0.999946, -0.349941, 2.07908, -63.0822)
 use_collision = true
-size = Vector3(6.11023, 1.87054, 5.14893)
+size = Vector3(6.11023, 0.772062, 62.3632)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.24928, 2.14895, -126.012)
@@ -82,3 +82,5 @@ transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, -1.80334, 0.05, -92.241
 
 [node name="FinishLine" parent="Level" instance=ExtResource("5_vk03a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.344, -193.173)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]

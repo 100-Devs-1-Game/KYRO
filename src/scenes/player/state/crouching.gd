@@ -57,6 +57,8 @@ func _state_physics_process(delta: float) -> void:
 	owner.state_commons.do_post_slide_updates()
 	
 	if not can_crouch():
+		if not owner.state_commons.can_uncrouch():
+			machine.to_state(owner.state_dying)
 		machine.to_state(state_walk)
 		return
 
