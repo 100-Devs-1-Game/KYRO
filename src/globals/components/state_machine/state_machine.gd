@@ -27,8 +27,10 @@ func _physics_process(delta: float) -> void:
 
 
 func to_state(state:State) -> void:
-	if current_state:
-		current_state._state_exited()
+	var last_state = current_state # yes this ordering is important, if the last wants
+	# to redirect.
 	current_state = state
+	if last_state:
+		last_state._state_exited()
 	if current_state:
 		current_state._state_entered()

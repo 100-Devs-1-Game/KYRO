@@ -57,13 +57,14 @@ func _state_physics_process(delta: float) -> void:
 	owner.state_commons.do_post_slide_updates()
 	
 	if not can_crouch():
-		if not owner.state_commons.can_uncrouch():
-			machine.to_state(owner.state_dying)
 		machine.to_state(state_walk)
 		return
 
 
 func _state_exited() -> void:
+	if not owner.state_commons.can_uncrouch():
+		machine.current_state = owner.state_dying
+	
 	owner.forward_damping /= forward_damping_mod
 	owner.strafe_damping /= strafe_damping_mod
 	owner.animation_player.play(&"crouch_up")
