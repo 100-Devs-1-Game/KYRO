@@ -380,6 +380,7 @@ grow_horizontal = 0
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+visible = false
 
 [node name="Control" type="Control" parent="GameOver"]
 layout_mode = 3
