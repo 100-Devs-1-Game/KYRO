@@ -37,6 +37,7 @@ func load_data(data:GunData) -> void:
 
 
 func fire_bullet() -> void:
+	raycast.force_update_transform()
 	raycast.force_raycast_update()
 	if raycast.is_colliding() and raycast.get_collider() is Hurtbox:
 		raycast.get_collider().take_damage(damage)
