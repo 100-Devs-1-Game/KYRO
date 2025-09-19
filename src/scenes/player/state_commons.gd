@@ -12,9 +12,16 @@ func _init(p_owner:Node) -> void:
 
 
 func do_forward_movement(delta: float) -> void:
-	var braking_axis:float = 1.0 + Input.get_axis("ui_down", "ui_up") * owner.forward_speed_modifer
+	var boost_axis:float = Input.get_axis("ui_down", "ui_up") * owner.boost_speed_modifer
+	if boost_axis != 0:
+		if owner.boost == 0:
+			boost_axis = 0
+		owner.boost = max(owner.boost - delta, 0)
+	else:
+		owner.boost = min(owner.boost + owner.boost_regen * delta, owner.boost_max)
+	boost_axis += 1.0
 	owner.velocity += get_forward_floor_normal() \
-	* owner.forward_speed * braking_axis * delta * owner.forward_damping
+	* owner.forward_speed * boost_axis * delta * owner.forward_damping
 
 
 func do_strafe_movement(delta: float) -> void:

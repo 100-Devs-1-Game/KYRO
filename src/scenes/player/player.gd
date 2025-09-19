@@ -18,7 +18,9 @@ static var instance:Player
 
 @export_group("Movement")
 @export var forward_speed:float = 10
-@export_range(0.0, 1.0, 0.01, "or_greater") var forward_speed_modifer:float = 0.4
+@export var boost_max:float = 3
+@export var boost_regen:float = 0.2
+@export_range(0.0, 1.0, 0.01, "or_greater") var boost_speed_modifer:float = 0.4
 @export var strafe_speed: float = 12
 @export var forward_damping: float = 8.0
 @export var strafe_damping: float = 10.0
@@ -34,6 +36,11 @@ static var instance:Player
 
 ## If this is 0, wallriding can't be acheived. Otherwise, this is a the wall that will be clung to
 var wallride_axis:float = 0.0
+var boost:float = boost_max:
+	set(new):
+		boost = new
+		if is_node_ready():
+			boost_meter.value = new / boost_max
 var sensitivity:float = 1 / PI / 60 # TODO: Move this to a GameSettings 
 var state_commons:RefCounted
 var gun_manager:Node:
@@ -58,6 +65,7 @@ var bullet_tracer_point:Marker3D
 
 @onready var hud:CanvasLayer = %Hud
 @onready var ammo_count:Control = %AmmoCount
+@onready var boost_meter:TextureProgressBar = %Boost
 @onready var game_over:CanvasLayer = %GameOver
 
 @onready var arm_animation_player:AnimationPlayer = $Head/Camera3D/Arm/AnimationPlayer
@@ -74,6 +82,7 @@ var bullet_tracer_point:Marker3D
 
 
 func _ready() -> void:
+	boost = boost_max
 	instance = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_update_ammo_count()
