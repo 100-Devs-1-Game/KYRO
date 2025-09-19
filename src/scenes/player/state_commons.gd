@@ -12,7 +12,9 @@ func _init(p_owner:Node) -> void:
 
 
 func do_forward_movement(delta: float) -> void:
-	owner.velocity += get_forward_floor_normal() * owner.forward_speed * delta * owner.forward_damping
+	var braking_axis:float = 1.0 + Input.get_axis("ui_down", "ui_up") * owner.forward_speed_modifer
+	owner.velocity += get_forward_floor_normal() \
+	* owner.forward_speed * braking_axis * delta * owner.forward_damping
 
 
 func do_strafe_movement(delta: float) -> void:
