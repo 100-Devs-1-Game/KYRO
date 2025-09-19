@@ -38,7 +38,7 @@ static var instance:Player
 var wallride_axis:float = 0.0
 var boost:float = boost_max:
 	set(new):
-		boost = new
+		boost = clampf(new, 0, boost_max)
 		if is_node_ready():
 			boost_meter.value = new / boost_max
 var sensitivity:float = 1 / PI / 60 # TODO: Move this to a GameSettings 
