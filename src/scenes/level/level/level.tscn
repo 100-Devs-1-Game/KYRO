@@ -1,20 +1,44 @@
-[gd_scene load_steps=8 format=3 uid="uid://djrepf05y4g7q"]
+[gd_scene load_steps=17 format=3 uid="uid://djrepf05y4g7q"]
 
 [ext_resource type="PackedScene" uid="uid://btres5r46w8pd" path="res://scenes/player/player.tscn" id="2_c0vq0"]
+[ext_resource type="Texture2D" uid="uid://dkdehkcqve0rt" path="res://assets/textures/sky/qwantani_noon_puresky.hdr" id="2_n68hn"]
 [ext_resource type="Material" uid="uid://2g2x2ibe8kkk" path="res://assets/materials/glass/g_red.tres" id="3_c0vq0"]
 [ext_resource type="Material" uid="uid://c1bvvuc3df6py" path="res://assets/materials/glass/road.tres" id="4_1en8t"]
 [ext_resource type="PackedScene" uid="uid://djw5u45bcsd31" path="res://scenes/level/props/airduct/airduct_01.tscn" id="4_8a2bs"]
 [ext_resource type="PackedScene" uid="uid://dvtl8l6g0xsfb" path="res://scenes/enemy/enemy.tscn" id="4_b853s"]
 [ext_resource type="PackedScene" uid="uid://cyv2clj4b5wld" path="res://scenes/pickup/gun/pistol_pickup.tscn" id="5_87h7l"]
 [ext_resource type="PackedScene" uid="uid://dq7vudt7py1yb" path="res://scenes/pickup/ammo/ammo_pickup.tscn" id="5_b853s"]
+[ext_resource type="Material" uid="uid://dfqiyjpombg1" path="res://assets/materials/glass/g_lime.tres" id="9_1l6au"]
+[ext_resource type="Texture2D" uid="uid://c5dhhsq0vmq8p" path="res://assets/textures/decals/decal_01.png" id="11_u3o4i"]
+[ext_resource type="Texture2D" uid="uid://cnjpdkw5uig35" path="res://assets/textures/decals/decal_02.png" id="12_rmghd"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1l6au"]
+panorama = ExtResource("2_n68hn")
+
+[sub_resource type="Sky" id="Sky_kt6cu"]
+sky_material = SubResource("PanoramaSkyMaterial_1l6au")
+
+[sub_resource type="Environment" id="Environment_u3o4i"]
+background_mode = 2
+sky = SubResource("Sky_kt6cu")
+
+[sub_resource type="BoxMesh" id="BoxMesh_n68hn"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1l6au"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
 
 [node name="Level" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_c0vq0")]
 forward_speed = 20.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.776846, 0.35745, -0.518401, -0.120097, 0.724045, 0.679217, 0.618131, 0.589905, -0.519543, 0, 2.78356, 0)
+[node name="Camera & Lights" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Camera & Lights"]
+environment = SubResource("Environment_u3o4i")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera & Lights"]
+transform = Transform3D(-0.776846, 0.35745, -0.518401, -0.120097, 0.724045, 0.679217, 0.618131, 0.589906, -0.519543, 0, 2.78356, 0)
 light_indirect_energy = 0.0
 shadow_enabled = true
 directional_shadow_mode = 1
@@ -22,10 +46,45 @@ directional_shadow_split_1 = 0.3
 directional_shadow_max_distance = 60.0
 sky_mode = 1
 
+[node name="Light_03" type="OmniLight3D" parent="Camera & Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.292633, 1.29974, -114.182)
+omni_range = 12.384
+omni_attenuation = 0.56
+
+[node name="Light_04" type="OmniLight3D" parent="Camera & Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.292633, 1.29974, -105.352)
+omni_range = 12.384
+omni_attenuation = 0.56
+
+[node name="Light_05" type="OmniLight3D" parent="Camera & Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24441, -4.2612, -112.182)
+omni_range = 12.384
+omni_attenuation = 0.56
+
+[node name="Light_06" type="OmniLight3D" parent="Camera & Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.306086, 0.233891, -256.922)
+omni_range = 12.384
+omni_attenuation = 0.56
+
+[node name="Light_07" type="OmniLight3D" parent="Camera & Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.23773, -2.33305, -260.656)
+omni_range = 12.384
+omni_attenuation = 0.56
+
+[node name="Light_08" type="OmniLight3D" parent="Camera & Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.23773, -4.38027, -245.096)
+omni_range = 12.384
+omni_attenuation = 5.56
+
+[node name="Light_01" type="OmniLight3D" parent="Camera & Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -88)
+omni_range = 12.384
+omni_attenuation = 0.56
+
 [node name="Geometry" type="Node3D" parent="."]
 
 [node name="Intro" type="Node3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.7013)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.7013)
 
 [node name="IntroR" type="CSGBox3D" parent="Geometry/Intro"]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 3.6, 0.5, -3.25696)
@@ -52,9 +111,9 @@ size = Vector3(1, 5, 17.1573)
 material = ExtResource("3_c0vq0")
 
 [node name="IntroM" type="CSGBox3D" parent="Geometry/Intro"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -30.7825)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48462, -29.7145)
 use_collision = true
-size = Vector3(2, 5, 1.097)
+size = Vector3(2, 3.03076, 1.097)
 material = ExtResource("3_c0vq0")
 
 [node name="IntroRamp" type="CSGBox3D" parent="Geometry/Intro"]
@@ -85,7 +144,7 @@ size = Vector3(10, 0.05, 19.8032)
 material = ExtResource("4_1en8t")
 
 [node name="Building" type="CSGBox3D" parent="Geometry/Buldings"]
-transform = Transform3D(1, 0, 0, 0, 0.999989, 1.07288e-06, 0, -1.07288e-06, 0.999989, 0, 1.6, -22.5)
+transform = Transform3D(1, 0, 0, 0, 0.999989, 1.08778e-06, 0, -1.08778e-06, 0.999989, 0, 1.6, -22.5)
 calculate_tangents = false
 use_collision = true
 size = Vector3(10, 9, 15)
@@ -117,10 +176,11 @@ transform = Transform3D(1, 0, 0, 0, 0.999998, 2.68221e-07, 0, -2.68221e-07, 0.99
 size = Vector3(6.8667, 3.448, 1.64)
 
 [node name="Enemy" parent="Geometry/Buldings/Building/Room" instance=ExtResource("4_b853s")]
-transform = Transform3D(0.629537, -5.58794e-09, -0.776982, -0.0541992, 0.997579, -0.0439153, 0.775078, 0.0697581, 0.628013, 2.02991, -2.4915, -5.64204)
+transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174533, 1.00001, 0, 8.74226e-08, -1.52584e-10, -1.00001, 3.01202, -2.57224, -5.64769)
 
 [node name="airduct_01" parent="Geometry/Buldings/Building" instance=ExtResource("4_8a2bs")]
 transform = Transform3D(-4.37114e-08, -2.55804e-19, -1, -5.8114e-07, 1, 2.54022e-14, 1, 5.8114e-07, -4.37114e-08, 2.54579, 4.19395, 6.25959)
+visible = false
 
 [node name="RoofCut" type="CSGBox3D" parent="Geometry/Buldings/Building"]
 transform = Transform3D(1, 0, 0, 0, 1, 7.45058e-09, 0, -7.45058e-09, 1, 0.0565186, 10.2176, -0.00801086)
@@ -181,8 +241,64 @@ transform = Transform3D(2.2, 0, 0, 0, 2.20003, -4.58967e-07, 0, 4.58967e-07, 2.2
 [node name="AmmoPickup3" parent="Geometry/Buldings/Building2/Room2" instance=ExtResource("5_b853s")]
 transform = Transform3D(2.19992, -0.0183155, 3.10862e-15, 0.0183153, 2.19995, -4.58967e-07, 3.82091e-09, 4.58951e-07, 2.20003, -0.811249, -2.63261, -3.78211)
 
+[node name="Building5" type="CSGBox3D" parent="Geometry/Buldings"]
+transform = Transform3D(1, 0, 0, 0, 0.997552, -0.0697554, 0, 0.0697554, 0.997552, 1.60412, 9.84324, -190.964)
+calculate_tangents = false
+use_collision = true
+size = Vector3(16.9839, 13.2437, 15)
+material = ExtResource("3_c0vq0")
+
+[node name="Room" type="CSGCombiner3D" parent="Geometry/Buldings/Building5"]
+transform = Transform3D(1, 0, 0, 0, 1, -5.68434e-14, 0, 5.68434e-14, 1, 0, 2.61693, 0)
+operation = 2
+
+[node name="RoomCut" type="CSGBox3D" parent="Geometry/Buldings/Building5/Room"]
+transform = Transform3D(1, 0, 0, 0, 0.999984, -5.96186e-08, 0, 5.96186e-08, 0.999984, -1.60062, -1.45172, 0.381683)
+size = Vector3(3.00854, 6, 14.723)
+
+[node name="RoomCut3" type="CSGBox3D" parent="Geometry/Buldings/Building5/Room"]
+transform = Transform3D(1, 0, 0, 0, 0.999974, -5.96049e-08, 0, 5.96049e-08, 0.999974, -1.69886, -0.784704, 0.780563)
+visible = false
+size = Vector3(3.34988, 3.68406, 2.80138)
+
+[node name="RoomCut2" type="CSGBox3D" parent="Geometry/Buldings/Building5/Room"]
+transform = Transform3D(1, 0, 0, 0, 0.999981, -5.9603e-08, 0, 5.9603e-08, 0.999981, 0.0914886, -0.539238, -3.23419)
+visible = false
+size = Vector3(8.67158, 4.175, 7.50827)
+
+[node name="WindowCut" type="CSGBox3D" parent="Geometry/Buldings/Building5/Room"]
+transform = Transform3D(1, 0, 0, 0, 0.999974, -5.95855e-08, 0, 5.95855e-08, 0.999974, 2.58001, -0.40569, -7.55563)
+visible = false
+size = Vector3(2.25793, 3.44814, 1.99057)
+
+[node name="WindowCut2" type="CSGBox3D" parent="Geometry/Buldings/Building5/Room"]
+transform = Transform3D(1, 0, 0, 0, 0.999975, -5.95854e-08, 0, 5.95854e-08, 0.999975, -1.45635, -0.778448, -7.55563)
+visible = false
+size = Vector3(2.2807, 3.44814, 1.99057)
+
+[node name="Room2" type="CSGCombiner3D" parent="Geometry/Buldings/Building5"]
+transform = Transform3D(1, 0, 0, 0, 1, -8.52651e-14, 0, 8.52651e-14, 1, 0, -2.20594, 0)
+operation = 2
+
+[node name="RoomCut" type="CSGBox3D" parent="Geometry/Buldings/Building5/Room2"]
+transform = Transform3D(1, 0, 0, 0, 0.999987, -5.95951e-08, 0, 5.95951e-08, 0.999987, 4.98118, 0.702691, 0.421143)
+size = Vector3(5.86911, 6.35808, 16)
+
+[node name="WindowCut" type="CSGBox3D" parent="Geometry/Buldings/Building5/Room2"]
+transform = Transform3D(1, 0, 0, 0, 0.99998, -5.95898e-08, 0, 5.95898e-08, 0.99998, -1.24508, 1.37843, -7.15619)
+size = Vector3(6.00697, 2.02729, 1.19157)
+
+[node name="AmmoPickup" parent="Geometry/Buldings/Building5/Room2" instance=ExtResource("5_b853s")]
+transform = Transform3D(2.19992, -0.0183155, 2.66454e-15, 0.0183153, 2.19995, -4.58967e-07, 3.82091e-09, 4.58951e-07, 2.20003, 5.5, -2.621, 4.425)
+
+[node name="AmmoPickup2" parent="Geometry/Buldings/Building5/Room2" instance=ExtResource("5_b853s")]
+transform = Transform3D(2.2, 0, 0, 0, 2.20003, -4.58967e-07, 0, 4.58967e-07, 2.20003, 5.5, -2.627, 1.307)
+
+[node name="AmmoPickup3" parent="Geometry/Buldings/Building5/Room2" instance=ExtResource("5_b853s")]
+transform = Transform3D(2.19992, -0.0183155, 3.10862e-15, 0.0183153, 2.19995, -4.58967e-07, 3.82091e-09, 4.58951e-07, 2.20003, 5.5, -2.633, -3.782)
+
 [node name="Building3" type="CSGBox3D" parent="Geometry/Buldings"]
-transform = Transform3D(1, 0, 0, 0, 0.997555, -0.0697559, 0, 0.0697559, 0.997555, 0, -8.10509, -81.6917)
+transform = Transform3D(1, 0, 0, 0, 0.997565, -0.0697565, 0, 0.0697565, 0.997565, 0, -8.10509, -81.6917)
 calculate_tangents = false
 use_collision = true
 size = Vector3(20, 13.244, 53.769)
@@ -196,11 +312,11 @@ use_collision = true
 size = Vector3(19, 12, 14.2226)
 
 [node name="RoofCut2" type="CSGBox3D" parent="Geometry/Buldings/Building3"]
-transform = Transform3D(1, 0, 0, 0, 1, 7.45058e-09, 0, -7.45058e-09, 1, 0, 11.8466, -12.8863)
+transform = Transform3D(1, 0, 0, 0, 1, 7.45058e-09, 0, -7.45058e-09, 1, 0, 11.8466, -11.1203)
 operation = 2
 calculate_tangents = false
 use_collision = true
-size = Vector3(19, 12, 27.1142)
+size = Vector3(19, 12, 30.6461)
 
 [node name="RoofCut3" type="CSGBox3D" parent="Geometry/Buldings/Building3"]
 transform = Transform3D(1, 0, 0, 0, 1, 7.45058e-09, 0, -7.45058e-09, 1, 4.56396, 11.8465, 3.18042)
@@ -210,24 +326,24 @@ use_collision = true
 size = Vector3(9.87207, 12, 27.1142)
 
 [node name="BuildingCut" type="CSGBox3D" parent="Geometry/Buldings/Building3"]
-transform = Transform3D(1, 0, 0, 0, 1, 7.45058e-09, 0, -7.45058e-09, 1, -6.3269, 0.0386868, 6.4537)
+transform = Transform3D(1, 0, 0, 0, 0.999989, 7.45042e-09, 0, -7.45042e-09, 0.999989, -6.3269, 0.0386868, 8.21614)
 operation = 2
 calculate_tangents = false
 use_collision = true
-size = Vector3(10, 14.0825, 10.5249)
+size = Vector3(10, 14.0825, 7)
 material = ExtResource("3_c0vq0")
 
 [node name="Obstacles" type="Node3D" parent="Geometry/Buldings/Building3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.79758, 0)
 
 [node name="Outcrop" type="CSGBox3D" parent="Geometry/Buldings/Building3/Obstacles"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55092, 3.98208, 6.50134)
+transform = Transform3D(1, 0, 0, 0, 0.999983, -2.25597e-13, 0, 2.25597e-13, 0.999983, -0.860595, 3.98208, 6.50134)
 use_collision = true
-size = Vector3(5.87067, 7.98517, 13.0888)
+size = Vector3(1.04764, 7.98517, 13.0888)
 material = ExtResource("3_c0vq0")
 
 [node name="airduct_01" parent="Geometry/Buldings/Building3/Obstacles/Outcrop" instance=ExtResource("4_8a2bs")]
-transform = Transform3D(1, 0, 0, 0, 1.00001, 0, 0, 0, 1.00001, 2.12281, -3.93311, 7.51335)
+transform = Transform3D(-4.37114e-08, 0, -1.00001, -7.10543e-15, 1.00001, 0, 1, 1.42109e-14, -4.37118e-08, 2.75, -3.933, -3)
 
 [node name="Outcrop3" type="CSGBox3D" parent="Geometry/Buldings/Building3/Obstacles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.59776, 1.80128, -12.4128)
@@ -242,7 +358,117 @@ size = Vector3(5.59256, 1.26933, 3.14201)
 material = ExtResource("3_c0vq0")
 
 [node name="airduct_01" parent="Geometry/Buldings/Building3/Obstacles/Outcrop2" instance=ExtResource("4_8a2bs")]
-transform = Transform3D(1, 0, 0, 0, 1.00001, 0, 0, 0, 1.00001, -2.34396, 0.572929, 0.0417786)
+transform = Transform3D(1, 0, 0, 0, 1.00001, 0, 0, 0, 1.00001, -2.34396, 0.572928, 0.0417786)
+visible = false
+
+[node name="Building3_Ramp" type="CSGBox3D" parent="Geometry/Buldings/Building3"]
+transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906306, 0, -0.906306, 0.422618, 0, 6.86678, -26.8801)
+use_collision = true
+size = Vector3(5, 5, 0.05)
+material = ExtResource("4_1en8t")
+
+[node name="Enemy2" parent="Geometry/Buldings/Building3" instance=ExtResource("4_b853s")]
+transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, 7.01202, 5.90584, -2.7056)
+
+[node name="Enemy3" parent="Geometry/Buldings/Building3" instance=ExtResource("4_b853s")]
+transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, -6.52344, 5.90584, -24.0114)
+
+[node name="Enemy4" parent="Geometry/Buldings/Building3" instance=ExtResource("4_b853s")]
+transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, -6.52344, 5.91595, -89.2699)
+
+[node name="Enemy5" parent="Geometry/Buldings/Building3" instance=ExtResource("4_b853s")]
+transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, -0.047632, 8.48066, -111.064)
+
+[node name="Enemy6" parent="Geometry/Buldings/Building3" instance=ExtResource("4_b853s")]
+transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, -0.047632, 5.55316, -181.598)
+
+[node name="Enemy7" parent="Geometry/Buldings/Building3" instance=ExtResource("4_b853s")]
+transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, -0.047632, -3.35847, -392.638)
+
+[node name="Building4" type="CSGBox3D" parent="Geometry/Buldings"]
+transform = Transform3D(1, 0, 0, 0, 0.997565, -0.0697565, 0, 0.0697565, 0.997565, 0, -3.64068, -145.536)
+calculate_tangents = false
+use_collision = true
+size = Vector3(20, 13.244, 53.769)
+material = ExtResource("3_c0vq0")
+
+[node name="RoofCut" type="CSGBox3D" parent="Geometry/Buldings/Building4"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.45058e-09, 0, -7.45058e-09, 1, 4.59363, 11.8466, 19.2732)
+operation = 2
+calculate_tangents = false
+use_collision = true
+size = Vector3(9.81274, 12, 14.2226)
+
+[node name="RoofCut2" type="CSGBox3D" parent="Geometry/Buldings/Building4"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.45058e-09, 0, -7.45058e-09, 1, 0, 11.8466, -13.4443)
+operation = 2
+calculate_tangents = false
+use_collision = true
+size = Vector3(19, 12, 26.0017)
+
+[node name="RoofCut3" type="CSGBox3D" parent="Geometry/Buldings/Building4"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.45058e-09, 0, -7.45058e-09, 1, 4.56396, 11.8465, 3.18042)
+operation = 2
+calculate_tangents = false
+use_collision = true
+size = Vector3(9.87207, 12, 27.1142)
+
+[node name="BuildingCut" type="CSGBox3D" parent="Geometry/Buldings/Building4"]
+transform = Transform3D(1, 0, 0, 0, 0.999989, 7.44955e-09, 0, -7.44955e-09, 0.999989, -6.3269, 0.0386868, 6.00529)
+operation = 2
+calculate_tangents = false
+use_collision = true
+size = Vector3(10, 14.0825, 11.4219)
+material = ExtResource("3_c0vq0")
+
+[node name="Obstacles" type="Node3D" parent="Geometry/Buldings/Building4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.79758, 0)
+
+[node name="Outcrop" type="CSGBox3D" parent="Geometry/Buldings/Building4/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 0.999983, -2.27374e-13, 0, 2.27374e-13, 0.999983, 3.74252, 3.98208, 6.04288)
+use_collision = true
+size = Vector3(1.04764, 7.98517, 13.0888)
+material = ExtResource("3_c0vq0")
+
+[node name="airduct_01" parent="Geometry/Buldings/Building4/Obstacles/Outcrop" instance=ExtResource("4_8a2bs")]
+transform = Transform3D(-4.37114e-08, 0, -1.00001, -2.13163e-14, 1.00001, 0, 1, 4.9738e-14, -4.37118e-08, 3.123, -3.933, 0.999893)
+
+[node name="Outcrop3" type="CSGBox3D" parent="Geometry/Buldings/Building4/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.10543e-15, 0, -7.10543e-15, 1, 6.59776, 3.12939, -32.6141)
+use_collision = true
+size = Vector3(5.87067, 6.17564, 12.312)
+material = ExtResource("3_c0vq0")
+
+[node name="Outcrop4" type="CSGBox3D" parent="Geometry/Buldings/Building4/Obstacles/Outcrop3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00577545, 0.37422, 0)
+operation = 2
+use_collision = true
+size = Vector3(5.34562, 4.96691, 12.312)
+material = ExtResource("3_c0vq0")
+
+[node name="Outcrop2" type="CSGBox3D" parent="Geometry/Buldings/Building4/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.10543e-15, 0, -7.10543e-15, 1, 1.43253, 0.411742, 5.31795)
+use_collision = true
+size = Vector3(3.59656, 0.844504, 3.14201)
+material = ExtResource("3_c0vq0")
+
+[node name="airduct_01" parent="Geometry/Buldings/Building4/Obstacles/Outcrop2" instance=ExtResource("4_8a2bs")]
+transform = Transform3D(1, 0, 0, 0, 1.00001, 0, 0, 0, 1.00001, -2.34396, 0.572928, 0.0417786)
+visible = false
+
+[node name="Outcrop5" type="CSGBox3D" parent="Geometry/Buldings/Building4"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.10543e-15, 0, -7.10543e-15, 1, 6.63282, 7.29544, -26.8204)
+visible = false
+operation = 2
+use_collision = true
+size = Vector3(5.89311, 2.91258, 0.910307)
+material = ExtResource("3_c0vq0")
+
+[node name="Building4_Ramp" type="CSGBox3D" parent="Geometry/Buldings/Building4"]
+transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906306, 0, -0.906306, 0.422618, 0, 6.86678, -26.9165)
+use_collision = true
+size = Vector3(5, 5, 0.05)
+material = ExtResource("4_1en8t")
 
 [node name="IntroRamp" type="CSGBox3D" parent="Geometry/Buldings"]
 transform = Transform3D(1, 0, 0, 0, 0.417198, 0.908808, 0, -0.908808, 0.417198, 1.95093, -1.97196, -13.0012)
@@ -251,4 +477,333 @@ size = Vector3(4.48389, 4.44708, 0.05)
 material = ExtResource("4_1en8t")
 
 [node name="PistolPickup" parent="Geometry/Buldings" instance=ExtResource("5_87h7l")]
-transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, -0.736012, -2.86947, -31.2323)
+transform = Transform3D(2.2, 0, 0, 0, 2.2, -4.47035e-08, 0, 4.47035e-08, 2.2, 1.26399, -2.86166, -4.11263)
+
+[node name="Node3D" type="Node3D" parent="Geometry/Buldings"]
+transform = Transform3D(1, 0, 0, 0, 0.997565, -0.0697565, 0, 0.0697565, 0.997565, 6.728, 7.91282, -443.68)
+
+[node name="Building07" type="Node3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.607, -5.49, -296.067)
+
+[node name="IntroR3" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.947509, 0)
+use_collision = true
+size = Vector3(1, 3.10498, 17)
+material = ExtResource("3_c0vq0")
+
+[node name="IntroL3" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -1.19209e-07, 0, -1, -1.94025, 0.978027, 8.98416)
+use_collision = true
+size = Vector3(4.90015, 3.04395, 1)
+material = ExtResource("3_c0vq0")
+
+[node name="IntroL3_Cut" type="CSGBox3D" parent="Geometry/Building07/IntroL3"]
+transform = Transform3D(1, 0, 2.90612e-12, 0, 1, 0, 0, 0, 1, -0.0213013, -0.807801, 0)
+operation = 2
+use_collision = true
+size = Vector3(2.84509, 1.41492, 1)
+material = ExtResource("3_c0vq0")
+
+[node name="IntroL4" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.85461, 0.990722, -0.115173)
+use_collision = true
+size = Vector3(1, 3.01855, 17.1969)
+material = ExtResource("3_c0vq0")
+
+[node name="IntroL5" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -11.8546, 0.871197, -0.115173)
+use_collision = true
+size = Vector3(1, 3.01855, 17.1969)
+material = ExtResource("3_c0vq0")
+
+[node name="IntroL6" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -11.8546, 0.871197, -15.1152)
+use_collision = true
+size = Vector3(1, 3.01855, 17.1969)
+material = ExtResource("3_c0vq0")
+
+[node name="IntroL7" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -10.1347, 0.871197, -40.1152)
+use_collision = true
+size = Vector3(1, 3.01855, 11.3632)
+material = ExtResource("3_c0vq0")
+
+[node name="Block_Bottom" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(1, 0, 0, 0, 0.909925, -0.414773, 0, 0.414773, 0.909925, -1.92688, 8.01385, -62.2011)
+use_collision = true
+size = Vector3(4.85547, 3.01855, 48.1576)
+material = ExtResource("3_c0vq0")
+
+[node name="Block_Bottom2" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(1, 0, 0, 0, 0.909961, 0.414693, 0, -0.414693, 0.909961, -1.92688, 8.64437, -123.114)
+use_collision = true
+size = Vector3(4.85547, 3.01855, 48.1576)
+material = ExtResource("3_c0vq0")
+
+[node name="Block_Bottom3" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.91187, 18.5385, -92.9934)
+use_collision = true
+size = Vector3(4.82568, 16.2812, 3.76237)
+material = ExtResource("3_c0vq0")
+
+[node name="Block_Bottom4" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.24177, -2.12196, -5.14038)
+use_collision = true
+size = Vector3(17.1837, 3.01855, 69.116)
+material = ExtResource("3_c0vq0")
+
+[node name="IntroM2" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -16.23)
+use_collision = true
+size = Vector3(0.961426, 5, 1.097)
+material = ExtResource("3_c0vq0")
+
+[node name="IntroM3" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -24.23)
+use_collision = true
+size = Vector3(0.961426, 5, 1.097)
+material = ExtResource("3_c0vq0")
+
+[node name="IntroM4" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.92242, 0, -33.23)
+use_collision = true
+size = Vector3(0.961426, 5, 1.097)
+material = ExtResource("3_c0vq0")
+
+[node name="IntroM5" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0796347, 0, -33.23)
+use_collision = true
+size = Vector3(0.961426, 5, 1.097)
+material = ExtResource("3_c0vq0")
+
+[node name="IntroFloor2" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.89565, -0.549996, 18.8682)
+use_collision = true
+size = Vector3(2.96503, 0.05, 20.8056)
+material = ExtResource("4_1en8t")
+
+[node name="IntoThinFloor2" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.923, -0.635, -15.512)
+use_collision = true
+size = Vector3(5, 0.05, 48)
+material = ExtResource("4_1en8t")
+
+[node name="IntoThinFloor3" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92277, 20.4488, -93.3716)
+use_collision = true
+size = Vector3(5, 0.05, 17.1034)
+material = ExtResource("4_1en8t")
+
+[node name="Building7_Ramp" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(1, 0, 0, 0, 0.422619, 0.906307, 0, -0.906307, 0.422619, -1.92439, 9.90398, -62.1776)
+use_collision = true
+size = Vector3(5, 50, 0.05)
+material = ExtResource("4_1en8t")
+
+[node name="Building7_Ramp2" type="CSGBox3D" parent="Geometry/Building07"]
+transform = Transform3D(-1, 7.92319e-08, -3.69465e-08, 0, 0.422618, 0.906308, 8.74228e-08, 0.906308, -0.422618, -1.924, 9.86932, -124.556)
+use_collision = true
+size = Vector3(5, 50, 0.05)
+material = ExtResource("4_1en8t")
+
+[node name="airduct_02" parent="Geometry/Building07" instance=ExtResource("4_8a2bs")]
+transform = Transform3D(-4.37114e-08, 0, -1.00001, 8.94052e-08, 0.999994, -3.90807e-15, 0.999985, -8.94061e-08, -4.37111e-08, -10.0401, -0.624202, -25.8298)
+
+[node name="Building08" type="Node3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -6.02, -453.043)
+
+[node name="Floor2" type="CSGBox3D" parent="Geometry/Building08"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.45058e-09, 0, -7.45058e-09, 1, 0, -4.76837e-07, -7.62939e-06)
+use_collision = true
+size = Vector3(10, 0.05, 19.8032)
+material = ExtResource("4_1en8t")
+
+[node name="Building6" type="CSGBox3D" parent="Geometry/Building08"]
+transform = Transform3D(1, 0, 0, 0, 0.999989, 1.09524e-06, 0, -1.09524e-06, 0.999989, 0, 4.46249, -17.3656)
+calculate_tangents = false
+use_collision = true
+size = Vector3(10, 9.06396, 15)
+material = ExtResource("3_c0vq0")
+
+[node name="VentCut" type="CSGBox3D" parent="Geometry/Building08/Building6"]
+transform = Transform3D(1, 0, 0, 0, 0.999961, 7.37862e-09, 0, -7.37862e-09, 0.999961, -2.56083, 0.0628011, -0.276154)
+operation = 2
+size = Vector3(1.85918, 8.0417, 16.7634)
+
+[node name="Room" type="CSGCombiner3D" parent="Geometry/Building08/Building6"]
+operation = 2
+
+[node name="RoomCut" type="CSGBox3D" parent="Geometry/Building08/Building6/Room"]
+transform = Transform3D(1, 0, 0, 0, 0.99999, -5.96046e-08, 0, 5.96046e-08, 0.99999, 1.93298, -0.53924, 0.701927)
+size = Vector3(4.6, 4.175, 15.4384)
+
+[node name="WindowCut" type="CSGBox3D" parent="Geometry/Building08/Building6/Room"]
+transform = Transform3D(1, 0, 0, 0, 0.999944, 2.6815e-07, 0, -2.6815e-07, 0.999944, 0.219692, -0.150428, -7.31146)
+size = Vector3(7.42657, 3.448, 1.64)
+
+[node name="Enemy" parent="Geometry/Building08/Building6/Room" instance=ExtResource("4_b853s")]
+transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174533, 1.00001, 0, 8.74226e-08, -1.52584e-10, -1.00001, 3.01202, -2.57224, -5.64769)
+
+[node name="airduct_01" parent="Geometry/Building08/Building6" instance=ExtResource("4_8a2bs")]
+transform = Transform3D(-4.37114e-08, -2.55804e-19, -1, -5.8114e-07, 1, 2.54022e-14, 1, 5.8114e-07, -4.37114e-08, 2.54579, 4.19395, 6.25959)
+visible = false
+
+[node name="RoofCut" type="CSGBox3D" parent="Geometry/Building08/Building6"]
+transform = Transform3D(1, 0, 0, 0, 0.999991, 7.43273e-09, 0, -7.43273e-09, 0.999991, 0.0565186, 10.2176, -0.00802612)
+operation = 2
+calculate_tangents = false
+use_collision = true
+size = Vector3(9.15942, 12, 13.9459)
+
+[node name="IntroRamp2" type="CSGBox3D" parent="Geometry/Building08"]
+transform = Transform3D(1, 0, 0, 0, 0.417198, 0.908808, 0, -0.908808, 0.417198, 1.96464, 0.907188, -7.86685)
+use_collision = true
+size = Vector3(4.48389, 4.44708, 0.05)
+material = ExtResource("4_1en8t")
+
+[node name="Building9" type="Node3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 8.9407e-08, 0, -8.9407e-08, 1, 6.728, -20.867, -515.771)
+
+[node name="Building09" type="CSGBox3D" parent="Geometry/Building9"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, 0)
+calculate_tangents = false
+use_collision = true
+size = Vector3(20, 13.244, 53.769)
+material = ExtResource("3_c0vq0")
+
+[node name="RoofCut" type="CSGBox3D" parent="Geometry/Building9/Building09"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.45058e-09, 0, -7.45058e-09, 1, -0.0819516, 6.94622, -0.09198)
+operation = 2
+calculate_tangents = false
+use_collision = true
+size = Vector3(18.6239, 2.19922, 52.9531)
+
+[node name="Obstacles" type="Node3D" parent="Geometry/Building9/Building09"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.29883, 5.79758, 0)
+
+[node name="Outcrop" type="CSGBox3D" parent="Geometry/Building9/Building09/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 0.999983, -2.27374e-13, 0, 2.27374e-13, 0.999983, 2.76266, 3.98208, -0.000976563)
+use_collision = true
+size = Vector3(1.04764, 7.98517, 13.0888)
+material = ExtResource("3_c0vq0")
+
+[node name="airduct_01" parent="Geometry/Building9/Building09/Obstacles/Outcrop" instance=ExtResource("4_8a2bs")]
+transform = Transform3D(-4.37114e-08, 0, -1.00001, -2.13163e-14, 1.00001, 0, 1, 4.9738e-14, -4.37118e-08, -9.7861, -3.93888, 10.318)
+
+[node name="airduct_02" parent="Geometry/Building9/Building09/Obstacles/Outcrop" instance=ExtResource("4_8a2bs")]
+transform = Transform3D(-4.37114e-08, 0, -1.00001, -2.84217e-14, 1.00001, 0, 0.999999, 6.39488e-14, -4.37118e-08, -3.7861, -3.93888, -0.682129)
+
+[node name="airduct_03" parent="Geometry/Building9/Building09/Obstacles/Outcrop" instance=ExtResource("4_8a2bs")]
+transform = Transform3D(-4.37114e-08, 0, -1.00001, -3.55271e-14, 1.00001, 0, 0.999999, 7.10543e-14, -4.37118e-08, -14.7861, -3.93888, -0.682129)
+
+[node name="Building3_Ramp" type="CSGBox3D" parent="Geometry/Building9/Building09"]
+transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906306, 0, -0.906306, 0.422618, 2.728, 6.87584, -26.8801)
+use_collision = true
+size = Vector3(5, 5, 0.05)
+material = ExtResource("4_1en8t")
+
+[node name="Building10" type="Node3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 8.9407e-08, 0, -8.9407e-08, 1, 6.728, -20.867, -573.771)
+
+[node name="Building10" type="CSGBox3D" parent="Geometry/Building10"]
+calculate_tangents = false
+use_collision = true
+size = Vector3(20, 13.244, 53.769)
+material = ExtResource("3_c0vq0")
+
+[node name="RoofCut" type="CSGBox3D" parent="Geometry/Building10/Building10"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.45058e-09, 0, -7.45058e-09, 1, -0.0819516, 11.8466, 0.384521)
+operation = 2
+calculate_tangents = false
+use_collision = true
+size = Vector3(18.6239, 12, 52)
+
+[node name="Finish Line" type="MeshInstance3D" parent="Geometry/Building10"]
+transform = Transform3D(19.0208, 0, 0, 0, 0.343922, 7.10543e-15, 0, 0, 1, 0, 6.36494, -23.9999)
+mesh = SubResource("BoxMesh_n68hn")
+surface_material_override/0 = ExtResource("9_1l6au")
+
+[node name="Area3D" type="Area3D" parent="Geometry/Building10/Finish Line"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Building10/Finish Line/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -7.10543e-15, 1, -0.00311881, -0.258709, 0.0483398)
+shape = SubResource("ConvexPolygonShape3D_1l6au")
+
+[node name="Decals" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.292633, 1.29974, -114.182)
+
+[node name="decal_01_01" type="Sprite3D" parent="Decals"]
+transform = Transform3D(9.55343e-16, -2.18557e-08, 0.5, -0.5, -2.18557e-08, 0, 2.18557e-08, -0.5, -2.18557e-08, -1.69396, 0.557448, 93.5332)
+texture = ExtResource("11_u3o4i")
+
+[node name="decal_01_02" type="Sprite3D" parent="Decals"]
+transform = Transform3D(9.55343e-16, -2.18557e-08, 0.5, -0.5, -2.18557e-08, 0, 2.18557e-08, -0.5, -2.18557e-08, 1.11192, 0.557448, 93.5332)
+texture = ExtResource("11_u3o4i")
+
+[node name="decal_01_03" type="Sprite3D" parent="Decals"]
+transform = Transform3D(8.74228e-09, -0.2, 3.01992e-08, -0.2, -8.74228e-09, 0, 1.32005e-15, -3.01992e-08, -0.2, -0.277198, 0.557448, 76.3226)
+texture = ExtResource("11_u3o4i")
+
+[node name="decal_01_04" type="Sprite3D" parent="Decals"]
+transform = Transform3D(1.06998e-15, -2.44784e-08, 0.56, -0.56, -2.44784e-08, 0, 2.44784e-08, -0.56, -2.44784e-08, -1.69216, -2.19101, -27.1761)
+texture = ExtResource("11_u3o4i")
+
+[node name="decal_01_05" type="Sprite3D" parent="Decals"]
+transform = Transform3D(1.06998e-15, -2.44784e-08, 0.56, -0.56, -2.44784e-08, 0, 2.44784e-08, -0.56, -2.44784e-08, 3.36512, -5.19101, -48.1761)
+cast_shadow = 0
+texture = ExtResource("11_u3o4i")
+
+[node name="decal_02_01" type="Sprite3D" parent="Decals"]
+transform = Transform3D(-0.56, -4.89568e-08, -2.44784e-08, 2.44784e-08, 1.06998e-15, -0.56, 4.89568e-08, -0.56, 1.06998e-15, -7.88963, -7.04432, -42.9251)
+cast_shadow = 0
+texture = ExtResource("12_rmghd")
+
+[node name="decal_02_02" type="Sprite3D" parent="Decals"]
+transform = Transform3D(-0.56, -4.89568e-08, -2.44784e-08, 2.44784e-08, 1.06998e-15, -0.56, 4.89568e-08, -0.56, 1.06998e-15, 3.19557, -7.04432, -14.7694)
+cast_shadow = 0
+texture = ExtResource("12_rmghd")
+
+[node name="decal_02_03" type="Sprite3D" parent="Decals"]
+transform = Transform3D(1.06998e-15, -2.44784e-08, 0.56, -0.56, -2.44784e-08, 0, 2.44784e-08, -0.56, -2.44784e-08, 4.12175, -0.490991, 8.62305)
+cast_shadow = 0
+texture = ExtResource("12_rmghd")
+
+[node name="decal_02_04" type="Sprite3D" parent="Decals"]
+transform = Transform3D(1.06998e-15, -2.44784e-08, 0.56, -0.56, -2.44784e-08, 0, 2.44784e-08, -0.56, -2.44784e-08, -0.648422, 0.90641, 27.8317)
+cast_shadow = 0
+texture = ExtResource("12_rmghd")
+
+[node name="decal_02_05" type="Sprite3D" parent="Decals"]
+transform = Transform3D(1.06998e-15, -2.44784e-08, 0.56, -0.56, -2.44784e-08, 0, 2.44784e-08, -0.56, -2.44784e-08, 2.9142, -2.77404, -93.3079)
+cast_shadow = 0
+texture = ExtResource("12_rmghd")
+
+[node name="decal_02_06" type="Sprite3D" parent="Decals"]
+transform = Transform3D(1.06998e-15, -2.44784e-08, 0.56, -0.56, -2.44784e-08, 0, 2.44784e-08, -0.56, -2.44784e-08, 3.35961, -2.77404, -131.183)
+cast_shadow = 0
+texture = ExtResource("12_rmghd")
+
+[node name="decal_02_07" type="Sprite3D" parent="Decals"]
+transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 6.4766, -4.92907, -226.744)
+cast_shadow = 0
+texture = ExtResource("12_rmghd")
+
+[node name="decal_02_08" type="Sprite3D" parent="Decals"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6.4766, 13.7183, -275.26)
+cast_shadow = 0
+texture = ExtResource("12_rmghd")
+
+[node name="decal_02_09" type="Sprite3D" parent="Decals"]
+transform = Transform3D(1, 0, 0, 0, 0.422618, -0.906308, 0, 0.906308, 0.422618, 6.4766, -3.82766, -321.324)
+cast_shadow = 0
+texture = ExtResource("12_rmghd")
+
+[node name="decal_02_10" type="Sprite3D" parent="Decals"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6.4766, -16.3165, -402.493)
+cast_shadow = 0
+texture = ExtResource("12_rmghd")
+
+[node name="decal_02_11" type="Sprite3D" parent="Decals"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6.4766, -16.3165, -461.164)
+cast_shadow = 0
+texture = ExtResource("12_rmghd")
