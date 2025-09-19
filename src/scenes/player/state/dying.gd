@@ -7,6 +7,8 @@ func _state_entered() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	owner.animation_player.play(&"dying")
 	owner.velocity = Vector3.ZERO
+	%YourTime.text = "YOUR TIME: %s" % %Time.time
+	%YourTime.visible = true
 
 
 func _state_process(delta: float) -> void:
