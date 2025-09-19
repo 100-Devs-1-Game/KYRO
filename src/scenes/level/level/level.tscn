@@ -47,36 +47,37 @@ sky_mode = 1
 
 [node name="Light_03" type="OmniLight3D" parent="Camera & Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.292633, 1.29974, -114.182)
+light_color = Color(1, 0.61, 0.6815, 1)
 omni_range = 12.384
 omni_attenuation = 0.56
 
 [node name="Light_04" type="OmniLight3D" parent="Camera & Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.292633, 1.29974, -105.352)
+light_color = Color(1, 0.61, 0.6815, 1)
 omni_range = 12.384
 omni_attenuation = 0.56
 
 [node name="Light_05" type="OmniLight3D" parent="Camera & Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24441, -4.2612, -112.182)
+light_color = Color(1, 0.61, 0.6815, 1)
 omni_range = 12.384
 omni_attenuation = 0.56
 
 [node name="Light_06" type="OmniLight3D" parent="Camera & Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.306086, 0.233891, -256.922)
+light_color = Color(1, 0.61, 0.6815, 1)
 omni_range = 12.384
 omni_attenuation = 0.56
 
 [node name="Light_07" type="OmniLight3D" parent="Camera & Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.23773, -2.33305, -260.656)
+light_color = Color(1, 0.61, 0.6815, 1)
 omni_range = 12.384
 omni_attenuation = 0.56
 
-[node name="Light_08" type="OmniLight3D" parent="Camera & Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.23773, -4.38027, -245.096)
-omni_range = 12.384
-omni_attenuation = 5.56
-
 [node name="Light_01" type="OmniLight3D" parent="Camera & Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -88)
+light_color = Color(1, 0.61, 0.6815, 1)
 omni_range = 12.384
 omni_attenuation = 0.56
 
