@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://djrepf05y4g7q"]
+[gd_scene load_steps=18 format=3 uid="uid://djrepf05y4g7q"]
 
 [ext_resource type="PackedScene" uid="uid://btres5r46w8pd" path="res://scenes/player/player.tscn" id="2_c0vq0"]
 [ext_resource type="Texture2D" uid="uid://dkdehkcqve0rt" path="res://assets/textures/sky/qwantani_noon_puresky.hdr" id="2_n68hn"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c5dhhsq0vmq8p" path="res://assets/textures/decals/decal_01.png" id="11_u3o4i"]
 [ext_resource type="PackedScene" uid="uid://cq1qhy4o12l4l" path="res://scenes/pickup/boost/boost_pickup.tscn" id="12_0vkh5"]
 [ext_resource type="Texture2D" uid="uid://cnjpdkw5uig35" path="res://assets/textures/decals/decal_02.png" id="12_rmghd"]
+[ext_resource type="PackedScene" uid="uid://be6sqao35j608" path="res://globals/components/kill_zone/kill_zone.tscn" id="13_0vkh5"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1l6au"]
 panorama = ExtResource("2_n68hn")
@@ -22,6 +23,8 @@ sky_material = SubResource("PanoramaSkyMaterial_1l6au")
 [sub_resource type="Environment" id="Environment_u3o4i"]
 background_mode = 2
 sky = SubResource("Sky_kt6cu")
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ehdx8"]
 
 [node name="Level" type="Node3D"]
 
@@ -340,13 +343,10 @@ material = ExtResource("3_c0vq0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.79758, 0)
 
 [node name="Outcrop" type="CSGBox3D" parent="Geometry/Buldings/Building3/Obstacles"]
-transform = Transform3D(1, 0, 0, 0, 0.999983, -2.23821e-13, 0, 2.23821e-13, 0.999983, 1.60607, 3.98208, 6.26036)
+transform = Transform3D(1, 0, 0, 0, 0.999983, -2.23821e-13, 0, 2.23821e-13, 0.999983, 1.60607, 3.98208, 8.95068)
 use_collision = true
-size = Vector3(5.98097, 7.98517, 13.5708)
+size = Vector3(5.98097, 7.98517, 18.9512)
 material = ExtResource("3_c0vq0")
-
-[node name="airduct_01" parent="Geometry/Buldings/Building3/Obstacles/Outcrop" instance=ExtResource("4_8a2bs")]
-transform = Transform3D(-4.37114e-08, 0, -1.00001, -3.90799e-14, 1.00001, 7.41154e-22, 0.999999, 5.32907e-14, -4.37118e-08, 0.00132823, 3.97758, -5.25864)
 
 [node name="Outcrop2" type="CSGBox3D" parent="Geometry/Buldings/Building3/Obstacles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.09606, 0.624161, 3.31795)
@@ -373,19 +373,26 @@ material = ExtResource("4_1en8t")
 transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, 7.01202, 5.90584, -2.7056)
 
 [node name="Enemy3" parent="Geometry/Buldings/Building3" instance=ExtResource("4_b853s")]
-transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, -6.52344, 5.90584, -24.0114)
+transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, -6.52344, 5.83468, -24.0114)
 
 [node name="Enemy4" parent="Geometry/Buldings/Building3" instance=ExtResource("4_b853s")]
-transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, -6.52344, 5.91595, -89.2699)
+transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, -6.52344, 4.30755, -89.2699)
 
 [node name="Enemy5" parent="Geometry/Buldings/Building3" instance=ExtResource("4_b853s")]
-transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, -0.047632, 8.48066, -111.064)
+transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, -0.047632, 6.89352, -111.064)
 
 [node name="Enemy6" parent="Geometry/Buldings/Building3" instance=ExtResource("4_b853s")]
-transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, -0.047632, 5.55316, -181.598)
+transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, -0.047632, 3.93952, -181.598)
 
 [node name="Enemy7" parent="Geometry/Buldings/Building3" instance=ExtResource("4_b853s")]
-transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, -0.047632, -3.35847, -392.638)
+transform = Transform3D(-0.999999, 0.00174535, -8.74241e-08, 0.00174106, 0.997566, -0.0697578, -0.000121661, -0.0697576, -0.997567, -0.047632, -4.84978, -392.638)
+
+[node name="BoostPickup" parent="Geometry/Buldings/Building3" instance=ExtResource("12_0vkh5")]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, -8.19562e-08, 0, 8.19562e-08, 2.2, 1.69822, 13.7722, 5.93629)
+boost_increase = 3.0
+
+[node name="BoostPickup2" parent="Geometry/Buldings/Building3" instance=ExtResource("12_0vkh5")]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, -8.19562e-08, 0, 8.19562e-08, 2.2, 6.44753, 8.31183, -17.058)
 
 [node name="Building4" type="CSGBox3D" parent="Geometry/Buldings"]
 transform = Transform3D(1, 0, 0, 0, 0.997565, -0.0697565, 0, 0.0697565, 0.997565, 0, -3.64068, -145.536)
@@ -409,14 +416,14 @@ use_collision = true
 size = Vector3(19, 12, 26.0017)
 
 [node name="RoofCut3" type="CSGBox3D" parent="Geometry/Buldings/Building4"]
-transform = Transform3D(1, 0, 0, 0, 1, 7.45058e-09, 0, -7.45058e-09, 1, 4.56396, 11.8465, 3.18042)
+transform = Transform3D(1, 0, 0, 0, 1, 7.45058e-09, 0, -7.45058e-09, 1, 4.56396, 11.8465, 8.14647)
 operation = 2
 calculate_tangents = false
 use_collision = true
-size = Vector3(9.87207, 12, 27.1142)
+size = Vector3(9.87207, 12, 17.1821)
 
 [node name="BuildingCut" type="CSGBox3D" parent="Geometry/Buldings/Building4"]
-transform = Transform3D(1, 0, 0, 0, 0.999989, 7.44955e-09, 0, -7.44955e-09, 0.999989, -6.3269, 0.0386868, 6.00529)
+transform = Transform3D(1, 0, 0, 0, 0.999989, 7.44955e-09, 0, -7.44955e-09, 0.999989, -6.3269, 0.0386877, 6.00529)
 operation = 2
 calculate_tangents = false
 use_collision = true
@@ -449,9 +456,9 @@ size = Vector3(5.34562, 4.96691, 12.312)
 material = ExtResource("3_c0vq0")
 
 [node name="Outcrop2" type="CSGBox3D" parent="Geometry/Buldings/Building4/Obstacles"]
-transform = Transform3D(1, 0, 0, 0, 1, 7.10543e-15, 0, -7.10543e-15, 1, 1.43253, 0.411742, 5.31795)
+transform = Transform3D(1, 0, 0, 0, 1, 7.10543e-15, 0, -7.10543e-15, 1, 1.43253, 0.299673, 5.31796)
 use_collision = true
-size = Vector3(3.59656, 0.844504, 3.14201)
+size = Vector3(3.59656, 0.620367, 3.14201)
 material = ExtResource("3_c0vq0")
 
 [node name="airduct_01" parent="Geometry/Buldings/Building4/Obstacles/Outcrop2" instance=ExtResource("4_8a2bs")]
@@ -802,5 +809,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6.4766
 cast_shadow = 0
 texture = ExtResource("12_rmghd")
 
-[node name="AmmoPickup" parent="." instance=ExtResource("12_0vkh5")]
-transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 1.69822, 3.76468, -143.1)
+[node name="KillZone" parent="." instance=ExtResource("13_0vkh5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30.0126, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
+shape = SubResource("WorldBoundaryShape3D_ehdx8")

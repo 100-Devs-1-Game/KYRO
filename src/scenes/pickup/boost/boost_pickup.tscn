@@ -49,7 +49,7 @@ shader_parameter/scroll_rate = Vector2(0.05, 0.1)
 height = 1.0
 radius = 0.3
 
-[node name="AmmoPickup" type="Node3D"]
+[node name="BoostPickup" type="Node3D"]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)
 script = ExtResource("1_5x8bm")
 
