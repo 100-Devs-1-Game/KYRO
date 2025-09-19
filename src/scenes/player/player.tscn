@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://btres5r46w8pd"]
+[gd_scene load_steps=26 format=3 uid="uid://btres5r46w8pd"]
 
 [ext_resource type="Script" uid="uid://cx0dubayoiydg" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bshjfjpv4fojd" path="res://globals/components/state_machine/state_machine.gd" id="2_dovo2"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://n1a3cmwjxmib" path="res://scenes/player/ui/ammo_count.tscn" id="10_h17s1"]
 [ext_resource type="PackedScene" uid="uid://cugvx1d40wwv1" path="res://scenes/player/ui/time/time.tscn" id="12_fm80t"]
 [ext_resource type="Script" uid="uid://cjtgimnfqhxq6" path="res://scenes/player/pickupper.gd" id="13_gx1jg"]
+[ext_resource type="ArrayMesh" uid="uid://6b1musmygn87" path="res://assets/models/particles/glass_shard.mesh" id="15_fcs02"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7p2l"]
 size = Vector3(0.7, 1.8, 0.7)
@@ -227,6 +228,12 @@ _data = {
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fm80t"]
 height = 1.8
+
+[sub_resource type="Curve" id="Curve_myrg7"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+bake_resolution = 20
+_data = [Vector2(0, 1), 0.0, 19.0, 0, 1, Vector2(1, 20), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 4
@@ -457,6 +464,31 @@ target_position = Vector3(0, 1.8, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0, 0)
 enabled = false
 target_position = Vector3(0, 1.8, 0)
+
+[node name="GlassParticles" type="CPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+emitting = false
+amount = 12
+one_shot = true
+explosiveness = 1.0
+mesh = ExtResource("15_fcs02")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.9
+emission_ring_cone_angle = 90.0
+particle_flag_rotate_y = true
+direction = Vector3(0, 0, -1)
+spread = 10.0
+initial_velocity_min = 26.0
+initial_velocity_max = 28.0
+angle_min = -30.0
+angle_max = 30.0
+angle_curve = SubResource("Curve_myrg7")
+scale_amount_min = 0.8
+scale_amount_max = 2.0
 
 [connection signal="pressed" from="GameOver/Control/Menu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="GameOver/Control/Menu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -63,6 +63,7 @@ var bullet_tracer_point:Marker3D
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 
 @onready var uncrouch_check_rays:Array[Node] = %UncrouchChecks.get_children()
+@onready var glass_particles:CPUParticles3D = %GlassParticles
 
 @onready var state_machine:StateMachine = $StateMachine
 @onready var state_walk:State = %Walk
@@ -106,6 +107,13 @@ func add_gun(data:GunData) -> void:
 	%Arm.visible = true
 	add_child(gun_manager)
 
+
+func emit_glass() -> void:
+	glass_particles.direction = velocity
+	var velocity_len:float = velocity.length()
+	glass_particles.initial_velocity_min = velocity_len * 1.2
+	glass_particles.initial_velocity_max = velocity_len * 1.4
+	glass_particles.restart()
 
 
 func _update_ammo_count() -> void:

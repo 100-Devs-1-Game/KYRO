@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb4clyud68dn1"]
+
+[ext_resource type="Script" uid="uid://bmncn0f80tqlo" path="res://scenes/level/props/glass/glass.gd" id="1_jkcyt"]
+
+[node name="Glass" type="Area3D"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_jkcyt")

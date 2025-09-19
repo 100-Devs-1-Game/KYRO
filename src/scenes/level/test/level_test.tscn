@@ -1,15 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://duxaw5j5vtg2r"]
+[gd_scene load_steps=8 format=3 uid="uid://duxaw5j5vtg2r"]
 
 [ext_resource type="PackedScene" uid="uid://btres5r46w8pd" path="res://scenes/player/player.tscn" id="1_7f8j5"]
 [ext_resource type="PackedScene" uid="uid://dvtl8l6g0xsfb" path="res://scenes/enemy/enemy.tscn" id="2_vk03a"]
 [ext_resource type="PackedScene" uid="uid://cyv2clj4b5wld" path="res://scenes/pickup/gun/pistol_pickup.tscn" id="3_5r3of"]
 [ext_resource type="PackedScene" uid="uid://dq7vudt7py1yb" path="res://scenes/pickup/ammo/ammo_pickup.tscn" id="4_rivyd"]
 [ext_resource type="PackedScene" uid="uid://cyj4tbfkmoa08" path="res://scenes/level/props/finish_line/finish_line.tscn" id="5_vk03a"]
+[ext_resource type="PackedScene" uid="uid://bb4clyud68dn1" path="res://scenes/level/props/glass/glass.tscn" id="6_5r3of"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rivyd"]
+size = Vector3(6.82166, 3.70123, 0.249023)
 
 [node name="Level" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_7f8j5")]
 floor_constant_speed = true
+forward_speed = 20.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.283351, -0.798142, -0.531679, -0.553319, -0.588876, 0.589121, -0.783295, 0.12726, -0.608485, 0, 9.48541, 0)
@@ -42,9 +47,9 @@ use_collision = true
 size = Vector3(18.3342, 8.52261, 1)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Level"]
-transform = Transform3D(0.999946, 0, 0.0104546, 0, 1, 0, -0.0104546, 0, 0.999946, -0.349941, 2.07908, -63.0822)
+transform = Transform3D(0.999946, 0, 0.0104546, 0, 1, 0, -0.0104546, 0, 0.999946, -0.123136, 0.3288, -41.3891)
 use_collision = true
-size = Vector3(6.11023, 0.772062, 62.3632)
+size = Vector3(6.11023, 0.772062, 18.9746)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.24928, 2.14895, -126.012)
@@ -82,5 +87,13 @@ transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, -1.80334, 0.05, -92.241
 
 [node name="FinishLine" parent="Level" instance=ExtResource("5_vk03a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.344, -193.173)
+
+[node name="Glass" parent="Level" instance=ExtResource("6_5r3of")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.138204, 0.714831, -41.0481)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Glass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.394226, 1.86728, -0.375488)
+shape = SubResource("BoxShape3D_rivyd")
+debug_color = Color(0.898, 0.315, 0, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
