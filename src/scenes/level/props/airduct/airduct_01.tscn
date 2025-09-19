@@ -4,10 +4,10 @@
 [ext_resource type="Material" uid="uid://cmvhxo7u4uv4s" path="res://assets/materials/props/airduct/airduct.tres" id="2_gb0c6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aslsm"]
-size = Vector3(0.674255, 0.487549, 3.02478)
+size = Vector3(0.674255, 0.2547, 3.02478)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gb0c6"]
-size = Vector3(0.674255, 0.74762, 0.47403)
+size = Vector3(0.674, 1, 0.308)
 
 [node name="airduct_01" instance=ExtResource("1_aslsm")]
 
@@ -15,13 +15,13 @@ size = Vector3(0.674255, 0.74762, 0.47403)
 surface_material_override/0 = ExtResource("2_gb0c6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00326538, 1.01491, 0.00994873)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.131, 0.01)
 shape = SubResource("BoxShape3D_aslsm")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00326538, 0.397422, -1.26504)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515, -1.365)
 shape = SubResource("BoxShape3D_gb0c6")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00326538, 0.397422, 1.28208)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515, 1.365)
 shape = SubResource("BoxShape3D_gb0c6")
