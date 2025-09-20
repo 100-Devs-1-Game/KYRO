@@ -77,7 +77,7 @@ func can_wallride() -> bool:
 func get_modal_basic_state() -> State:
 	if owner.is_on_floor():
 		return owner.state_walk
-	if owner.velocity.y > 0:
+	if owner.state_commons.get_vector_axis(owner.velocity, owner.basis.y) > 0:
 		return owner.state_jump
 	return owner.state_fall
 
@@ -107,7 +107,7 @@ func set_vector_axis(vector:Vector3, axis:Vector3, value:float) -> Vector3:
 
 
 ## Sets a vector axis to the value and returns the result.
-func get_vector_axis(vector:Vector3, axis:Vector3, value:float) -> Vector3:
+func get_vector_axis(vector:Vector3, axis:Vector3) -> Vector3:
 	return vector.project(axis)
 
 

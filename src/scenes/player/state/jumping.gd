@@ -5,6 +5,10 @@ extends State
 @export var forward_damping_mod:float = 0.5
 @export var strafe_damping_mod:float = 0.3
 
+@export_group("State Connectons", "state_")
+@export var state_walk:State
+@export var state_fall:State
+
 
 var jump_coyote_time:float = 0.0
 
@@ -21,10 +25,9 @@ func _state_process(delta: float) -> void:
 
 func _state_physics_process(delta: float) -> void:
 	if Input.is_action_just_released("ui_accept"):
-		var falling:State = $"../Falling"
 		owner.velocity = owner.state_commons.dampen_vector_axis(owner.velocity, owner.global_basis.y, 2.0)
-		machine.to_state(falling)
-		falling._state_physics_process(delta)
+		machine.to_state(state_fall)
+		state_fall._state_physics_process(delta)
 		return
 	
 	owner.state_commons.do_damping(delta * damping_delta_mod)
@@ -38,13 +41,13 @@ func _state_physics_process(delta: float) -> void:
 	owner.state_commons.do_post_slide_updates(delta)
 	
 	if owner.state_commons.can_wallride():
-		machine.to_state($"../Wallride")
+		machine.to_state(state_walk)
 	
 	if owner.is_on_floor():
-		machine.to_state($"../Walk")
+		machine.to_state(state_walk)
 		return
-	elif owner.velocity.y < 0:
-		machine.to_state($"../Falling")
+	elif owner.state_commons.get_vector_axis(owner.velocity, owner.basis.y) > 0:
+		machine.to_state(state_fall)
 
 
 func _state_exited() -> void:

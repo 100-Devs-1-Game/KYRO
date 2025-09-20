@@ -5,6 +5,7 @@ extends State
 @export var strafe_damping_mod:float = 0.4
 
 @export_group("State Connectons", "state_")
+@export var state_walk:State
 @export var state_jump:State
 
 
@@ -32,7 +33,7 @@ func _state_physics_process(delta: float) -> void:
 	owner.state_commons.do_post_slide_updates(delta)
 	
 	if owner.is_on_floor():
-		machine.to_state($"../Walk")
+		machine.to_state(state_walk)
 		return
 
 
