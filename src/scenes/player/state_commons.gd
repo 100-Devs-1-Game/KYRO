@@ -54,10 +54,10 @@ func do_post_slide_updates() -> void:
 	owner.wallride_axis = 0
 	for i in owner.get_slide_collision_count():
 		var collision: KinematicCollision3D = owner.get_slide_collision(i)
-		var dot := Vector3.LEFT.dot(collision.get_normal())
+		var dot:float = owner.global_basis.x.dot(collision.get_normal())
 		if absf(dot) > absf(owner.wallride_axis):
 			owner.wallride_axis = dot
-		dot = Vector3.FORWARD.dot(collision.get_normal())
+		dot = (-owner.global_basis.z).dot(collision.get_normal())
 		if absf(dot) > FORWARD_NORMAL_THRESHOLD:
 			owner.state_machine.to_state(owner.state_dying)
 
