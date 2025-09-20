@@ -22,7 +22,7 @@ func do_forward_movement(delta: float) -> void:
 		owner.boost = min(owner.boost + owner.boost_regen * delta, owner.boost_max)
 	boost_axis += 1.0
 	
-	owner.velocity = -owner.global_basis.x \
+	owner.velocity += -owner.global_basis.z \
 			* owner.forward_speed * boost_axis * delta * owner.forward_damping
 
 
