@@ -29,7 +29,7 @@ func _state_physics_process(delta: float) -> void:
 	owner.move_and_slide()
 	state_jump.do_coyote_time(delta)
 	
-	owner.state_commons.do_post_slide_updates()
+	owner.state_commons.do_post_slide_updates(delta)
 	
 	if owner.is_on_floor():
 		machine.to_state($"../Walk")

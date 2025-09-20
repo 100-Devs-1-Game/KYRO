@@ -43,7 +43,7 @@ func _state_physics_process(delta: float) -> void:
 	
 	owner.move_and_slide()
 	
-	owner.state_commons.do_post_slide_updates()
+	owner.state_commons.do_post_slide_updates(delta)
 	
 	wallride_time += delta
 	if not owner.state_commons.can_wallride():

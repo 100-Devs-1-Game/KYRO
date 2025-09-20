@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbb8swubgkkuf"]
+
+[ext_resource type="Script" uid="uid://d1h4om4iags5x" path="res://globals/components/turn_zone/turn_zone.gd" id="1_2sn1r"]
+
+[node name="TurnZone" type="Area3D"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_2sn1r")

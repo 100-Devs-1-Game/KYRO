@@ -55,7 +55,7 @@ func _state_physics_process(delta: float) -> void:
 	owner.move_and_slide()
 	state_jump.do_coyote_time(delta)
 	
-	owner.state_commons.do_post_slide_updates()
+	owner.state_commons.do_post_slide_updates(delta)
 	
 	if not can_crouch():
 		machine.to_state(state_walk)

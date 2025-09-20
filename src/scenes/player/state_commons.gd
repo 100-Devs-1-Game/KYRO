@@ -1,6 +1,6 @@
 extends RefCounted
 
-
+const ROTATION_SPEED:float = 3.0
 const FORWARD_NORMAL_THRESHOLD:float = 0.9
 
 
@@ -50,7 +50,7 @@ func do_damping(delta: float) -> void:
 	)
 
 
-func do_post_slide_updates() -> void:
+func do_post_slide_updates(delta:float) -> void:
 	owner.wallride_axis = 0
 	for i in owner.get_slide_collision_count():
 		var collision: KinematicCollision3D = owner.get_slide_collision(i)
@@ -60,6 +60,14 @@ func do_post_slide_updates() -> void:
 		dot = (-owner.global_basis.z).dot(collision.get_normal())
 		if absf(dot) > FORWARD_NORMAL_THRESHOLD:
 			owner.state_machine.to_state(owner.state_dying)
+	
+	var quat_rotation = Quaternion.from_euler(owner.rotation)
+	if not quat_rotation.is_equal_approx(owner.target_rotation):
+		quat_rotation = quat_rotation.slerp(
+			owner.target_rotation, delta * ROTATION_SPEED
+		)
+		owner.rotation = quat_rotation.get_euler()
+		owner.up_direction = quat_rotation * Vector3.UP
 
 
 func can_wallride() -> bool:
@@ -93,10 +101,10 @@ func dampen_vector_axis(vector:Vector3, axis:Vector3, damp:float) -> Vector3:
 
 ## Sets a vector axis to the value and returns the result.
 func set_vector_axis(vector:Vector3, axis:Vector3, value:float) -> Vector3:
-	print("")
 	vector -= vector.project(axis)
 	vector += axis * value
 	return vector
+
 
 ## Sets a vector axis to the value and returns the result.
 func get_vector_axis(vector:Vector3, axis:Vector3, value:float) -> Vector3:

@@ -35,7 +35,7 @@ func _state_physics_process(delta: float) -> void:
 	owner.move_and_slide()
 	do_coyote_time(delta)
 	
-	owner.state_commons.do_post_slide_updates()
+	owner.state_commons.do_post_slide_updates(delta)
 	
 	if owner.state_commons.can_wallride():
 		machine.to_state($"../Wallride")
