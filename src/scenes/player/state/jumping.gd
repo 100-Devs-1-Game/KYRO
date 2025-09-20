@@ -22,7 +22,7 @@ func _state_process(delta: float) -> void:
 func _state_physics_process(delta: float) -> void:
 	if Input.is_action_just_released("ui_accept"):
 		var falling:State = $"../Falling"
-		owner.velocity.y /= 2.0
+		owner.state_commons.dampen_vector_axis(owner.velocity, owner.global_basis.y, 2.0)
 		machine.to_state(falling)
 		falling._state_physics_process(delta)
 		return

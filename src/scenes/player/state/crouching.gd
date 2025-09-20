@@ -24,7 +24,7 @@ var slide_cooldown:float = 0.0
 
 
 func _state_entered() -> void:
-	owner.velocity += owner.state_commons.get_forward_floor_normal() * inital_forward_boost
+	owner.velocity += -owner.global_basis.z * inital_forward_boost
 	owner.forward_damping *= forward_damping_mod
 	owner.strafe_damping *= strafe_damping_mod
 	owner.animation_player.play(&"crouch_down")
@@ -48,8 +48,9 @@ func _state_physics_process(delta: float) -> void:
 	owner.state_commons.do_damping(delta)
 	owner.state_commons.do_gravity(delta)
 	
-	var floor_degree:float = Vector3.FORWARD.dot(owner.get_floor_normal())
-	owner.velocity += owner.state_commons.get_forward_floor_normal() * floor_degree * slope_forward_boost * delta
+	# TODO: The math on this line is not checking out
+	var floor_degree:float = -owner.global_basis.z.dot(owner.get_floor_normal())
+	owner.velocity += -owner.global_basis.z * floor_degree * slope_forward_boost * delta
 	
 	owner.move_and_slide()
 	state_jump.do_coyote_time(delta)

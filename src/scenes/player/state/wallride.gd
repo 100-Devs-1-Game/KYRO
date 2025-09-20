@@ -16,7 +16,7 @@ var wallride_time:float = 0.0
 
 func _state_entered() -> void:
 	wallride_time = 0
-	owner.velocity.y /= 1.5
+	owner.velocity = owner.state_commons.dampen_vector_axis(owner.velocity, owner.global_basis.y, 1.5)
 
 
 func _state_process(delta: float) -> void:
@@ -25,7 +25,11 @@ func _state_process(delta: float) -> void:
 
 func _state_physics_process(delta: float) -> void:
 	if state_jump.jump_wanted():
-		owner.velocity.x = jump_impulse * -roundf(owner.wallride_axis)
+		owner.velocity = owner.state_commons.set_vector_axis(
+			owner.velocity, 
+			owner.global_basis.x, 
+			jump_impulse * -roundf(owner.wallride_axis)
+		)
 		state_jump.jump()
 		return
 	
