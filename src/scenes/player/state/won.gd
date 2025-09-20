@@ -6,6 +6,8 @@ func _state_entered() -> void:
 	owner.game_over.visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	%GameOverLabel.text = "YOU WON"
+	%YourTime.text = "YOUR TIME: %s" % %Time.time
+	%YourTime.visible = true
 
 
 func _state_process(delta: float) -> void:
