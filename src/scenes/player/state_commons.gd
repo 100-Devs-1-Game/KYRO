@@ -36,7 +36,6 @@ func do_gravity(delta: float) -> void:
 
 
 func do_damping(delta: float) -> void:
-	var inp:Vector3 = owner.velocity
 	# Forward damp
 	owner.velocity = dampen_vector_axis(
 			owner.velocity, 
@@ -49,13 +48,6 @@ func do_damping(delta: float) -> void:
 			owner.global_basis.x, 
 			1 + owner.strafe_damping * delta
 	)
-	if owner.velocity.y != inp.y:
-		print("WUH OH")
-	
-	inp.z /= 1 + (owner.forward_damping * delta)
-	inp.x /= 1 + (owner.strafe_damping * delta)
-	if not owner.velocity.is_equal_approx(inp):
-		print("WUH OH TWO!!")
 
 
 func do_post_slide_updates() -> void:
