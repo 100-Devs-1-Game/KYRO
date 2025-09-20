@@ -22,7 +22,7 @@ func _state_process(delta: float) -> void:
 func _state_physics_process(delta: float) -> void:
 	if Input.is_action_just_released("ui_accept"):
 		var falling:State = $"../Falling"
-		owner.state_commons.dampen_vector_axis(owner.velocity, owner.global_basis.y, 2.0)
+		owner.velocity = owner.state_commons.dampen_vector_axis(owner.velocity, owner.global_basis.y, 2.0)
 		machine.to_state(falling)
 		falling._state_physics_process(delta)
 		return
@@ -90,5 +90,7 @@ func jump_wanted() -> bool:
 ## Performs a standard jump
 func jump() -> void:
 	jump_coyote_time = 0
-	owner.velocity.y = owner.jump_strength
+	owner.velocity = \
+	owner.state_commons.set_vector_axis(
+		owner.velocity, owner.global_basis.y, owner.jump_strength)
 	machine.to_state(self)

@@ -50,7 +50,7 @@ func _state_physics_process(delta: float) -> void:
 	
 	# TODO: The math on this line is not checking out
 	var floor_degree:float = -owner.global_basis.z.dot(owner.get_floor_normal())
-	owner.velocity += -owner.global_basis.z * floor_degree * slope_forward_boost * delta
+	owner.velocity += owner.state_commons.get_forward_floor_normal() * floor_degree * slope_forward_boost * delta
 	
 	owner.move_and_slide()
 	state_jump.do_coyote_time(delta)

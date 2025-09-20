@@ -22,7 +22,7 @@ func do_forward_movement(delta: float) -> void:
 		owner.boost = min(owner.boost + owner.boost_regen * delta, owner.boost_max)
 	boost_axis += 1.0
 	
-	owner.velocity += -owner.global_basis.z \
+	owner.velocity += get_forward_floor_normal() \
 			* owner.forward_speed * boost_axis * delta * owner.forward_damping
 
 
@@ -36,6 +36,7 @@ func do_gravity(delta: float) -> void:
 
 
 func do_damping(delta: float) -> void:
+	var inp:Vector3 = owner.velocity
 	# Forward damp
 	owner.velocity = dampen_vector_axis(
 			owner.velocity, 
@@ -48,6 +49,13 @@ func do_damping(delta: float) -> void:
 			owner.global_basis.x, 
 			1 + owner.strafe_damping * delta
 	)
+	if owner.velocity.y != inp.y:
+		print("WUH OH")
+	
+	inp.z /= 1 + (owner.forward_damping * delta)
+	inp.x /= 1 + (owner.strafe_damping * delta)
+	if not owner.velocity.is_equal_approx(inp):
+		print("WUH OH TWO!!")
 
 
 func do_post_slide_updates() -> void:
@@ -93,6 +101,21 @@ func dampen_vector_axis(vector:Vector3, axis:Vector3, damp:float) -> Vector3:
 
 ## Sets a vector axis to the value and returns the result.
 func set_vector_axis(vector:Vector3, axis:Vector3, value:float) -> Vector3:
+	print("")
 	vector -= vector.project(axis)
 	vector += axis * value
 	return vector
+
+## Sets a vector axis to the value and returns the result.
+func get_vector_axis(vector:Vector3, axis:Vector3, value:float) -> Vector3:
+	return vector.project(axis)
+
+
+## gets the forward-pointing normal parallel to the floor slope. If the player isn't on
+## a floor, returns the basis forward instead.
+func get_forward_floor_normal() -> Vector3:
+	if not owner.is_on_floor():
+		return -owner.global_basis.z
+	# This sucks and projection is probably technically more correct but I don't. Care.
+	var fwd:Vector3 = owner.get_floor_normal().slide(owner.global_basis.x).rotated(owner.global_basis.x, -PI/2)
+	return fwd
