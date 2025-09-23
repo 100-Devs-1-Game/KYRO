@@ -46,7 +46,7 @@ func _state_physics_process(delta: float) -> void:
 	if owner.is_on_floor():
 		machine.to_state(state_walk)
 		return
-	elif owner.state_commons.get_vector_axis_value(owner.velocity, owner.global_basis.y) > 0:
+	elif owner.state_commons.get_vector_axis_value(owner.velocity, owner.global_basis.y) < 0:
 		machine.to_state(state_fall)
 
 

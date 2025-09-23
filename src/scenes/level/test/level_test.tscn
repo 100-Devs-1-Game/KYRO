@@ -14,8 +14,7 @@ size = Vector3(6.82166, 3.70123, 0.249023)
 [node name="Level" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_7f8j5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19066, -3.69524)
-floor_constant_speed = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.21688, -3.69524)
 forward_speed = 20.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://djrepf05y4g7q"]
+[gd_scene load_steps=20 format=3 uid="uid://djrepf05y4g7q"]
 
 [ext_resource type="PackedScene" uid="uid://btres5r46w8pd" path="res://scenes/player/player.tscn" id="2_c0vq0"]
 [ext_resource type="Texture2D" uid="uid://dkdehkcqve0rt" path="res://assets/textures/sky/qwantani_noon_puresky.hdr" id="2_n68hn"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dvtl8l6g0xsfb" path="res://scenes/enemy/enemy.tscn" id="4_b853s"]
 [ext_resource type="PackedScene" uid="uid://cyv2clj4b5wld" path="res://scenes/pickup/gun/pistol_pickup.tscn" id="5_87h7l"]
 [ext_resource type="PackedScene" uid="uid://dq7vudt7py1yb" path="res://scenes/pickup/ammo/ammo_pickup.tscn" id="5_b853s"]
+[ext_resource type="PackedScene" uid="uid://bb4clyud68dn1" path="res://scenes/level/props/glass/glass.tscn" id="7_ehdx8"]
 [ext_resource type="PackedScene" uid="uid://cyj4tbfkmoa08" path="res://scenes/level/props/finish_line/finish_line.tscn" id="9_u3o4i"]
 [ext_resource type="Texture2D" uid="uid://c5dhhsq0vmq8p" path="res://assets/textures/decals/decal_01.png" id="11_u3o4i"]
 [ext_resource type="PackedScene" uid="uid://cq1qhy4o12l4l" path="res://scenes/pickup/boost/boost_pickup.tscn" id="12_0vkh5"]
@@ -23,6 +24,9 @@ sky_material = SubResource("PanoramaSkyMaterial_1l6au")
 [sub_resource type="Environment" id="Environment_u3o4i"]
 background_mode = 2
 sky = SubResource("Sky_kt6cu")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0vkh5"]
+size = Vector3(9, 4.3, 0.05)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ehdx8"]
 
@@ -111,7 +115,7 @@ size = Vector3(1, 5, 17.1573)
 material = ExtResource("3_c0vq0")
 
 [node name="IntroM" type="CSGBox3D" parent="Geometry/Intro"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48462, -29.7145)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.55298, -29.7145)
 use_collision = true
 size = Vector3(2, 3.03076, 1.097)
 material = ExtResource("3_c0vq0")
@@ -188,6 +192,14 @@ operation = 2
 calculate_tangents = false
 use_collision = true
 size = Vector3(9.15942, 12, 13.9459)
+
+[node name="Glass" parent="Geometry/Buldings/Building" instance=ExtResource("7_ehdx8")]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, -0.541648, -7.41589)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Buldings/Building/Glass"]
+transform = Transform3D(1, 0, 0, 0, 1, -7.45058e-09, 0, 7.45058e-09, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_0vkh5")
+debug_color = Color(0, 0, 0, 1)
 
 [node name="Building2" type="CSGBox3D" parent="Geometry/Buldings"]
 transform = Transform3D(1, 0, 0, 0, 0.997552, -0.0697554, 0, 0.0697554, 0.997552, 0, -0.584293, -41.8437)
