@@ -20,7 +20,7 @@ func _state_entered() -> void:
 
 
 func _state_process(delta: float) -> void:
-	owner.camera.rotation.z = roundf(owner.wallride_axis) * WALLRIDE_CAMERA_ROLL
+	owner.camera.rotation.z = -roundf(owner.wallride_axis) * WALLRIDE_CAMERA_ROLL
 
 
 func _state_physics_process(delta: float) -> void:
@@ -28,7 +28,7 @@ func _state_physics_process(delta: float) -> void:
 		owner.velocity = owner.state_commons.set_vector_axis(
 			owner.velocity, 
 			owner.global_basis.x, 
-			jump_impulse * -roundf(owner.wallride_axis)
+			jump_impulse * roundf(owner.wallride_axis)
 		)
 		state_jump.jump()
 		return

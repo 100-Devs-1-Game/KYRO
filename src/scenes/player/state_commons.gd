@@ -1,6 +1,6 @@
 extends RefCounted
 
-const ROTATION_SPEED:float = 3.0
+const ROTATION_SPEED:float = 5
 const FORWARD_NORMAL_THRESHOLD:float = 0.9
 
 
