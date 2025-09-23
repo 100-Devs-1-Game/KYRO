@@ -249,6 +249,8 @@ metadata/_custom_type_script = "uid://c4wduh2exufqe"
 [node name="Crouching" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_jump", "state_walk")]
 unique_name_in_owner = true
 script = ExtResource("7_5gtgg")
+slope_forward_boost = 150.0
+strafe_damping_mod = 2.0
 state_jump = NodePath("../Jumping")
 state_walk = NodePath("../Walk")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
