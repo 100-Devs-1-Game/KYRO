@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://dvtl8l6g0xsfb"]
 
-[ext_resource type="Script" uid="uid://caajfjxu1st41" path="res://globals/components/hurtbox/hurtbox.gd" id="1_4a83h"]
 [ext_resource type="Script" uid="uid://c0y5tb4ny2n70" path="res://scenes/enemy/enemy.gd" id="1_40wdo"]
 [ext_resource type="Script" uid="uid://cj74wherkwvp7" path="res://globals/components/health_component/health_component.gd" id="1_a3pup"]
+[ext_resource type="PackedScene" uid="uid://ci3sbjj5o7kg8" path="res://globals/components/hurtbox/hurtbox.tscn" id="4_gl05p"]
 [ext_resource type="PackedScene" uid="uid://dt51po4yy3afv" path="res://assets/models/enemy/enemy.gltf" id="4_tjssy"]
 [ext_resource type="PackedScene" uid="uid://be6sqao35j608" path="res://globals/components/kill_zone/kill_zone.tscn" id="5_gl05p"]
 
@@ -32,9 +32,9 @@ script = ExtResource("1_40wdo")
 script = ExtResource("1_a3pup")
 metadata/_custom_type_script = "uid://cj74wherkwvp7"
 
-[node name="Hurtbox" type="Area3D" parent="."]
-script = ExtResource("1_4a83h")
-metadata/_custom_type_script = "uid://caajfjxu1st41"
+[node name="Enemy" parent="." instance=ExtResource("4_tjssy")]
+
+[node name="Hurtbox" parent="." instance=ExtResource("4_gl05p")]
 
 [node name="BodyCollider" type="CollisionShape3D" parent="Hurtbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.674, -0.114)
@@ -60,17 +60,10 @@ shape = SubResource("BoxShape3D_nbhyu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.316434, 0.612593, -0.251877)
 shape = SubResource("BoxShape3D_nbhyu")
 
-[node name="HeadHurtbox" type="Area3D" parent="."]
-script = ExtResource("1_4a83h")
-damage_multiplier = 2.0
-metadata/_custom_type_script = "uid://caajfjxu1st41"
-
-[node name="HeadCollider" type="CollisionShape3D" parent="HeadHurtbox"]
+[node name="HeadCollider" type="CollisionShape3D" parent="Hurtbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00296631, 2.2974, -0.178097)
 shape = SubResource("BoxShape3D_tjssy")
 debug_color = Color(0.986348, 0, 0.324526, 0.42)
-
-[node name="Enemy" parent="." instance=ExtResource("4_tjssy")]
 
 [node name="KillZone" parent="." instance=ExtResource("5_gl05p")]
 

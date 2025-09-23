@@ -280,7 +280,6 @@ unique_name_in_owner = true
 enabled = false
 target_position = Vector3(0, 0, -300)
 collision_mask = 3
-collide_with_areas = true
 
 [node name="Arm" parent="Head/Camera3D" instance=ExtResource("8_qek5x")]
 unique_name_in_owner = true

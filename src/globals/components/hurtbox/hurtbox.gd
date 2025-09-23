@@ -1,6 +1,6 @@
 @icon("res://globals/components/hurtbox/hitbox_3d.svg")
 class_name Hurtbox
-extends Area3D
+extends StaticBody3D
 
 
 signal took_damage(damage:int)
