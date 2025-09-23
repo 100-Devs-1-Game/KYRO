@@ -115,7 +115,7 @@ size = Vector3(1, 5, 17.1573)
 material = ExtResource("3_c0vq0")
 
 [node name="IntroM" type="CSGBox3D" parent="Geometry/Intro"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.55298, -29.7145)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48462, -29.7145)
 use_collision = true
 size = Vector3(2, 3.03076, 1.097)
 material = ExtResource("3_c0vq0")
