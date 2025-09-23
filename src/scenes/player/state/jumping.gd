@@ -7,6 +7,7 @@ extends State
 
 @export_group("State Connectons", "state_")
 @export var state_walk:State
+@export var state_wallride:State
 @export var state_fall:State
 
 
@@ -41,7 +42,7 @@ func _state_physics_process(delta: float) -> void:
 	owner.state_commons.do_post_slide_updates(delta)
 	
 	if owner.state_commons.can_wallride():
-		machine.to_state(state_walk)
+		machine.to_state(state_wallride)
 	
 	if owner.is_on_floor():
 		machine.to_state(state_walk)

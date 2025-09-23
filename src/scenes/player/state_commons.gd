@@ -52,6 +52,7 @@ func do_damping(delta: float) -> void:
 
 func do_post_slide_updates(delta:float) -> void:
 	owner.wallride_axis = 0
+	
 	for i in owner.get_slide_collision_count():
 		var collision: KinematicCollision3D = owner.get_slide_collision(i)
 		var dot:float = owner.global_basis.x.dot(collision.get_normal())
@@ -71,7 +72,7 @@ func do_post_slide_updates(delta:float) -> void:
 
 
 func can_wallride() -> bool:
-	return abs(owner.wallride_axis * PI) > owner.wallride_angle_tolerance
+	return absf(owner.wallride_axis * PI) > owner.wallride_angle_tolerance
 
 
 func get_modal_basic_state() -> State:
