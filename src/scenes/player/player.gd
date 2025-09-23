@@ -83,6 +83,7 @@ var bullet_tracer_point:Marker3D
 
 
 func _ready() -> void:
+	target_rotation = Quaternion.from_euler(rotation)
 	boost = boost_max
 	instance = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
