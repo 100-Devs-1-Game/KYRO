@@ -6,6 +6,9 @@ signal restart_requested()
 signal to_menu_requested()
 
 
+const CAMERA_X_ROT_MAX:float = PI*9/20
+
+
 const STATE_COMMONS:Script = preload("res://scenes/player/state_commons.gd")
 const STATE_COMMONS_RAILS:Script = preload("res://scenes/player/state_commons_rails.gd")
 const TRACER_SCENE:PackedScene = preload("res://scenes/gun/tracer/bullet_tracer.tscn")
@@ -106,6 +109,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion:
 		head.rotation.y -= event.relative.x * sensitivity
 		camera.rotation.x -= event.relative.y * sensitivity
+		camera.rotation.x = clampf(camera.rotation.x, -CAMERA_X_ROT_MAX, CAMERA_X_ROT_MAX)
 		get_viewport().set_input_as_handled()
 		return
 
