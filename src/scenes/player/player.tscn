@@ -204,6 +204,8 @@ point_count = 2
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 4
+floor_stop_on_slope = false
+floor_constant_speed = true
 floor_snap_length = 0.2
 safe_margin = 0.002
 script = ExtResource("1_8afob")
@@ -228,6 +230,7 @@ metadata/_custom_type_script = "uid://c4wduh2exufqe"
 [node name="Jumping" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_walk", "state_wallride", "state_fall")]
 unique_name_in_owner = true
 script = ExtResource("4_lvxji")
+damping_delta_mod = 0.9
 state_walk = NodePath("../Walk")
 state_wallride = NodePath("../Wallride")
 state_fall = NodePath("../Falling")
