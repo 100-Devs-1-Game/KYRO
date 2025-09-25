@@ -10,6 +10,7 @@ var amount_to_reload:int = 0
 
 
 func _state_entered() -> void:
+	owner.reload_player.play()
 	reload_time = owner.reload_time
 	amount_to_reload = get_amount_to_reload()
 	owner.animation_reload_requested.emit(reload_time, amount_to_reload)

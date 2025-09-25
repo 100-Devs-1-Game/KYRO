@@ -24,6 +24,7 @@ var reserve_ammo:int = 1
 
 @onready var state_machine:StateMachine = $StateMachine
 @onready var gunshot_player:AudioStreamPlayer = $GunshotPlayer
+@onready var reload_player:AudioStreamPlayer = $ReloadPlayer
 
 
 func load_data(data:GunData) -> void:

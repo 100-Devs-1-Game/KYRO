@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dolikj2gdhqhr"]
+[gd_scene load_steps=8 format=3 uid="uid://dolikj2gdhqhr"]
 
 [ext_resource type="Script" uid="uid://cq3qkdy50nfmp" path="res://scenes/player/gun_manager/gun_manager.gd" id="1_imdpj"]
 [ext_resource type="Script" uid="uid://bshjfjpv4fojd" path="res://globals/components/state_machine/state_machine.gd" id="2_gt4vg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://3exqcpf8jk8b" path="res://scenes/player/gun_manager/state/idle.gd" id="4_imdpj"]
 [ext_resource type="Script" uid="uid://bbojjtguupu3l" path="res://scenes/player/gun_manager/state/firing.gd" id="5_gt4vg"]
 [ext_resource type="AudioStream" uid="uid://di6rtgb84ya74" path="res://assets/audio/gun/pistol_shot.mp3" id="6_xsnig"]
+[ext_resource type="AudioStream" uid="uid://blrp5qeb0vc8c" path="res://assets/audio/gun/pistol_reload.wav" id="7_ovfd5"]
 
 [node name="GunManager" type="Node"]
 script = ExtResource("1_imdpj")
@@ -33,3 +34,6 @@ metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
 [node name="GunshotPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_xsnig")
+
+[node name="ReloadPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ovfd5")
