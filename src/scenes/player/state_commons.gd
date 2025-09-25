@@ -32,7 +32,8 @@ func do_strafe_movement(delta: float) -> void:
 
 
 func do_gravity(delta: float) -> void:
-	owner.velocity += owner.get_gravity() * delta
+	if not owner.is_on_floor():
+		owner.velocity += owner.get_gravity() * delta
 
 
 func do_damping(delta: float) -> void:
