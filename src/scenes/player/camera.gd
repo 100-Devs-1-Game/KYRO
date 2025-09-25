@@ -7,6 +7,7 @@ extends Camera3D
 @export var shake_trauma_max:float = 2
 @export var shake_rotation_max:Vector3 = Vector3(PI, PI, 0.0)
 @export var shake_offset_max:Vector2 = Vector2(0.05, 0.05)
+
 @export_group("Fov effect", "fov_")
 ## The maximum that the effect approaches
 @export_range(0.0, 179.0, 0.1, "suffix:°") var fov_effect_increase:float = 25.0
@@ -41,11 +42,11 @@ func _process(delta: float) -> void:
 
 
 func _recalculate_fov_effect() -> void:
-	var forward_speed_normalized:float = \
+	var forward_speed:float = \
 			(owner.velocity).dot(-owner.global_basis.z)
-	forward_speed_normalized = minf(-forward_speed_normalized + fov_effect_start, 0.0)
+	forward_speed = minf(-forward_speed + fov_effect_start, 0.0)
 	
-	target_fov = base_fov + (-fov_effect_exp ** (forward_speed_normalized)) \
+	target_fov = base_fov + (-fov_effect_exp ** (forward_speed)) \
 			* fov_effect_increase + fov_effect_increase
 
 
