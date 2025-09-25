@@ -1,16 +1,32 @@
-[gd_resource type="AudioStreamInteractive" load_steps=3 format=3 uid="uid://1ep2pib8aaal"]
+[gd_resource type="AudioStreamInteractive" load_steps=7 format=3 uid="uid://1ep2pib8aaal"]
 
-[ext_resource type="AudioStream" uid="uid://bq2ty8jvgtsbw" path="res://assets/audio/music/kyro_main_menu.ogg" id="1_hsun8"]
+[ext_resource type="AudioStream" uid="uid://bq2ty8jvgtsbw" path="res://assets/audio/music/main_menu.ogg" id="1_58fqu"]
 [ext_resource type="AudioStream" uid="uid://chu5p576a85cc" path="res://assets/audio/music/tesserakt.ogg" id="2_yqnom"]
+[ext_resource type="AudioStream" uid="uid://k7tb8lmthft2" path="res://assets/audio/music/metropolis.wav" id="3_bfhp1"]
+[ext_resource type="AudioStream" uid="uid://ieoi35tumjxc" path="res://assets/audio/music/detroit_swagger.wav" id="4_33sp0"]
+[ext_resource type="AudioStream" uid="uid://ctdig3qn1ulfb" path="res://assets/audio/music/polyeconomics.wav" id="5_bt573"]
+[ext_resource type="AudioStream" uid="uid://qmpr8lb2dtma" path="res://assets/audio/music/rock_n_booze.wav" id="6_aixr4"]
 
 [resource]
-clip_count = 2
+clip_count = 6
 clip_0/name = &"Main Menu"
-clip_0/stream = ExtResource("1_hsun8")
+clip_0/stream = ExtResource("1_58fqu")
 clip_0/auto_advance = 0
 clip_1/name = &"Tesserakt"
 clip_1/stream = ExtResource("2_yqnom")
 clip_1/auto_advance = 0
+clip_2/name = &"Metropolis "
+clip_2/stream = ExtResource("3_bfhp1")
+clip_2/auto_advance = 0
+clip_3/name = &"Detroit Swagger"
+clip_3/stream = ExtResource("4_33sp0")
+clip_3/auto_advance = 0
+clip_4/name = &"Polyeconomics"
+clip_4/stream = ExtResource("5_bt573")
+clip_4/auto_advance = 0
+clip_5/name = &"Rock n Booze"
+clip_5/stream = ExtResource("6_aixr4")
+clip_5/auto_advance = 0
 _transitions = {
 Vector2i(-1, -1): {
 "fade_beats": 1.0,
