@@ -70,6 +70,7 @@ var bullet_tracer_point:Marker3D
 @onready var hud:CanvasLayer = %Hud
 @onready var ammo_count:Control = %AmmoCount
 @onready var boost_meter:TextureProgressBar = %Boost
+@onready var speed_count:Label = %SpeedCount
 @onready var game_over:CanvasLayer = %GameOver
 
 @onready var arm_animation_player:AnimationPlayer = $Head/Camera3D/Arm/AnimationPlayer
@@ -95,6 +96,10 @@ func _ready() -> void:
 		state_commons = STATE_COMMONS.new(self)
 	else:
 		state_commons = STATE_COMMONS_RAILS.new(self)
+
+
+func _process(delta: float) -> void:
+	speed_count.text = "%d" % velocity.dot(-global_basis.z)
 
 
 func _unhandled_input(event: InputEvent) -> void:
