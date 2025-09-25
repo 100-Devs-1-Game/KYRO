@@ -19,9 +19,9 @@ func _state_physics_process(delta: float) -> void:
 	if state_crouch.crouchswitch():
 		return
 	
-	owner.state_commons.do_damping(delta)
 	owner.state_commons.do_forward_movement(delta)
 	owner.state_commons.do_strafe_movement(delta)
+	owner.state_commons.do_damping(delta)
 	owner.state_commons.do_gravity(delta)
 	
 	owner.move_and_slide()

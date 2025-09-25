@@ -31,9 +31,9 @@ func _state_physics_process(delta: float) -> void:
 		state_fall._state_physics_process(delta)
 		return
 	
-	owner.state_commons.do_damping(delta * damping_delta_mod)
 	owner.state_commons.do_forward_movement(delta)
 	owner.state_commons.do_strafe_movement(delta)
+	owner.state_commons.do_damping(delta * damping_delta_mod)
 	owner.state_commons.do_gravity(delta)
 	
 	owner.move_and_slide()
