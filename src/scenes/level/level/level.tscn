@@ -33,7 +33,7 @@ size = Vector3(9, 4.3, 0.05)
 [node name="Level" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_c0vq0")]
-forward_speed = 20.0
+forward_speed = 22.0
 
 [node name="Camera & Lights" type="Node3D" parent="."]
 
