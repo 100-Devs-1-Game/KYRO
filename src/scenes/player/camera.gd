@@ -37,7 +37,6 @@ func _process(delta: float) -> void:
 		time += delta
 		shake_trauma /= 1 + shake_trauma_decay * delta
 	_recalculate_fov_effect()
-	print((owner.velocity).dot(-owner.global_basis.z))
 	fov = lerpf(fov, target_fov, delta * fov_effect_speed)
 
 
