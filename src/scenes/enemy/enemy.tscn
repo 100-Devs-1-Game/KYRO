@@ -6,20 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://dt51po4yy3afv" path="res://assets/models/enemy/enemy.gltf" id="4_tjssy"]
 [ext_resource type="PackedScene" uid="uid://be6sqao35j608" path="res://globals/components/kill_zone/kill_zone.tscn" id="5_gl05p"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gl05p"]
-size = Vector3(0.412198, 0.770044, 0.771362)
+[sub_resource type="BoxShape3D" id="BoxShape3D_cwlon"]
+size = Vector3(0.746665, 0.187951, 0.21209)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_13gj6"]
-size = Vector3(1.14413, 0.355475, 0.644348)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_cwlon"]
-size = Vector3(0.279463, 2.08466, 0.21209)
+size = Vector3(0.304, 0.19, 0.201)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nbhyu"]
-size = Vector3(0.209317, 1.35621, 0.342499)
+size = Vector3(0.209317, 1.21436, 0.258476)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tjssy"]
-size = Vector3(0.654224, 0.459723, 0.383423)
+size = Vector3(0.264, 0.315, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gl05p"]
+size = Vector3(0.412198, 0.330634, 0.258514)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_cwlon"]
 height = 2.51611
@@ -36,36 +36,43 @@ metadata/_custom_type_script = "uid://cj74wherkwvp7"
 
 [node name="Hurtbox" parent="." instance=ExtResource("4_gl05p")]
 
-[node name="BodyCollider" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.674, -0.114)
-shape = SubResource("BoxShape3D_gl05p")
-
-[node name="ShouldersCollider" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00162853, 1.85536, -0.177507)
-shape = SubResource("BoxShape3D_13gj6")
-
 [node name="ArmLCollider" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.698, 1.101, -0.252)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56, 1.428, 0.02)
 shape = SubResource("BoxShape3D_cwlon")
+debug_color = Color(1, 0, 0.0666666, 1)
 
 [node name="ArmRCollider" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.705023, 1.10142, -0.243488)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.56, 1.429, 0.02)
 shape = SubResource("BoxShape3D_cwlon")
+debug_color = Color(1, 0, 0.0666666, 1)
+
+[node name="HipsCollider" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00162853, 1.12254, -0.000394009)
+shape = SubResource("BoxShape3D_13gj6")
+debug_color = Color(1, 0, 0.0666666, 1)
 
 [node name="LegLCollider" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.319059, 0.612593, -0.251877)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187432, 0.541668, 0.030331)
 shape = SubResource("BoxShape3D_nbhyu")
+debug_color = Color(1, 0, 0.0666666, 1)
 
 [node name="LegRCollider" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.316434, 0.612593, -0.251877)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.187, 0.542, 0.03)
 shape = SubResource("BoxShape3D_nbhyu")
+debug_color = Color(1, 0, 0.0666666, 1)
 
 [node name="HeadCollider" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00296631, 2.2974, -0.178097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00296631, 1.68203, 0.00543822)
 shape = SubResource("BoxShape3D_tjssy")
-debug_color = Color(0.986348, 0, 0.324526, 0.42)
+debug_color = Color(1, 0, 0.0666666, 1)
+
+[node name="BodyCollider" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.356, -0.0250259)
+shape = SubResource("BoxShape3D_gl05p")
+debug_color = Color(1, 0, 0.0666666, 1)
 
 [node name="KillZone" parent="." instance=ExtResource("5_gl05p")]
+visible = false
 
 [node name="Collider" type="CollisionShape3D" parent="KillZone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00685048, 1.25629, -0.202467)
