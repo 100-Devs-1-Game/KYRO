@@ -1,8 +1,10 @@
 extends State
 ## Rising jump state for player.
 
+@export var extra_jump_boost_cost:float = 1
 @export var damping_delta_mod:float = 1.0
-@export var forward_damping_mod:float = 0.5
+@export var boost_efficacy_mod:float = 1.2
+@export var forward_damping_mod:float = 0.8
 @export var strafe_damping_mod:float = 0.3
 
 @export_group("State Connectons", "state_")
@@ -10,13 +12,13 @@ extends State
 @export var state_wallride:State
 @export var state_fall:State
 
-
+var jumped_this_frame:bool = false
 var jump_coyote_time:float = 0.0
 
 
 func _state_entered() -> void:
 	owner.strafe_damping *= strafe_damping_mod
-	
+	owner.boost_speed_modifier *= boost_efficacy_mod
 	owner.forward_damping *= forward_damping_mod
 
 
@@ -25,6 +27,9 @@ func _state_process(delta: float) -> void:
 
 
 func _state_physics_process(delta: float) -> void:
+	if jumpswitch():
+		return
+	
 	if Input.is_action_just_released("ui_accept"):
 		owner.velocity = owner.state_commons.dampen_vector_axis(owner.velocity, owner.global_basis.y, 2.0)
 		machine.to_state(state_fall)
@@ -49,11 +54,13 @@ func _state_physics_process(delta: float) -> void:
 		return
 	elif owner.state_commons.get_vector_axis_value(owner.velocity, owner.global_basis.y) < 0:
 		machine.to_state(state_fall)
+	jumped_this_frame = false
 
 
 func _state_exited() -> void:
 	owner.strafe_damping /= strafe_damping_mod
 	owner.forward_damping /= forward_damping_mod
+	owner.boost_speed_modifier /= boost_efficacy_mod
 
 
 func do_coyote_time(delta:float) -> void:
@@ -72,7 +79,10 @@ func do_coyote_time(delta:float) -> void:
 ## [/codeblock]
 ## See [method can_jump], [method jump_wanted], and [method jump].
 func jumpswitch() -> bool:
-	if can_jump() and jump_wanted():
+	if (can_jump() or can_extra_jump()) and jump_wanted() and not jumped_this_frame:
+		if (not can_jump()) and can_extra_jump():
+			owner.boost -= extra_jump_boost_cost
+		jumped_this_frame = true
 		jump()
 		machine.to_state(self)
 		 # this is bad practice but I don't really care
@@ -85,6 +95,9 @@ func jumpswitch() -> bool:
 func can_jump() -> bool:
 	return jump_coyote_time > 0.0
 
+
+func can_extra_jump() -> bool:
+	return owner.boost > extra_jump_boost_cost
 
 ## If the player is trying to jump
 func jump_wanted() -> bool:

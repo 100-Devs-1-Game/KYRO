@@ -13,7 +13,7 @@ func _init(p_owner:Node) -> void:
 
 func do_forward_movement(delta: float) -> void:
 	# DO NOT ASK
-	var boost_axis:float = Input.get_axis("ui_down", "ui_up") * owner.boost_speed_modifer
+	var boost_axis:float = Input.get_action_strength(&"boost") * owner.boost_speed_modifier
 	if boost_axis != 0:
 		if owner.boost == 0:
 			boost_axis = 0
@@ -70,6 +70,7 @@ func do_post_slide_updates(delta:float) -> void:
 		)
 		owner.rotation = quat_rotation.get_euler()
 		owner.up_direction = quat_rotation * Vector3.UP
+	owner.velocity = owner.get_real_velocity()
 
 
 func can_wallride() -> bool:

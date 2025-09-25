@@ -6,6 +6,7 @@ const WALLRIDE_CAMERA_ROLL:float = PI/54
 @export var gravity_mod:float = 0.2
 @export var mod_decay_curve:Curve # TODO: this should probably be baked
 @export var jump_impulse:float = 30
+@export var jump_forward_impulse:float = 8
 
 @export_group("State Connectons", "state_")
 @export var state_jump:State
@@ -29,6 +30,11 @@ func _state_physics_process(delta: float) -> void:
 			owner.velocity, 
 			owner.global_basis.x, 
 			jump_impulse * roundf(owner.wallride_axis)
+		)
+		owner.velocity = owner.state_commons.set_vector_axis(
+			owner.velocity,
+			-owner.global_basis.z,
+			jump_forward_impulse + owner.state_commons.get_vector_axis_value(owner.velocity, -owner.global_basis.z)
 		)
 		state_jump.jump()
 		return

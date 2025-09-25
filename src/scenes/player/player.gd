@@ -23,7 +23,7 @@ static var instance:Player
 @export var forward_speed:float = 10
 @export var boost_max:float = 3
 @export var boost_regen:float = 0.2
-@export_range(0.0, 1.0, 0.01, "or_greater") var boost_speed_modifer:float = 0.4
+@export_range(0.0, 1.0, 0.01, "or_greater") var boost_speed_modifier:float = 0.4
 @export var strafe_speed: float = 12
 @export var forward_damping: float = 8.0
 @export var strafe_damping: float = 10.0
