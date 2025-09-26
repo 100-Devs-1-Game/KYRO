@@ -22,6 +22,10 @@ boot_splash/minimum_display_time.release=1500
 
 MusicManager="*res://globals/autoloads/music/music_manager.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [filesystem]
 
 import/blender/enabled=false

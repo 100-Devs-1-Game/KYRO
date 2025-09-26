@@ -1,9 +1,10 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://cinsah8u2jssm"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cinsah8u2jssm"]
 
 [ext_resource type="StyleBox" uid="uid://bevphd7i1s54v" path="res://theme/default/boxes/button_hover.tres" id="1_b4w51"]
 [ext_resource type="StyleBox" uid="uid://dpvvpmsbxkvtu" path="res://theme/default/boxes/button_pressed.tres" id="2_j7536"]
 [ext_resource type="FontFile" uid="uid://dnnicbhfhh46x" path="res://fonts/goldman/goldman.ttf" id="3_as2ix"]
 [ext_resource type="FontFile" uid="uid://kg7kg8uctw7g" path="res://fonts/yapari/yapari_bold.ttf" id="3_j7536"]
+[ext_resource type="FontFile" uid="uid://bhceb130lhira" path="res://fonts/cutive_mono/cutive_mono.ttf" id="4_p8spe"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_as2ix"]
 
@@ -23,3 +24,4 @@ Button/styles/pressed = ExtResource("2_j7536")
 HeaderLarge/font_sizes/font_size = 64
 PlayerLabel/base_type = &"Label"
 PlayerLabel/fonts/font = ExtResource("3_as2ix")
+RandomTextScroll/fonts/font = ExtResource("4_p8spe")
