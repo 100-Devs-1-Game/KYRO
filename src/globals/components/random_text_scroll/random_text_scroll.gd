@@ -12,8 +12,6 @@ static var random_text:String = ""
 static var random_text_size:Vector2 = Vector2(-1, -1)
 
 
-@export_range(-20.0, 20.0, 1.0, "or_greater","or_less") var scroll_speed:float = 1.0
-
 var child_item:RID
 
 var _tc_font:Font

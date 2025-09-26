@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw5545ljs3j3k"]
+
+[ext_resource type="PackedScene" uid="uid://cvs35vir1de11" path="res://globals/components/random_text_scroll/random_text_scroll.tscn" id="1_ovwbj"]
+[ext_resource type="Shader" uid="uid://bhhnbw6o6x7x5" path="res://globals/components/random_text_scroll/random_text_scroll.gdshader" id="2_qb1dk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovwbj"]
+shader = ExtResource("2_qb1dk")
+shader_parameter/scroll_speed = 70.0
+shader_parameter/character_width = 17.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qb1dk"]
+shader = ExtResource("2_qb1dk")
+shader_parameter/scroll_speed = 95.0
+shader_parameter/character_width = 12.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ki5ig"]
+shader = ExtResource("2_qb1dk")
+shader_parameter/scroll_speed = 87.0
+shader_parameter/character_width = 23.0
+
+[node name="ScrollGroup" type="ColorRect"]
+clip_children = 1
+custom_minimum_size = Vector2(0, 70)
+offset_right = 1152.0
+offset_bottom = 70.0
+
+[node name="RandomTextScroll" parent="." instance=ExtResource("1_ovwbj")]
+material = SubResource("ShaderMaterial_ovwbj")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -17.0
+offset_top = -7.0
+offset_right = -17.0
+offset_bottom = 25.0
+grow_horizontal = 2
+
+[node name="RandomTextScroll2" parent="." instance=ExtResource("1_ovwbj")]
+material = SubResource("ShaderMaterial_qb1dk")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -17.0
+offset_top = 15.0
+offset_right = -17.0
+offset_bottom = 47.0
+grow_horizontal = 2
+
+[node name="RandomTextScroll3" parent="." instance=ExtResource("1_ovwbj")]
+material = SubResource("ShaderMaterial_ki5ig")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -17.0
+offset_top = 37.0
+offset_right = -17.0
+offset_bottom = 69.0
+grow_horizontal = 2
