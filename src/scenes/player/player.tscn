@@ -209,6 +209,7 @@ floor_constant_speed = true
 floor_snap_length = 0.2
 safe_margin = 0.002
 script = ExtResource("1_8afob")
+forward_speed = 20.0
 boost_regen = 0.4
 
 [node name="Collider" type="CollisionShape3D" parent="."]
