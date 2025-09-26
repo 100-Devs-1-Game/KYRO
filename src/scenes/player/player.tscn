@@ -371,7 +371,8 @@ unique_name_in_owner = true
 layout_mode = 1
 offset_right = 110.0
 offset_bottom = 88.0
-rotation = 0.0942478
+rotation = 0.0698132
+theme_type_variation = &"PlayerLabel"
 theme_override_font_sizes/font_size = 64
 text = "99"
 horizontal_alignment = 2
@@ -385,7 +386,8 @@ offset_top = 39.0
 offset_right = 51.0
 offset_bottom = 78.0
 grow_horizontal = 0
-rotation = -0.0942478
+rotation = -0.0698132
+theme_type_variation = &"PlayerLabel"
 text = "m/s"
 
 [node name="GameOver" type="CanvasLayer" parent="."]
