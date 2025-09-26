@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2udeflnw6hvh"]
+[gd_scene load_steps=10 format=3 uid="uid://c2udeflnw6hvh"]
 
 [ext_resource type="Script" uid="uid://epemhndfmd6k" path="res://scenes/main/menu/main_menu.gd" id="1_gv3up"]
 [ext_resource type="Script" uid="uid://fxkg88hiywvr" path="res://scenes/level/level_data.gd" id="2_6gyl1"]
@@ -6,7 +6,8 @@
 [ext_resource type="Resource" uid="uid://b84pg3k23vmpk" path="res://scenes/level/test/level_test.tres" id="4_6rpxr"]
 [ext_resource type="Texture2D" uid="uid://cfkroo836cojq" path="res://assets/textures/menu/logo.png" id="4_mvqfy"]
 [ext_resource type="Environment" uid="uid://mpnao256vhud" path="res://environments/default.tres" id="5_ccj0k"]
-[ext_resource type="Texture2D" uid="uid://cv1l1t731gb52" path="res://assets/textures/menu/plus_sign.png" id="6_ccj0k"]
+[ext_resource type="Texture2D" uid="uid://b8ap8h4r6qprr" path="res://assets/textures/menu/main_menu_decorations.png" id="5_cd15u"]
+[ext_resource type="PackedScene" uid="uid://bw5545ljs3j3k" path="res://globals/components/random_text_scroll/scroll_group.tscn" id="7_txlv7"]
 
 [sub_resource type="World3D" id="World3D_cd15u"]
 environment = ExtResource("5_ccj0k")
@@ -15,7 +16,14 @@ environment = ExtResource("5_ccj0k")
 script = ExtResource("1_gv3up")
 levels = Array[ExtResource("2_6gyl1")]([ExtResource("3_6rpxr"), ExtResource("4_6rpxr")])
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="Decorations" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("5_cd15u")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Decorations"]
+show_behind_parent = true
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,49 +31,22 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="Decorations/SubViewportContainer"]
 own_world_3d = true
 world_3d = SubResource("World3D_cd15u")
 handle_input_locally = false
 gui_disable_input = true
-size = Vector2i(1152, 648)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+[node name="Camera3D" type="Camera3D" parent="Decorations/SubViewportContainer/SubViewport"]
 
-[node name="Decor" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="PlusSign" type="TextureRect" parent="Decor"]
-modulate = Color(0.760784, 0.760784, 0.760784, 1)
-layout_mode = 0
-offset_left = 68.0
-offset_top = 41.0
-offset_right = 108.0
-offset_bottom = 81.0
-texture = ExtResource("6_ccj0k")
-
-[node name="PlusSign2" type="TextureRect" parent="Decor"]
-modulate = Color(0.329412, 0.329412, 0.329412, 1)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -105.0
-offset_top = -76.0
-offset_right = -68.0
-offset_bottom = -41.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("6_ccj0k")
+[node name="ScrollGroup" parent="Decorations" instance=ExtResource("7_txlv7")]
+offset_left = 1916.0
+offset_top = 84.0
+offset_right = 2828.0
+offset_bottom = 154.0
+rotation = 1.57079
 
 [node name="Title" type="TextureRect" parent="."]
 anchors_preset = 8
@@ -80,8 +61,6 @@ offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_mvqfy")
-expand_mode = 3
-stretch_mode = 5
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -91,8 +70,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -165.0
-offset_top = -242.0
+offset_top = -334.0
 offset_right = 166.0
+offset_bottom = -92.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
@@ -115,8 +95,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -165.0
-offset_top = -242.0
+offset_top = -335.0
 offset_right = 166.0
+offset_bottom = -93.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
