@@ -13,7 +13,10 @@ config_version=5
 config/name="kyro"
 run/main_scene="uid://dqia4ypqyt1p5"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://bhbtur6tnbm1x"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=1500
 
 [autoload]
 

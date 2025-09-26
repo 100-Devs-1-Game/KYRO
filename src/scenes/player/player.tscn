@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://vtsno6ihqmcm" path="res://scenes/player/state/won.gd" id="9_ugbui"]
 [ext_resource type="PackedScene" uid="uid://n1a3cmwjxmib" path="res://scenes/player/ui/ammo_count.tscn" id="10_h17s1"]
 [ext_resource type="PackedScene" uid="uid://cugvx1d40wwv1" path="res://scenes/player/ui/time/time.tscn" id="12_fm80t"]
-[ext_resource type="Texture2D" uid="uid://6ya0kpv6f4fk" path="res://assets/textures/ui/boost_ring.svg" id="12_myrg7"]
+[ext_resource type="Texture2D" uid="uid://6ya0kpv6f4fk" path="res://assets/textures/hud/boost_ring.svg" id="12_myrg7"]
 [ext_resource type="Script" uid="uid://cjtgimnfqhxq6" path="res://scenes/player/pickupper.gd" id="13_gx1jg"]
 [ext_resource type="ArrayMesh" uid="uid://6b1musmygn87" path="res://assets/models/particles/glass_shard.mesh" id="15_fcs02"]
 
