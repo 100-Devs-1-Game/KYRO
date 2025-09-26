@@ -1,15 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2udeflnw6hvh"]
+[gd_scene load_steps=9 format=3 uid="uid://c2udeflnw6hvh"]
 
 [ext_resource type="Script" uid="uid://epemhndfmd6k" path="res://scenes/main/menu/main_menu.gd" id="1_gv3up"]
 [ext_resource type="Script" uid="uid://fxkg88hiywvr" path="res://scenes/level/level_data.gd" id="2_6gyl1"]
 [ext_resource type="Resource" uid="uid://bh81rn5o7nl45" path="res://scenes/level/level/level.tres" id="3_6rpxr"]
 [ext_resource type="Resource" uid="uid://b84pg3k23vmpk" path="res://scenes/level/test/level_test.tres" id="4_6rpxr"]
 [ext_resource type="Texture2D" uid="uid://cfkroo836cojq" path="res://assets/textures/menu/logo.png" id="4_mvqfy"]
+[ext_resource type="Environment" uid="uid://mpnao256vhud" path="res://environments/default.tres" id="5_ccj0k"]
 [ext_resource type="Texture2D" uid="uid://cv1l1t731gb52" path="res://assets/textures/menu/plus_sign.png" id="6_ccj0k"]
+
+[sub_resource type="World3D" id="World3D_cd15u"]
+environment = ExtResource("5_ccj0k")
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_gv3up")
 levels = Array[ExtResource("2_6gyl1")]([ExtResource("3_6rpxr"), ExtResource("4_6rpxr")])
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_3d = true
+world_3d = SubResource("World3D_cd15u")
+gui_disable_input = true
+size = Vector2i(1152, 648)
+render_target_update_mode = 3
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 
 [node name="Decor" type="Control" parent="."]
 layout_mode = 3
@@ -87,16 +108,14 @@ alignment = 0
 
 [node name="Levels" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -201.0
-offset_top = -488.0
-offset_right = 201.0
-offset_bottom = -40.0
+offset_left = -165.0
+offset_top = -242.0
+offset_right = 166.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
