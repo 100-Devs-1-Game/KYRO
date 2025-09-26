@@ -1,6 +1,6 @@
 [gd_resource type="AudioStreamInteractive" load_steps=7 format=3 uid="uid://1ep2pib8aaal"]
 
-[ext_resource type="AudioStream" uid="uid://bq2ty8jvgtsbw" path="res://assets/audio/music/main_menu.ogg" id="1_58fqu"]
+[ext_resource type="AudioStream" uid="uid://drcb14pbowqvk" path="res://assets/audio/music/main_menu.wav" id="1_58fqu"]
 [ext_resource type="AudioStream" uid="uid://chu5p576a85cc" path="res://assets/audio/music/tesserakt.ogg" id="2_yqnom"]
 [ext_resource type="AudioStream" uid="uid://k7tb8lmthft2" path="res://assets/audio/music/metropolis.wav" id="3_bfhp1"]
 [ext_resource type="AudioStream" uid="uid://ieoi35tumjxc" path="res://assets/audio/music/detroit_swagger.wav" id="4_33sp0"]
