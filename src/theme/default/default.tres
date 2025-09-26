@@ -1,10 +1,12 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cinsah8u2jssm"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cinsah8u2jssm"]
 
 [ext_resource type="StyleBox" uid="uid://bevphd7i1s54v" path="res://theme/default/boxes/button_hover.tres" id="1_b4w51"]
 [ext_resource type="StyleBox" uid="uid://dpvvpmsbxkvtu" path="res://theme/default/boxes/button_pressed.tres" id="2_j7536"]
 [ext_resource type="FontFile" uid="uid://dnnicbhfhh46x" path="res://fonts/goldman/goldman.ttf" id="3_j7536"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_as2ix"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j7536"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rqhmf"]
 
@@ -13,6 +15,7 @@ default_font = ExtResource("3_j7536")
 default_font_size = 28
 BoxContainer/constants/separation = 0
 Button/styles/disabled = SubResource("StyleBoxEmpty_as2ix")
+Button/styles/focus = SubResource("StyleBoxEmpty_j7536")
 Button/styles/hover = ExtResource("1_b4w51")
 Button/styles/normal = SubResource("StyleBoxEmpty_rqhmf")
 Button/styles/pressed = ExtResource("2_j7536")
