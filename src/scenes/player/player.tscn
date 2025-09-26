@@ -207,7 +207,6 @@ collision_layer = 4
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_snap_length = 0.2
-safe_margin = 0.002
 script = ExtResource("1_8afob")
 forward_speed = 20.0
 boost_regen = 0.4
@@ -237,11 +236,12 @@ state_wallride = NodePath("../Wallride")
 state_fall = NodePath("../Falling")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
-[node name="Falling" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_walk", "state_jump")]
+[node name="Falling" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_walk", "state_jump", "state_wallride")]
 unique_name_in_owner = true
 script = ExtResource("5_p47bc")
 state_walk = NodePath("../Walk")
 state_jump = NodePath("../Jumping")
+state_wallride = NodePath("../Wallride")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
 [node name="Wallride" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_jump")]

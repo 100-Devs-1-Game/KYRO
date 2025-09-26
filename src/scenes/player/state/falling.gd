@@ -7,6 +7,7 @@ extends State
 @export_group("State Connectons", "state_")
 @export var state_walk:State
 @export var state_jump:State
+@export var state_wallride:State
 
 
 func _state_entered() -> void:
@@ -31,6 +32,11 @@ func _state_physics_process(delta: float) -> void:
 	state_jump.do_coyote_time(delta)
 	
 	owner.state_commons.do_post_slide_updates(delta)
+	
+	if owner.state_commons.can_wallride():
+		owner.state_commons.set_vector_axis(owner.velocity, owner.global_basis.y, 0)
+		machine.to_state(state_wallride)
+		return
 	
 	if owner.is_on_floor():
 		machine.to_state(state_walk)
