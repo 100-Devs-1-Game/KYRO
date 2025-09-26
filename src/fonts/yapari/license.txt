@@ -1,0 +1,14 @@
+The primary typeface used in this open-source project's user interface is YAPARI, 
+an impactful display font chosen to align with the game's stylistic vision. Please 
+be aware that the YAPARI typeface is governed by a separate commercial license, 
+which we purchased for its use here. Due to the terms of this license, we are only 
+permitted to distribute and include the Bold weight of the font (YAPARI-Bold.ttf) 
+within the project's open-source assets. While this particular weight is included 
+to ensure the core visual identity is preserved, this distribution does not grant 
+any user the right to utilize the font in their own separate projects or to distribute 
+the other weights (such as Regular, Light, etc.). If you are a user or contributor who 
+wishes to experience the full design as intended, including the variable weight transitions 
+seen in external media, you would need to purchase or license the complete YAPARI font family 
+independently from its foundry. For contributors who require a fully open-source, unrestricted 
+typeface for development, or for users who simply prefer a different option, we recommend using 
+a visually similar, open-source alternative as a drop-in replacement.
