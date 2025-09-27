@@ -31,7 +31,6 @@ static func _static_init() -> void:
 	
 	while len(random_text) < RANDOM_TEXT_AMOUNT:
 		random_text += snippets.pop_at(randi() % len(snippets)) + SEPERATOR
-	print(random_text)
 
 
 func _notification(what: int) -> void:
@@ -39,7 +38,6 @@ func _notification(what: int) -> void:
 		NOTIFICATION_THEME_CHANGED:
 			_tc_font = get_theme_font(&"font", &"RandomTextScroll")
 			_tc_font_size = get_theme_default_font_size()
-			print(_tc_font.get_string_size("A", 0, -1, _tc_font_size))
 			random_text_size = _tc_font.get_string_size(random_text, HORIZONTAL_ALIGNMENT_LEFT, -1, _tc_font_size)
 
 
@@ -49,7 +47,6 @@ func _get_minimum_size() -> Vector2:
 
 func _draw() -> void:
 	if not _tc_font:
-		print("FONT IN")
 		return
 	_tc_font.draw_string(get_canvas_item(), 
 		Vector2(0, _tc_font_size), random_text, 0, -1, _tc_font_size, Color(len(random_text), 0, 0, 1)
