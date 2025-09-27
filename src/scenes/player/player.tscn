@@ -244,11 +244,12 @@ state_jump = NodePath("../Jumping")
 state_wallride = NodePath("../Wallride")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
-[node name="Wallride" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_jump")]
+[node name="Wallride" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_jump", "state_walk")]
 unique_name_in_owner = true
 script = ExtResource("6_75vfm")
 mod_decay_curve = SubResource("Curve_75vfm")
 state_jump = NodePath("../Jumping")
+state_walk = NodePath("../Walk")
 metadata/_custom_type_script = "uid://c4wduh2exufqe"
 
 [node name="Crouching" type="Node" parent="StateMachine" node_paths=PackedStringArray("state_jump", "state_walk")]

@@ -70,7 +70,6 @@ func do_post_slide_updates(delta:float) -> void:
 		)
 		owner.rotation = quat_rotation.get_euler()
 		owner.up_direction = quat_rotation * Vector3.UP
-	owner.velocity = owner.get_real_velocity()
 
 
 func can_wallride() -> bool:

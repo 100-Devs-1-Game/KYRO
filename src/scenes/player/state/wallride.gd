@@ -65,6 +65,7 @@ func _state_physics_process(delta: float) -> void:
 	
 	if owner.is_on_floor():
 		machine.to_state(state_walk)
+		return
 	
 	if not owner.state_commons.can_wallride():
 		wallride_coyote_time += delta
