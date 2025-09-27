@@ -34,6 +34,7 @@ func _process(delta: float) -> void:
 
 
 func _state_physics_process(delta: float) -> void:
+	
 	if state_jump.jumpswitch():
 		return
 	
@@ -52,10 +53,21 @@ func _state_physics_process(delta: float) -> void:
 	owner.velocity += owner.state_commons.get_forward_floor_normal() \
 			* floor_degree * slope_forward_boost * delta * owner.forward_damping
 	
+	var vertical_velocity:float = owner.state_commons.get_vector_axis_value(
+		owner.velocity, 
+		owner.global_basis.y
+	)
+	owner.velocity = owner.state_commons.set_vector_axis(
+		owner.velocity, 
+		owner.global_basis.y,
+		minf(vertical_velocity, 0)
+	)
+	
 	owner.move_and_slide()
 	state_jump.do_coyote_time(delta)
 	
 	owner.state_commons.do_post_slide_updates(delta)
+	
 	
 	if not can_crouch():
 		machine.to_state(state_walk)
