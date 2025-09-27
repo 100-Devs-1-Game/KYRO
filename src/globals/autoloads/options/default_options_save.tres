@@ -7,4 +7,8 @@ script = ExtResource("1_lnmqh")
 look_sensitivity = 0.5
 look_sensitivity_vector = Vector2(1, 1)
 window_mode = 0
+_bus_volumes = Dictionary[int, float]({
+0: 1.0,
+1: 0.8
+})
 metadata/_custom_type_script = "uid://btkjc1t5ddcch"

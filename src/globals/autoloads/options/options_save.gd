@@ -26,7 +26,7 @@ var do_apply:bool
 #region Audio
 @export_group("Audio")
 ## Linear volumes of busses.
-var _bus_volumes:Dictionary[int,float] = {}
+@export var _bus_volumes:Dictionary[int,float] = {}
 #endregion Audio
 
 

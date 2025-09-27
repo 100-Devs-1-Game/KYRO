@@ -10,7 +10,6 @@ layer = 31
 script = ExtResource("2_hd7v8")
 
 [node name="OptionsMenu" type="Panel" parent="."]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
