@@ -36,15 +36,12 @@ func set_bus_volume(bus_index:int, linear_volume:float) -> void:
 
 
 func sensitivity_multiply(vector:Vector2) -> Vector2:
-	
 	return vector * look_sensitivity_vector * (look_sensitivity * MAXIMUM_LOOK_SENSITIVITY)
 
 
 func apply_settings() -> void:
 	_apply_window_mode()
 	_apply_bus_volumes()
-	
-	OptionsManager.current = self
 
 
 func _apply_window_mode() -> void:

@@ -26,12 +26,13 @@ var menu_mode:MenuMode = MenuMode.BUTTONS:
 
 @onready var menu_buttons:Control = %Buttons
 @onready var level_buttons:Control = %Levels
-@onready var menus:Array[Control] = [menu_buttons, level_buttons]
+@onready var menus:Array[Control] = [menu_buttons, level_buttons, OptionsManager.options_menu]
 
 
 func _ready() -> void:
 	make_level_buttons()
 	menu_mode = menu_mode
+	OptionsManager.options_exited.connect(reset)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -51,9 +52,14 @@ func make_level_buttons() -> void:
 func reset() -> void:
 	menu_mode = MenuMode.BUTTONS
 
+
 func _on_select_level_pressed() -> void:
 	menu_mode = MenuMode.LEVEL_SELECT
 
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_settings_pressed() -> void:
+	menu_mode = MenuMode.OPTIONS
