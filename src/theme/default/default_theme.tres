@@ -1,0 +1,33 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cinsah8u2jssm"]
+
+[ext_resource type="StyleBox" uid="uid://bevphd7i1s54v" path="res://theme/default/boxes/button_hover.tres" id="1_fk0dw"]
+[ext_resource type="StyleBox" uid="uid://dpvvpmsbxkvtu" path="res://theme/default/boxes/button_pressed.tres" id="2_f06q0"]
+[ext_resource type="FontFile" uid="uid://dnnicbhfhh46x" path="res://fonts/goldman/goldman.ttf" id="3_2l4ih"]
+[ext_resource type="StyleBox" uid="uid://y537qd8mfxj5" path="res://theme/light/boxes/button/flat/flat_empty.tres" id="3_f06q0"]
+[ext_resource type="FontFile" uid="uid://bhceb130lhira" path="res://fonts/cutive_mono/cutive_mono.ttf" id="4_ayimb"]
+[ext_resource type="FontFile" uid="uid://kg7kg8uctw7g" path="res://fonts/yapari/yapari_bold.ttf" id="5_b8gnh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_as2ix"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j7536"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rqhmf"]
+
+[resource]
+default_font = ExtResource("5_b8gnh")
+default_font_size = 36
+BoxContainer/constants/separation = 0
+Button/styles/disabled = SubResource("StyleBoxEmpty_as2ix")
+Button/styles/focus = SubResource("StyleBoxEmpty_j7536")
+Button/styles/hover = ExtResource("1_fk0dw")
+Button/styles/normal = SubResource("StyleBoxEmpty_rqhmf")
+Button/styles/pressed = ExtResource("2_f06q0")
+FlatButton/colors/font_color = Color(1, 1, 1, 1)
+FlatButton/colors/font_disabled_color = Color(1, 1, 1, 0.501961)
+FlatButton/styles/disabled = ExtResource("3_f06q0")
+FlatButton/styles/hover = ExtResource("3_f06q0")
+FlatButton/styles/normal = ExtResource("3_f06q0")
+HeaderLarge/font_sizes/font_size = 64
+PlayerLabel/base_type = &"Label"
+PlayerLabel/fonts/font = ExtResource("3_2l4ih")
+RandomTextScroll/fonts/font = ExtResource("4_ayimb")

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dt02v7n4ecwhq"]
+
+[node name="AudioSlider" type="HSlider"]
+custom_minimum_size = Vector2(192, 0)
+offset_right = 8.0
+offset_bottom = 16.0
+max_value = 1.0
+step = 0.01
