@@ -21,6 +21,7 @@ boot_splash/minimum_display_time.release=1500
 [autoload]
 
 MusicManager="*res://globals/autoloads/music/music_manager.tscn"
+OptionsManager="*res://globals/autoloads/options/options_manager.tscn"
 
 [display]
 

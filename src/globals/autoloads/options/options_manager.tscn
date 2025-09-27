@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjyjdto3juvf2"]
+
+[ext_resource type="Theme" uid="uid://ca8oux456vtcn" path="res://theme/light/light_theme.tres" id="1_cuay1"]
+[ext_resource type="Script" uid="uid://d3i64n1a688yp" path="res://globals/autoloads/options/options_manager.gd" id="2_hd7v8"]
+[ext_resource type="Script" uid="uid://bibrknuf8twb5" path="res://globals/autoloads/options/menu/fullscreen_button.gd" id="2_jg043"]
+[ext_resource type="Script" uid="uid://dq41wnm1mtoh2" path="res://globals/autoloads/options/menu/audio_sliders.gd" id="2_kpv5b"]
+
+[node name="OptionsManager" type="CanvasLayer"]
+layer = 31
+script = ExtResource("2_hd7v8")
+
+[node name="OptionsMenu" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -588.5
+offset_top = -217.0
+offset_right = 588.5
+offset_bottom = 217.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_cuay1")
+theme_type_variation = &"OptionsPanel"
+
+[node name="TabContainer" type="TabContainer" parent="OptionsMenu"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 115.0
+offset_right = -20.0
+offset_bottom = -4.0
+current_tab = 0
+
+[node name="Video" type="HBoxContainer" parent="OptionsMenu/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VboxContainer" type="VBoxContainer" parent="OptionsMenu/TabContainer/Video"]
+layout_mode = 2
+
+[node name="Fullscreen" type="CheckButton" parent="OptionsMenu/TabContainer/Video/VboxContainer"]
+layout_mode = 2
+text = "Fullscreen"
+script = ExtResource("2_jg043")
+
+[node name="Audio" type="VBoxContainer" parent="OptionsMenu/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="AudioSliders" type="GridContainer" parent="OptionsMenu/TabContainer/Audio"]
+layout_mode = 2
+columns = 2
+script = ExtResource("2_kpv5b")
+
+[node name="Exit" type="Button" parent="OptionsMenu"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -154.0
+offset_top = -68.0
+offset_right = -10.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Exit"
+
+[connection signal="pressed" from="OptionsMenu/Exit" to="." method="_on_exit_pressed"]

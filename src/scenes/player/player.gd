@@ -44,7 +44,6 @@ var boost:float = boost_max:
 		boost = clampf(new, 0, boost_max)
 		if is_node_ready():
 			boost_meter.value = new / boost_max
-var sensitivity:float = 1 / PI / 60 # TODO: Move this to a GameSettings 
 var target_rotation:Quaternion
 var state_commons:RefCounted
 var gun_manager:Node:
@@ -112,8 +111,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion:
-		head.rotation.y -= event.relative.x * sensitivity
-		camera.rotation.x -= event.relative.y * sensitivity
+		var relative:Vector2 = OptionsManager.current.sensitivity_multiply(event.relative)
+		head.rotation.y -= relative.x
+		camera.rotation.x -= relative.y
 		camera.rotation.x = clampf(camera.rotation.x, -CAMERA_X_ROT_MAX, CAMERA_X_ROT_MAX)
 		get_viewport().set_input_as_handled()
 		return

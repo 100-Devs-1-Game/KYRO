@@ -1,0 +1,97 @@
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://ca8oux456vtcn"]
+
+[ext_resource type="Texture2D" uid="uid://8oq2nn3mv37r" path="res://assets/textures/menu/options_main.png" id="1_lx6bk"]
+[ext_resource type="StyleBox" uid="uid://cgdpb5g74dm0e" path="res://theme/light/boxes/focus.tres" id="1_pejcj"]
+[ext_resource type="StyleBox" uid="uid://daxsnx0kahlir" path="res://theme/light/boxes/button/button_hover.tres" id="2_2o2l3"]
+[ext_resource type="FontFile" uid="uid://kg7kg8uctw7g" path="res://fonts/yapari/yapari_bold.ttf" id="2_m8o3s"]
+[ext_resource type="StyleBox" uid="uid://e2l6kejyeg21" path="res://theme/light/boxes/button/button_normal.tres" id="3_a67yb"]
+[ext_resource type="StyleBox" uid="uid://bfw41ec4xgvws" path="res://theme/light/boxes/button/button_pressed.tres" id="4_n1r41"]
+[ext_resource type="Texture2D" uid="uid://cj28aeyv4xo7u" path="res://theme/light/boxes/button/check/check_on.atlastex" id="5_h2yq0"]
+[ext_resource type="StyleBox" uid="uid://5s5h3shpru5r" path="res://theme/light/boxes/tabs/tab_unselected.tres" id="5_n1r41"]
+[ext_resource type="StyleBox" uid="uid://y537qd8mfxj5" path="res://theme/light/boxes/button/flat/flat_empty.tres" id="5_xbjui"]
+[ext_resource type="StyleBox" uid="uid://x6nb1mf817ge" path="res://theme/light/boxes/tabs/tab_container_panel.tres" id="6_a67yb"]
+[ext_resource type="Texture2D" uid="uid://csnomqh0r50ot" path="res://theme/light/boxes/button/check/check_off.atlastex" id="6_phvf0"]
+[ext_resource type="StyleBox" uid="uid://cpu4o365frcy5" path="res://theme/light/boxes/tabs/tab_selected.tres" id="6_xbjui"]
+[ext_resource type="StyleBox" uid="uid://ddqf2vtscv54f" path="res://theme/light/boxes/tabs/tab_bar_background.tres" id="7_h2yq0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_phvf0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_423jt"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+texture = ExtResource("1_lx6bk")
+texture_margin_left = 678.0
+texture_margin_top = 115.0
+texture_margin_right = 499.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 1192, 128)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yq0"]
+bg_color = Color(1, 1, 1, 1)
+
+[resource]
+default_font = ExtResource("2_m8o3s")
+default_font_size = 36
+BoxContainer/constants/separation = 8
+Button/colors/font_color = Color(0.129412, 0.145098, 0.160784, 1)
+Button/colors/font_disabled_color = Color(0.129412, 0.145098, 0.160784, 0.501961)
+Button/colors/font_focus_color = Color(0.129412, 0.145098, 0.160784, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(0.129412, 0.145098, 0.160784, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(0.129412, 0.145098, 0.160784, 0.501961)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_phvf0")
+Button/styles/focus = ExtResource("1_pejcj")
+Button/styles/hover = ExtResource("2_2o2l3")
+Button/styles/normal = ExtResource("3_a67yb")
+Button/styles/pressed = ExtResource("4_n1r41")
+CheckButton/colors/font_color = Color(0.129412, 0.145098, 0.160784, 1)
+CheckButton/colors/font_disabled_color = Color(0.129412, 0.145098, 0.160784, 0.501961)
+CheckButton/colors/font_focus_color = Color(0.129412, 0.145098, 0.160784, 1)
+CheckButton/colors/font_hover_color = Color(0.129412, 0.145098, 0.160784, 1)
+CheckButton/colors/font_hover_pressed_color = Color(0.129412, 0.145098, 0.160784, 1)
+CheckButton/colors/font_pressed_color = Color(0.129412, 0.145098, 0.160784, 1)
+CheckButton/constants/h_separation = 64
+CheckButton/icons/checked = ExtResource("5_h2yq0")
+CheckButton/icons/checked_disabled_mirrored = ExtResource("5_h2yq0")
+CheckButton/icons/checked_mirrored = ExtResource("5_h2yq0")
+CheckButton/icons/unchecked = ExtResource("6_phvf0")
+CheckButton/icons/unchecked_disabled_mirrored = ExtResource("6_phvf0")
+CheckButton/icons/unchecked_mirrored = ExtResource("6_phvf0")
+CheckButton/styles/disabled = ExtResource("5_xbjui")
+CheckButton/styles/focus = ExtResource("1_pejcj")
+CheckButton/styles/hover = ExtResource("5_xbjui")
+CheckButton/styles/hover_pressed = ExtResource("5_xbjui")
+CheckButton/styles/normal = ExtResource("5_xbjui")
+CheckButton/styles/pressed = ExtResource("5_xbjui")
+FlatButton/base_type = &"Button"
+FlatButton/colors/font_color = Color(0.129412, 0.145098, 0.160784, 1)
+FlatButton/colors/font_disabled_color = Color(0.129412, 0.145098, 0.160784, 1)
+FlatButton/colors/font_focus_color = Color(0.129412, 0.145098, 0.160784, 1)
+FlatButton/colors/font_hover_color = Color(1, 1, 1, 1)
+FlatButton/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+FlatButton/colors/font_outline_color = Color(0, 0, 0, 1)
+FlatButton/colors/font_pressed_color = Color(1, 1, 1, 1)
+FlatButton/colors/icon_disabled_color = Color(0, 0, 0, 1)
+FlatButton/colors/icon_focus_color = Color(0, 0, 0, 1)
+FlatButton/styles/disabled = ExtResource("5_xbjui")
+FlatButton/styles/hover = ExtResource("3_a67yb")
+FlatButton/styles/normal = ExtResource("5_xbjui")
+FlatButton/styles/pressed = ExtResource("4_n1r41")
+Label/colors/font_color = Color(0.129412, 0.145098, 0.160784, 1)
+OptionsPanel/base_type = &"Panel"
+OptionsPanel/styles/panel = SubResource("StyleBoxTexture_423jt")
+Panel/styles/panel = SubResource("StyleBoxFlat_h2yq0")
+TabContainer/colors/font_disabled_color = Color(0.129412, 0.145098, 0.160784, 0.501961)
+TabContainer/colors/font_hovered_color = Color(0.129412, 0.145098, 0.160784, 1)
+TabContainer/colors/font_selected_color = Color(0.129412, 0.145098, 0.160784, 1)
+TabContainer/colors/font_unselected_color = Color(0.129412, 0.145098, 0.160784, 1)
+TabContainer/styles/panel = ExtResource("6_a67yb")
+TabContainer/styles/tab_disabled = ExtResource("5_n1r41")
+TabContainer/styles/tab_focus = ExtResource("1_pejcj")
+TabContainer/styles/tab_hovered = ExtResource("5_n1r41")
+TabContainer/styles/tab_selected = ExtResource("6_xbjui")
+TabContainer/styles/tab_unselected = ExtResource("5_n1r41")
+TabContainer/styles/tabbar_background = ExtResource("7_h2yq0")

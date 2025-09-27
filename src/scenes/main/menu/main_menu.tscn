@@ -88,6 +88,11 @@ layout_mode = 2
 text = "LEVEL SELECT"
 alignment = 0
 
+[node name="Options" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "OPTIONS"
+alignment = 0
+
 [node name="Quit" type="Button" parent="Buttons"]
 layout_mode = 2
 text = "QUIT"
@@ -109,4 +114,5 @@ grow_vertical = 0
 alignment = 1
 
 [connection signal="pressed" from="Buttons/SelectLevel" to="." method="_on_select_level_pressed"]
+[connection signal="pressed" from="Buttons/Options" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]
