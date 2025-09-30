@@ -39,6 +39,7 @@ static var instance:Player
 
 ## If this is 0, wallriding can't be acheived. Otherwise, this is a the wall that will be clung to
 var wallride_axis:float = 0.0
+var collectible_count:int = 0
 var boost:float = boost_max:
 	set(new):
 		boost = clampf(new, 0, boost_max)

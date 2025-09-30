@@ -1,0 +1,73 @@
+[gd_scene load_steps=16 format=3 uid="uid://b82j8lhnjhouo"]
+
+[ext_resource type="Script" uid="uid://dc0pqrpoagtxe" path="res://scenes/pickup/collectible/collectible_pickup.gd" id="1_ftqpe"]
+[ext_resource type="PackedScene" uid="uid://d7lmkhsp4q3p" path="res://scenes/pickup/pickup_fx/pickup_fx_ring.tscn" id="1_hr7fq"]
+[ext_resource type="Shader" uid="uid://jte2im05o31l" path="res://assets/materials/pickup/pickup_ring.gdshader" id="2_wnym7"]
+[ext_resource type="Shader" uid="uid://k2vvsw5o6k07" path="res://assets/materials/pickup/glow.gdshader" id="3_ftqpe"]
+[ext_resource type="ArrayMesh" uid="uid://cvf63mc0yhegp" path="res://scenes/pickup/collectible/star.obj" id="4_hx6we"]
+[ext_resource type="PackedScene" uid="uid://djmr2qjmhr6xk" path="res://globals/components/pickup/pickup_area/pickup_area.tscn" id="5_wnym7"]
+
+[sub_resource type="Curve" id="Curve_eea5j"]
+_limits = [0.0, 1.4, 0.0, 1.0]
+_data = [Vector2(0, 1.3), 0.0, 0.484761, 0, 0, Vector2(0.3, 1), -2.40706, -1.42857, 0, 1, Vector2(1, 0), -1.42857, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2tk01"]
+texture_mode = 1
+curve = SubResource("Curve_eea5j")
+
+[sub_resource type="Gradient" id="Gradient_quv7w"]
+offsets = PackedFloat32Array(0.05, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cfjss"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dngyk"]
+height = 256
+seamless = true
+color_ramp = SubResource("Gradient_quv7w")
+noise = SubResource("FastNoiseLite_cfjss")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8asae"]
+render_priority = 0
+shader = ExtResource("2_wnym7")
+shader_parameter/noise = SubResource("NoiseTexture2D_dngyk")
+shader_parameter/height_grad = SubResource("CurveTexture_2tk01")
+shader_parameter/tint = Color(0.968, 0.52, 1, 1)
+shader_parameter/scroll_offset = Vector2(0, 0)
+shader_parameter/scroll_rate = Vector2(0.05, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_diwlf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jyvp1"]
+render_priority = 0
+shader = ExtResource("3_ftqpe")
+shader_parameter/color = Color(0.813677, 0.3403, 0.83, 1)
+shader_parameter/highlight_band_color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/highlight_band_period = 1.0
+shader_parameter/highlight_band_width = 0.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ftqpe"]
+height = 1.25
+
+[node name="Collectible" type="Node3D"]
+script = ExtResource("1_ftqpe")
+
+[node name="PickupFxRing" parent="." instance=ExtResource("1_hr7fq")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_8asae")
+
+[node name="Star" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.447566, 0, 3.91275e-08, 0, 0.447566, 0, -3.91275e-08, 0, -0.447566, 0, 0.704326, 0)
+material_override = SubResource("StandardMaterial3D_diwlf")
+material_overlay = SubResource("ShaderMaterial_jyvp1")
+mesh = ExtResource("4_hx6we")
+
+[node name="PickupArea" parent="." instance=ExtResource("5_wnym7")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
+shape = SubResource("CylinderShape3D_ftqpe")
+
+[connection signal="picked_up" from="PickupArea" to="." method="_on_pickup_area_picked_up"]
