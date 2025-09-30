@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://22001gnicwq8"]
+
+[resource]
+resource_name = "materials/m_white.vmat"
+albedo_color = Color(0.905882, 0.905882, 0.905882, 1)
+normal_scale = 0.0
