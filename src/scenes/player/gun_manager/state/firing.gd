@@ -39,4 +39,4 @@ func can_fire() -> bool:
 
 
 func firing_wanted() -> bool:
-	return Input.is_action_pressed(&"shoot")
+	return Input.is_action_pressed(&"shoot") and not owner.disabled

@@ -36,4 +36,4 @@ func can_reload() -> bool:
 
 
 func reload_wanted() -> bool:
-	return Input.is_action_just_pressed(&"reload") or owner.clip_ammo == 0
+	return (Input.is_action_just_pressed(&"reload") or owner.clip_ammo == 0) and not owner.disabled

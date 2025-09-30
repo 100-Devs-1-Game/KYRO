@@ -20,6 +20,7 @@ signal animation_shoot_requested(duration:float)
 
 var clip_ammo:int = clip_size
 var reserve_ammo:int = 1
+var disabled:bool = false
 
 
 @onready var state_machine:StateMachine = $StateMachine

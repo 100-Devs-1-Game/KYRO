@@ -8,6 +8,8 @@ func _state_entered() -> void:
 	%GameOverLabel.text = "YOU WON"
 	%YourTime.text = "YOUR TIME: %6.2f" % %Time.time
 	%YourTime.visible = true
+	if owner.gun_manager:
+		owner.gun_manager.disabled = true
 
 
 func _state_process(delta: float) -> void:
