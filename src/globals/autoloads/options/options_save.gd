@@ -2,7 +2,14 @@ class_name OptionsSave
 extends Resource
 ## Saves options for easy referencing
 
+
 const MAXIMUM_LOOK_SENSITIVITY:float = 1 / PI / 30
+const WINDOW_MODE_NAMES:PackedStringArray = [
+	"windowed", "minimized", "maximized", "fullscreen", "exclusive_fullscreen"
+]
+const VSYNC_MODE_NAMES:PackedStringArray = [
+	"disabled", "enabled", "adaptive", "mailbox"
+]
 
 
 #region Gameplay
@@ -17,6 +24,8 @@ const MAXIMUM_LOOK_SENSITIVITY:float = 1 / PI / 30
 @export var window_mode:DisplayServer.WindowMode = DisplayServer.WINDOW_MODE_WINDOWED:
 	set(new):
 		window_mode = new
+@export var max_fps:int = 0
+@export var vsync_mode:int = DisplayServer.VSYNC_ENABLED
 #endregion Video
 
 #region Audio
@@ -48,14 +57,29 @@ static func load_config(path:String) -> OptionsSave:
 		instance.look_sensitivity_vector
 	)
 	
-	instance.window_mode = DisplayServer.WINDOW_MODE_FULLSCREEN if file.get_value(
-		"Video", 
-		"fullscreen", 
-		false
-	) else DisplayServer.WINDOW_MODE_WINDOWED
+	instance._load_video_settings(file)
 	
-	instance._load_bus_volumes_from_config(file)
+	instance._load_audio_volumes(file)
 	return instance
+
+
+static func stringnum_deserialize(
+			file:ConfigFile, 
+			section:String, 
+			property:String, 
+			stringnum:PackedStringArray, 
+			default:int
+		) -> int:
+	
+	if not file.has_section_key(section, property):
+		return default
+	
+	var index = stringnum.find(file.get_value(
+		section, property, ""
+	))
+	if index == -1:
+		return default
+	return index
 
 
 func save_config(path:String) -> void:
@@ -63,7 +87,9 @@ func save_config(path:String) -> void:
 	file.set_value("Gameplay", "look_sensitivity", look_sensitivity)
 	file.set_value("Gameplay", "look_sensitivity_vector", look_sensitivity_vector)
 	
-	file.set_value("Video", "fullscreen", window_mode == DisplayServer.WINDOW_MODE_FULLSCREEN)
+	file.set_value("Video", "window_mode", WINDOW_MODE_NAMES[window_mode])
+	file.set_value("Video", "vsync_mode", VSYNC_MODE_NAMES[vsync_mode])
+	file.set_value("Video", "max_fps", max_fps)
 	
 	for bus_idx in len(bus_volumes):
 		var bus_name := AudioServer.get_bus_name(bus_idx)
@@ -82,12 +108,13 @@ func sensitivity_multiply(vector:Vector2) -> Vector2:
 
 
 func apply_settings() -> void:
-	_apply_window_mode()
+	_apply_video_settings()
 	_apply_bus_volumes()
 
 
-func _apply_window_mode() -> void:
+func _apply_video_settings() -> void:
 	DisplayServer.window_set_mode(window_mode)
+	Engine.max_fps = max_fps
 
 
 func _apply_bus_volumes() -> void:
@@ -95,7 +122,20 @@ func _apply_bus_volumes() -> void:
 		AudioServer.set_bus_volume_linear(bus_index, bus_volumes[bus_index])
 
 
-func _load_bus_volumes_from_config(file:ConfigFile) -> void:
+func _load_video_settings(file:ConfigFile) -> void:
+	window_mode = stringnum_deserialize(
+		file, "Video", "window_mode", WINDOW_MODE_NAMES, DisplayServer.WINDOW_MODE_WINDOWED
+	)
+	vsync_mode = stringnum_deserialize(
+		file, "Video", "vsync_mode", VSYNC_MODE_NAMES, DisplayServer.VSYNC_ENABLED
+	)
+	
+	max_fps = file.get_value(
+		"Video", "max_fps", max_fps
+	)
+
+
+func _load_audio_volumes(file:ConfigFile) -> void:
 	if not file.has_section("Audio Volumes"):
 		push_error("No Audio Volumes section present in config!")
 		return
