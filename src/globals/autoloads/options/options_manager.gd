@@ -13,7 +13,7 @@ var current:OptionsSave
 @onready var options_menu:Panel = $OptionsMenu
 
 
-func _ready() -> void:
+func _init() -> void:
 	current = OptionsSave.load_config(OPTIONS_SAVE_PATH)
 	current.apply_settings()
 
