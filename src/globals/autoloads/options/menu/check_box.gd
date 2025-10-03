@@ -5,10 +5,10 @@ extends CheckBox
 
 
 func _toggled(toggled_on: bool) -> void:
-	OptionsManager.current.set(property, toggled_on)
+	OptionsManager.tenative.set(property, toggled_on)
 
 
 func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_VISIBILITY_CHANGED:
-			button_pressed = OptionsManager.current.get(property)
+			button_pressed = OptionsManager.tenative.get(property)

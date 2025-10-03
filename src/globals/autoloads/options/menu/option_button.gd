@@ -10,9 +10,9 @@ func _init() -> void:
 func _notification(what: int) -> void:
 	match what:
 		NOTIFICATION_VISIBILITY_CHANGED:
-			var value:int = OptionsManager.current.get(property)
+			var value:int = OptionsManager.tenative.get(property)
 			selected = get_item_index(value)
 
 
 func _on_item_selected(index:int) -> void:
-	OptionsManager.current.set(property, get_item_id(index))
+	OptionsManager.tenative.set(property, get_item_id(index))

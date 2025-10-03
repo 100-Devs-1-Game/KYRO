@@ -94,19 +94,28 @@ layout_mode = 2
 columns = 2
 script = ExtResource("2_kpv5b")
 
-[node name="Exit" type="Button" parent="OptionsMenu"]
+[node name="Buttons" type="HBoxContainer" parent="OptionsMenu"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -101.0
-offset_top = -48.0
-offset_right = -10.0
-offset_bottom = -6.0
+offset_left = -306.0
+offset_top = -46.0
+offset_right = -6.0
+offset_bottom = -4.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Apply & Exit"
+alignment = 2
 
-[connection signal="pressed" from="OptionsMenu/Exit" to="." method="_on_exit_pressed"]
+[node name="Apply" type="Button" parent="OptionsMenu/Buttons"]
+layout_mode = 2
+text = "Apply"
+
+[node name="Cancel" type="Button" parent="OptionsMenu/Buttons"]
+layout_mode = 2
+text = "Cancel"
+
+[connection signal="pressed" from="OptionsMenu/Buttons/Apply" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="OptionsMenu/Buttons/Cancel" to="." method="_on_cancel_pressed"]

@@ -38,4 +38,4 @@ func _update_bus_volumes() -> void:
 
 
 func _set_bus_volume(value:float, bus_index:int) -> void:
-	OptionsManager.current.set_bus_volume(bus_index, value)
+	OptionsManager.tenative.set_bus_volume(bus_index, value)
