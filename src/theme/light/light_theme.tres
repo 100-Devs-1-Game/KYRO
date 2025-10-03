@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://ca8oux456vtcn"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://ca8oux456vtcn"]
 
 [ext_resource type="Texture2D" uid="uid://8oq2nn3mv37r" path="res://assets/textures/menu/options_main.png" id="1_lx6bk"]
 [ext_resource type="StyleBox" uid="uid://cgdpb5g74dm0e" path="res://theme/light/boxes/focus.tres" id="1_pejcj"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://csnomqh0r50ot" path="res://theme/light/boxes/button/check/check_off.atlastex" id="6_phvf0"]
 [ext_resource type="StyleBox" uid="uid://cpu4o365frcy5" path="res://theme/light/boxes/tabs/tab_selected.tres" id="6_xbjui"]
 [ext_resource type="StyleBox" uid="uid://ddqf2vtscv54f" path="res://theme/light/boxes/tabs/tab_bar_background.tres" id="7_h2yq0"]
+[ext_resource type="FontFile" uid="uid://dnnicbhfhh46x" path="res://fonts/goldman/goldman.ttf" id="9_phvf0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_phvf0"]
 
@@ -31,7 +32,7 @@ region_rect = Rect2(0, 0, 1192, 128)
 bg_color = Color(1, 1, 1, 1)
 
 [resource]
-default_font = ExtResource("2_m8o3s")
+default_font = ExtResource("9_phvf0")
 default_font_size = 28
 BoxContainer/constants/separation = 8
 Button/colors/font_color = Color(0.129412, 0.145098, 0.160784, 1)
@@ -96,12 +97,14 @@ Panel/styles/panel = SubResource("StyleBoxFlat_h2yq0")
 PopupMenu/colors/font_color = Color(0.129412, 0.145098, 0.160784, 1)
 PopupMenu/colors/font_disabled_color = Color(0.128, 0.144, 0.16, 0.8)
 PopupMenu/colors/font_hover_color = Color(1, 1, 1, 1)
+PopupMenu/fonts/font = ExtResource("9_phvf0")
 PopupMenu/styles/hover = ExtResource("2_2o2l3")
 PopupMenu/styles/panel = ExtResource("3_a67yb")
 TabContainer/colors/font_disabled_color = Color(0.129412, 0.145098, 0.160784, 0.501961)
 TabContainer/colors/font_hovered_color = Color(0.129412, 0.145098, 0.160784, 1)
 TabContainer/colors/font_selected_color = Color(0.129412, 0.145098, 0.160784, 1)
 TabContainer/colors/font_unselected_color = Color(0.129412, 0.145098, 0.160784, 1)
+TabContainer/fonts/font = ExtResource("2_m8o3s")
 TabContainer/styles/panel = ExtResource("6_a67yb")
 TabContainer/styles/tab_disabled = ExtResource("5_n1r41")
 TabContainer/styles/tab_focus = ExtResource("1_pejcj")
@@ -109,3 +112,6 @@ TabContainer/styles/tab_hovered = ExtResource("5_n1r41")
 TabContainer/styles/tab_selected = ExtResource("6_xbjui")
 TabContainer/styles/tab_unselected = ExtResource("5_n1r41")
 TabContainer/styles/tabbar_background = ExtResource("7_h2yq0")
+TooltipLabel/colors/font_color = Color(0.129412, 0.145098, 0.160784, 1)
+TooltipLabel/font_sizes/font_size = 24
+TooltipPanel/styles/panel = ExtResource("3_a67yb")
