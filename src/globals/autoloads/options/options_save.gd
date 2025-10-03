@@ -21,11 +21,10 @@ const VSYNC_MODE_NAMES:PackedStringArray = [
 #region Video
 @export_group("Video")
 ## Mode of the main window.
-@export var window_mode:DisplayServer.WindowMode = DisplayServer.WINDOW_MODE_WINDOWED:
-	set(new):
-		window_mode = new
-@export var max_fps:int = 0
+@export var window_mode:DisplayServer.WindowMode = DisplayServer.WINDOW_MODE_WINDOWED
 @export var vsync_mode:int = DisplayServer.VSYNC_ENABLED
+@export var max_fps:int = 0
+@export var borderless:bool = false
 #endregion Video
 
 #region Audio
@@ -90,6 +89,7 @@ func save_config(path:String) -> void:
 	file.set_value("Video", "window_mode", WINDOW_MODE_NAMES[window_mode])
 	file.set_value("Video", "vsync_mode", VSYNC_MODE_NAMES[vsync_mode])
 	file.set_value("Video", "max_fps", max_fps)
+	file.set_value("Video", "borderless", borderless)
 	
 	for bus_idx in len(bus_volumes):
 		var bus_name := AudioServer.get_bus_name(bus_idx)
@@ -115,6 +115,7 @@ func apply_settings() -> void:
 func _apply_video_settings() -> void:
 	DisplayServer.window_set_mode(window_mode)
 	Engine.max_fps = max_fps
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, borderless)
 
 
 func _apply_bus_volumes() -> void:
@@ -132,6 +133,9 @@ func _load_video_settings(file:ConfigFile) -> void:
 	
 	max_fps = file.get_value(
 		"Video", "max_fps", max_fps
+	)
+	borderless = file.get_value(
+		"Video", "borderless", borderless
 	)
 
 
