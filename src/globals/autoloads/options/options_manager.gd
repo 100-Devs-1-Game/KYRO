@@ -4,7 +4,7 @@ extends Node
 signal options_exited()
 
 
-const OPTIONS_SAVE_PATH:String = "user://options.config"
+const OPTIONS_SAVE_PATH:String = "user://options.cfg"
 
 
 var current:OptionsSave
