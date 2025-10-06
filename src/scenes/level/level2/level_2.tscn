@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpvfel41ljn4t"]
+[gd_scene load_steps=9 format=3 uid="uid://bpvfel41ljn4t"]
 
 [ext_resource type="PackedScene" uid="uid://dpuwv6ijv6j6a" path="res://scenes/level/level2/level_2.gltf" id="1_8h71k"]
 [ext_resource type="PackedScene" uid="uid://btres5r46w8pd" path="res://scenes/player/player.tscn" id="2_cwhd6"]
@@ -6,12 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://dvtl8l6g0xsfb" path="res://scenes/enemy/enemy.tscn" id="4_8ptda"]
 [ext_resource type="Texture2D" uid="uid://duvrsnpckmadv" path="res://assets/textures/light/barnlight_square.png" id="5_6fkyd"]
 [ext_resource type="LightmapGIData" uid="uid://cyybgdfl60rn4" path="res://scenes/level/level2/level_2.lmbake" id="5_cwhd6"]
+[ext_resource type="PackedScene" uid="uid://be6sqao35j608" path="res://globals/components/kill_zone/kill_zone.tscn" id="7_8ptda"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_hmjlj"]
 
 [node name="level2" instance=ExtResource("1_8h71k")]
 
 [node name="Player" parent="Part1" index="1" instance=ExtResource("2_cwhd6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.623528, 2.67382, 13.5449)
-forward_speed = 18.0
 strafe_damping = 20.0
 jump_strength = 12.0
 
@@ -175,3 +177,9 @@ quality = 2
 supersampling = true
 supersampling_factor = 3.0
 light_data = ExtResource("5_cwhd6")
+
+[node name="KillZone" parent="." index="12" instance=ExtResource("7_8ptda")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.35244, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone" index="0"]
+shape = SubResource("WorldBoundaryShape3D_hmjlj")
