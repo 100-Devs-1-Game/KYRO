@@ -124,6 +124,9 @@ _subresources={
 "PATH:Part6": {
 "generate/physics": true,
 "mesh_instance/visibility_range_end": 400.0
+},
+"PATH:Warehouse": {
+"generate/physics": true
 }
 }
 }

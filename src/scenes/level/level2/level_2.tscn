@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpvfel41ljn4t"]
+[gd_scene load_steps=7 format=3 uid="uid://bpvfel41ljn4t"]
 
 [ext_resource type="PackedScene" uid="uid://dpuwv6ijv6j6a" path="res://scenes/level/level2/level_2.gltf" id="1_8h71k"]
 [ext_resource type="PackedScene" uid="uid://btres5r46w8pd" path="res://scenes/player/player.tscn" id="2_cwhd6"]
 [ext_resource type="PackedScene" uid="uid://cyv2clj4b5wld" path="res://scenes/pickup/gun/pistol_pickup.tscn" id="3_6fkyd"]
 [ext_resource type="PackedScene" uid="uid://dvtl8l6g0xsfb" path="res://scenes/enemy/enemy.tscn" id="4_8ptda"]
+[ext_resource type="Texture2D" uid="uid://duvrsnpckmadv" path="res://assets/textures/light/barnlight_square.png" id="5_6fkyd"]
 [ext_resource type="LightmapGIData" uid="uid://cyybgdfl60rn4" path="res://scenes/level/level2/level_2.lmbake" id="5_cwhd6"]
 
 [node name="level2" instance=ExtResource("1_8h71k")]
@@ -20,11 +21,134 @@ transform = Transform3D(2.2, 0, 0, 0, 2.2, -4.47035e-08, 0, 4.47035e-08, 2.2, -0
 [node name="Enemy" parent="Part4" index="1" instance=ExtResource("4_8ptda")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42116, -2.66484, 34.5717)
 
+[node name="WarehouseLight" type="SpotLight3D" parent="Part4" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.552453, 0.237942, 21.4792)
+light_color = Color(1, 0.943333, 0.83, 1)
+spot_angle = 60.0
+spot_angle_attenuation = 0.7
+
+[node name="WarehouseLight2" type="SpotLight3D" parent="Part4" index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.552453, 0.237942, 13.0089)
+light_color = Color(1, 0.943333, 0.83, 1)
+spot_angle = 60.0
+spot_angle_attenuation = 0.7
+
+[node name="BarnLight" type="SpotLight3D" parent="Part4" index="4"]
+transform = Transform3D(-0.960062, 0.128255, -0.248659, 0.0246412, 0.924051, 0.381474, 0.2787, 0.360112, -0.890307, -0.484967, 0.0618792, -27.0944)
+light_indirect_energy = 1.3
+light_projector = ExtResource("5_6fkyd")
+shadow_enabled = true
+spot_range = 40.0
+spot_attenuation = 0.3
+spot_angle = 20.0
+
 [node name="Enemy" parent="Part5" index="1" instance=ExtResource("4_8ptda")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.725847, -0.226374, 77.7916)
 
+[node name="WarehouseLight" type="SpotLight3D" parent="Part5" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.552453, 2.93967, 40.5928)
+light_color = Color(1, 0.943333, 0.83, 1)
+light_bake_mode = 1
+spot_range = 6.5
+spot_angle = 70.0
+spot_angle_attenuation = 0.7
+
+[node name="WarehouseLight2" type="SpotLight3D" parent="Part5" index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.75, 2.94, 27.46)
+light_color = Color(1, 0.943333, 0.83, 1)
+light_bake_mode = 1
+spot_range = 6.5
+spot_angle = 65.0
+spot_angle_attenuation = 0.7
+
+[node name="WarehouseLight3" type="SpotLight3D" parent="Part5" index="4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.75, 2.94, 18.135)
+light_color = Color(1, 0.943333, 0.83, 1)
+light_bake_mode = 1
+spot_range = 6.5
+spot_angle = 65.0
+spot_angle_attenuation = 0.7
+
+[node name="WarehouseLight4" type="SpotLight3D" parent="Part5" index="5"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.75, 2.94, 10.8833)
+light_color = Color(1, 0.943333, 0.83, 1)
+light_bake_mode = 1
+spot_angle = 60.0
+
+[node name="WarehouseLight5" type="SpotLight3D" parent="Part5" index="6"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.75, 2.94, 2.91019)
+light_color = Color(1, 0.943333, 0.83, 1)
+light_bake_mode = 1
+spot_angle = 60.0
+
+[node name="WarehouseLight6" type="SpotLight3D" parent="Part5" index="7"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.552453, 2.93967, 61.2758)
+light_color = Color(1, 0.943333, 0.83, 1)
+light_bake_mode = 1
+spot_range = 6.5
+spot_angle = 70.0
+spot_angle_attenuation = 0.7
+
+[node name="WarehouseLight7" type="SpotLight3D" parent="Part5" index="8"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.66827, -2.30974, 48.282)
+light_color = Color(1, 0.943333, 0.83, 1)
+light_bake_mode = 1
+spot_range = 12.0
+spot_attenuation = 0.7
+spot_angle = 32.8295
+spot_angle_attenuation = 0.7
+
+[node name="WarehouseLight8" type="SpotLight3D" parent="Part5" index="9"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.07705, -2.30974, 10.8772)
+light_color = Color(1, 0.943333, 0.83, 1)
+light_bake_mode = 1
+spot_range = 10.0
+spot_attenuation = 0.7
+spot_angle = 32.8295
+spot_angle_attenuation = 0.7
+
+[node name="WarehouseLight9" type="SpotLight3D" parent="Part5" index="10"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.07705, -3.96628, -17.6791)
+light_color = Color(1, 0.943333, 0.83, 1)
+light_bake_mode = 1
+spot_range = 8.0
+spot_attenuation = 0.7
+spot_angle = 70.0
+spot_angle_attenuation = 0.7
+
+[node name="WarehouseLight10" type="SpotLight3D" parent="Part5" index="11"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.05213, -4.88048, 85.9573)
+light_color = Color(1, 0.943333, 0.83, 1)
+light_bake_mode = 1
+spot_range = 12.0
+spot_attenuation = 0.7
+spot_angle = 32.8295
+spot_angle_attenuation = 0.7
+
+[node name="WarehouseLight11" type="SpotLight3D" parent="Part5" index="12"]
+transform = Transform3D(0.595159, 3.51268e-08, -0.803608, 0.803608, -2.60153e-08, 0.595159, 0, -1, -4.37114e-08, 3.87885, -2.32032, 33.3548)
+light_color = Color(1, 0.943333, 0.83, 1)
+light_bake_mode = 1
+spot_range = 12.0
+spot_attenuation = 0.7
+spot_angle = 32.8295
+spot_angle_attenuation = 0.7
+
+[node name="LightmapProbe" type="LightmapProbe" parent="Part5" index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.828824, 1.84033, 77.1801)
+
+[node name="BarnLight" type="SpotLight3D" parent="Part5" index="14"]
+transform = Transform3D(0.93533, 0.1134, -0.335108, 0.0246412, 0.924051, 0.381474, 0.352916, -0.365062, 0.861499, -0.884152, 6.6273, 98.9023)
+light_indirect_energy = 1.3
+light_projector = ExtResource("5_6fkyd")
+shadow_enabled = true
+spot_range = 40.0
+spot_attenuation = 0.3
+spot_angle = 20.0
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="9"]
 transform = Transform3D(-0.776846, 0.35745, -0.518401, -0.120097, 0.724045, 0.679217, 0.618131, 0.589906, -0.519543, 0, 2.78356, 0)
+light_indirect_energy = 1.3
 light_bake_mode = 1
 shadow_enabled = true
 directional_shadow_mode = 1
@@ -32,5 +156,5 @@ directional_shadow_split_1 = 0.5
 directional_shadow_max_distance = 90.0
 
 [node name="LightmapGI" type="LightmapGI" parent="." index="10"]
-quality = 3
+quality = 2
 light_data = ExtResource("5_cwhd6")

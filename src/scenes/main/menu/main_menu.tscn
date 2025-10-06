@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2udeflnw6hvh"]
+[gd_scene load_steps=11 format=3 uid="uid://c2udeflnw6hvh"]
 
 [ext_resource type="Script" uid="uid://epemhndfmd6k" path="res://scenes/main/menu/main_menu.gd" id="1_gv3up"]
 [ext_resource type="Script" uid="uid://fxkg88hiywvr" path="res://scenes/level/level_data.gd" id="2_6gyl1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cfkroo836cojq" path="res://assets/textures/menu/logo.png" id="4_mvqfy"]
 [ext_resource type="Environment" uid="uid://mpnao256vhud" path="res://environments/default.tres" id="5_ccj0k"]
 [ext_resource type="Texture2D" uid="uid://b8ap8h4r6qprr" path="res://assets/textures/menu/main_menu_decorations.png" id="5_cd15u"]
+[ext_resource type="Resource" uid="uid://cs1taakxytu7a" path="res://scenes/level/level2/level_2.tres" id="5_txlv7"]
 [ext_resource type="PackedScene" uid="uid://bw5545ljs3j3k" path="res://globals/components/random_text_scroll/scroll_group.tscn" id="7_txlv7"]
 
 [sub_resource type="World3D" id="World3D_cd15u"]
@@ -14,7 +15,7 @@ environment = ExtResource("5_ccj0k")
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_gv3up")
-levels = Array[ExtResource("2_6gyl1")]([ExtResource("3_6rpxr"), ExtResource("4_6rpxr")])
+levels = Array[ExtResource("2_6gyl1")]([ExtResource("3_6rpxr"), ExtResource("4_6rpxr"), ExtResource("5_txlv7")])
 
 [node name="Decorations" type="TextureRect" parent="."]
 offset_right = 1920.0
