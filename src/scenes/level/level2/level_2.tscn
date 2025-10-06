@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpvfel41ljn4t"]
+
+[ext_resource type="PackedScene" uid="uid://dpuwv6ijv6j6a" path="res://scenes/level/level2/level_2.gltf" id="1_8h71k"]
+[ext_resource type="PackedScene" uid="uid://btres5r46w8pd" path="res://scenes/player/player.tscn" id="2_cwhd6"]
+[ext_resource type="PackedScene" uid="uid://cyv2clj4b5wld" path="res://scenes/pickup/gun/pistol_pickup.tscn" id="3_6fkyd"]
+[ext_resource type="PackedScene" uid="uid://dvtl8l6g0xsfb" path="res://scenes/enemy/enemy.tscn" id="4_8ptda"]
+[ext_resource type="LightmapGIData" uid="uid://cyybgdfl60rn4" path="res://scenes/level/level2/level_2.lmbake" id="5_cwhd6"]
+
+[node name="level2" instance=ExtResource("1_8h71k")]
+
+[node name="Player" parent="Part1" index="1" instance=ExtResource("2_cwhd6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.623528, 2.67382, 13.5449)
+forward_speed = 18.0
+strafe_damping = 20.0
+jump_strength = 12.0
+
+[node name="PistolPickup" parent="Part1" index="2" instance=ExtResource("3_6fkyd")]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, -4.47035e-08, 0, 4.47035e-08, 2.2, -0.637714, 0.0486141, 2.62287)
+
+[node name="Enemy" parent="Part4" index="1" instance=ExtResource("4_8ptda")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42116, -2.66484, 34.5717)
+
+[node name="Enemy" parent="Part5" index="1" instance=ExtResource("4_8ptda")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.725847, -0.226374, 77.7916)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="9"]
+transform = Transform3D(-0.776846, 0.35745, -0.518401, -0.120097, 0.724045, 0.679217, 0.618131, 0.589906, -0.519543, 0, 2.78356, 0)
+light_bake_mode = 1
+shadow_enabled = true
+directional_shadow_mode = 1
+directional_shadow_split_1 = 0.5
+directional_shadow_max_distance = 90.0
+
+[node name="LightmapGI" type="LightmapGI" parent="." index="10"]
+quality = 3
+light_data = ExtResource("5_cwhd6")
