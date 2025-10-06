@@ -33,6 +33,16 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
+"materials": {
+"Red": {
+"use_external/enabled": true,
+"use_external/path": "uid://d1fco0ynfw1jx"
+},
+"White": {
+"use_external/enabled": true,
+"use_external/path": "uid://22001gnicwq8"
+}
+},
 "meshes": {
 "level_2_Part1": {
 "generate/lightmap_uv": 1,
@@ -77,6 +87,14 @@ _subresources={
 "level_2_Part6": {
 "generate/lightmap_uv": 1,
 "generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": false,
+"save_to_file/path": ""
+},
+"level_2_Warehouse": {
+"generate/lightmap_uv": 1,
+"generate/lods": 2,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
