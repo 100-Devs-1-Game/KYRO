@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://btres5r46w8pd"]
+[gd_scene load_steps=28 format=3 uid="uid://btres5r46w8pd"]
 
 [ext_resource type="Script" uid="uid://cx0dubayoiydg" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bshjfjpv4fojd" path="res://globals/components/state_machine/state_machine.gd" id="2_dovo2"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://6ya0kpv6f4fk" path="res://assets/textures/hud/boost_ring.svg" id="12_myrg7"]
 [ext_resource type="Script" uid="uid://cjtgimnfqhxq6" path="res://scenes/player/pickupper.gd" id="13_gx1jg"]
 [ext_resource type="ArrayMesh" uid="uid://6b1musmygn87" path="res://assets/models/particles/glass_shard.mesh" id="15_fcs02"]
+[ext_resource type="Texture2D" uid="uid://c82mnsorud8wy" path="res://assets/textures/hud/collectible_uncollected.png" id="15_uf5tr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7p2l"]
 size = Vector3(0.7, 1.8, 0.7)
@@ -466,6 +467,26 @@ text = "RESTART"
 [node name="Quit" type="Button" parent="GameOver/Control/Menu/VBoxContainer"]
 layout_mode = 2
 text = "QUIT TO MENU"
+
+[node name="CollectibleIcons" type="HBoxContainer" parent="GameOver/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 11.0
+offset_right = 394.0
+offset_bottom = 139.0
+
+[node name="CollectibleIcon" type="TextureRect" parent="GameOver/Control/CollectibleIcons"]
+layout_mode = 2
+texture = ExtResource("15_uf5tr")
+
+[node name="CollectibleIcon2" type="TextureRect" parent="GameOver/Control/CollectibleIcons"]
+layout_mode = 2
+texture = ExtResource("15_uf5tr")
+
+[node name="CollectibleIcon3" type="TextureRect" parent="GameOver/Control/CollectibleIcons"]
+layout_mode = 2
+texture = ExtResource("15_uf5tr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

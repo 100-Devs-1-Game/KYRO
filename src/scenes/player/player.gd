@@ -13,7 +13,7 @@ const STATE_COMMONS:Script = preload("res://scenes/player/state_commons.gd")
 const STATE_COMMONS_RAILS:Script = preload("res://scenes/player/state_commons_rails.gd")
 const TRACER_SCENE:PackedScene = preload("res://scenes/gun/tracer/bullet_tracer.tscn")
 const SPARKS_SCENE:PackedScene = preload("res://scenes/gun/tracer/sparks.tscn")
-
+const COLLECTIBLE_COLLECTED:Texture2D = preload("res://assets/textures/hud/collectible_collected.png")
 
 ## Singleton instance
 static var instance:Player
@@ -136,6 +136,12 @@ func emit_glass() -> void:
 	glass_particles.initial_velocity_min = velocity_len * 1.2
 	glass_particles.initial_velocity_max = velocity_len * 1.4
 	glass_particles.restart()
+
+
+func display_collectibles() -> void:
+	var icons:Node = %CollectibleIcons
+	for i in collectible_count:
+		(icons.get_child(i) as TextureRect).texture = COLLECTIBLE_COLLECTED
 
 
 func _update_ammo_count() -> void:

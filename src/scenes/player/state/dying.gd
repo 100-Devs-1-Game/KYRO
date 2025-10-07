@@ -7,6 +7,7 @@ func _state_entered() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	owner.animation_player.play(&"dying")
 	owner.velocity = Vector3.ZERO
+	owner.display_collectibles()
 	if owner.gun_manager:
 		owner.gun_manager.disabled = true
 
