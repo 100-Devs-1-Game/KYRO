@@ -10,12 +10,13 @@ config_version=5
 
 [application]
 
-config/name="kyro"
+config/name="Kyro"
+config/version="2025.06.01"
 run/main_scene="uid://dqia4ypqyt1p5"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="uid://bhbtur6tnbm1x"
-config/icon="res://icon.svg"
+config/icon="uid://dntgm7adum1sh"
 boot_splash/minimum_display_time.release=1500
 
 [autoload]
