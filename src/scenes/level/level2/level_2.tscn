@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpvfel41ljn4t"]
+[gd_scene load_steps=10 format=3 uid="uid://bpvfel41ljn4t"]
 
 [ext_resource type="PackedScene" uid="uid://dpuwv6ijv6j6a" path="res://scenes/level/level2/level_2.gltf" id="1_8h71k"]
 [ext_resource type="PackedScene" uid="uid://btres5r46w8pd" path="res://scenes/player/player.tscn" id="2_cwhd6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dvtl8l6g0xsfb" path="res://scenes/enemy/enemy.tscn" id="4_8ptda"]
 [ext_resource type="Texture2D" uid="uid://duvrsnpckmadv" path="res://assets/textures/light/barnlight_square.png" id="5_6fkyd"]
 [ext_resource type="LightmapGIData" uid="uid://cyybgdfl60rn4" path="res://scenes/level/level2/level_2.lmbake" id="5_cwhd6"]
+[ext_resource type="PackedScene" uid="uid://b82j8lhnjhouo" path="res://scenes/pickup/collectible/collectible_pickup.tscn" id="6_hmjlj"]
 [ext_resource type="PackedScene" uid="uid://be6sqao35j608" path="res://globals/components/kill_zone/kill_zone.tscn" id="7_8ptda"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_hmjlj"]
@@ -43,6 +44,9 @@ shadow_enabled = true
 spot_range = 40.0
 spot_attenuation = 0.3
 spot_angle = 20.0
+
+[node name="Collectible" parent="Part4" index="5" instance=ExtResource("6_hmjlj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.13844, -2.68817, -23.7239)
 
 [node name="Enemy" parent="Part5" index="1" instance=ExtResource("4_8ptda")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.725847, -0.226374, 77.7916)
@@ -163,7 +167,13 @@ light_indirect_energy = 0.85
 light_bake_mode = 1
 omni_attenuation = 0.8
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="9"]
+[node name="Collectible" parent="Part5" index="17" instance=ExtResource("6_hmjlj")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -12.4474, -6.93563, -52.8264)
+
+[node name="Collectible" parent="Part6" index="1" instance=ExtResource("6_hmjlj")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.0275602, 5.26216, -54.672)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="7"]
 transform = Transform3D(-0.776846, 0.35745, -0.518401, -0.120097, 0.724045, 0.679217, 0.618131, 0.589906, -0.519543, 0, 2.78356, 0)
 light_indirect_energy = 1.3
 light_bake_mode = 1
@@ -172,13 +182,13 @@ directional_shadow_mode = 1
 directional_shadow_split_1 = 0.5
 directional_shadow_max_distance = 90.0
 
-[node name="LightmapGI" type="LightmapGI" parent="." index="10"]
+[node name="LightmapGI" type="LightmapGI" parent="." index="8"]
 quality = 2
 supersampling = true
 supersampling_factor = 3.0
 light_data = ExtResource("5_cwhd6")
 
-[node name="KillZone" parent="." index="12" instance=ExtResource("7_8ptda")]
+[node name="KillZone" parent="." index="9" instance=ExtResource("7_8ptda")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.35244, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone" index="0"]
