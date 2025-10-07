@@ -20,10 +20,10 @@ func _on_player_to_menu_requested() -> void:
 	MusicManager.song_request(&"Main Menu")
 
 
-func _on_main_menu_play_level_requested(level_path: String) -> void:
-	to_level(load(level_path))
+func _on_main_menu_play_level_requested(level:LevelData) -> void:
+	to_level(load(level.level_path))
 	main_menu.visible = false
-	MusicManager.song_request(&"Tesserakt")
+	MusicManager.song_request(level.song)
 
 
 func to_level(p_level_packed:PackedScene) -> void:

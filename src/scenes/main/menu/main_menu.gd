@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 
-signal play_level_requested(level_path:String)
+signal play_level_requested(level:LevelData)
 
 
 enum MenuMode {
@@ -46,7 +46,7 @@ func make_level_buttons() -> void:
 		var instance := LEVEL_BUTTON_SCENE.instantiate()
 		level_buttons.add_child(instance)
 		instance.text = level.level_name
-		instance.pressed.connect(play_level_requested.emit.bind(level.level_path))
+		instance.pressed.connect(play_level_requested.emit.bind(level))
 
 
 func reset() -> void:
