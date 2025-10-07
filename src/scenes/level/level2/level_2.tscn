@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpvfel41ljn4t"]
+[gd_scene load_steps=11 format=3 uid="uid://bpvfel41ljn4t"]
 
 [ext_resource type="PackedScene" uid="uid://dpuwv6ijv6j6a" path="res://scenes/level/level2/level_2.gltf" id="1_8h71k"]
 [ext_resource type="PackedScene" uid="uid://btres5r46w8pd" path="res://scenes/player/player.tscn" id="2_cwhd6"]
@@ -8,6 +8,7 @@
 [ext_resource type="LightmapGIData" uid="uid://cyybgdfl60rn4" path="res://scenes/level/level2/level_2.lmbake" id="5_cwhd6"]
 [ext_resource type="PackedScene" uid="uid://b82j8lhnjhouo" path="res://scenes/pickup/collectible/collectible_pickup.tscn" id="6_hmjlj"]
 [ext_resource type="PackedScene" uid="uid://be6sqao35j608" path="res://globals/components/kill_zone/kill_zone.tscn" id="7_8ptda"]
+[ext_resource type="PackedScene" uid="uid://cyj4tbfkmoa08" path="res://scenes/level/props/finish_line/finish_line.tscn" id="9_ila6q"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_hmjlj"]
 
@@ -193,3 +194,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.35244, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone" index="0"]
 shape = SubResource("WorldBoundaryShape3D_hmjlj")
+
+[node name="FinishLine" parent="." index="10" instance=ExtResource("9_ila6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.52833, 2.21935, -543.375)
