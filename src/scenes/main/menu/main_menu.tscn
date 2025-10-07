@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2udeflnw6hvh"]
+[gd_scene load_steps=12 format=3 uid="uid://c2udeflnw6hvh"]
 
 [ext_resource type="Script" uid="uid://epemhndfmd6k" path="res://scenes/main/menu/main_menu.gd" id="1_gv3up"]
 [ext_resource type="Script" uid="uid://fxkg88hiywvr" path="res://scenes/level/level_data.gd" id="2_6gyl1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b8ap8h4r6qprr" path="res://assets/textures/menu/main_menu_decorations.png" id="5_cd15u"]
 [ext_resource type="Resource" uid="uid://cs1taakxytu7a" path="res://scenes/level/level2/level_2.tres" id="5_txlv7"]
 [ext_resource type="PackedScene" uid="uid://bw5545ljs3j3k" path="res://globals/components/random_text_scroll/scroll_group.tscn" id="7_txlv7"]
+[ext_resource type="PackedScene" uid="uid://dehnn6qqmdx0o" path="res://scenes/level/level2/level_2_title.tscn" id="8_pph0w"]
 
 [sub_resource type="World3D" id="World3D_cd15u"]
 environment = ExtResource("5_ccj0k")
@@ -38,9 +39,8 @@ world_3d = SubResource("World3D_cd15u")
 handle_input_locally = false
 gui_disable_input = true
 size = Vector2i(1920, 1080)
-render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="Decorations/SubViewportContainer/SubViewport"]
+[node name="level2" parent="Decorations/SubViewportContainer/SubViewport" instance=ExtResource("8_pph0w")]
 
 [node name="ScrollGroup" parent="Decorations" instance=ExtResource("7_txlv7")]
 layout_mode = 1

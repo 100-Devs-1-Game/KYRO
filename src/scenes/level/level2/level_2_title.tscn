@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dehnn6qqmdx0o"]
+
+[ext_resource type="PackedScene" uid="uid://bpvfel41ljn4t" path="res://scenes/level/level2/level_2_base.tscn" id="1_e55t2"]
+
+[node name="level2" instance=ExtResource("1_e55t2")]
+
+[node name="Camera3D" type="Camera3D" parent="." index="9"]
+transform = Transform3D(0.953517, -0.0701926, 0.293049, -3.12895e-09, 0.972492, 0.232936, -0.301338, -0.222109, 0.927288, 6.46437, 16.6615, -301.766)
+fov = 70.0
